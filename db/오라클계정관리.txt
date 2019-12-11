@@ -1,0 +1,28 @@
+Microsoft Windows [Version 10.0.18362.476]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\db>sqlplus
+-- 계정 생성
+-- create user [id] identified by [pw] default tablespace [테이블스페이스명];
+-- alter user bit quota [size] on [테이블 스페이스명];
+-- pw는 영문으로 시작
+SQL> create user bit identified by abcd;
+사용자가 생성되었습니다.
+-- 접속권한 부여
+SQL> grant create session to bit;
+-- 테이블 스페이스 생성
+SQL> create tablespace bit datafile 'C:\oraclexe\oradata\XE\bit.dbf' size 1024000;
+-- 계정에 테이블 스페이스 할당
+SQL> alter user bit quota 1024000 on bit default tablespace bit;
+-- 계정이 잠겨있을 때
+SQL> alter user hr account unlock;
+SQL> 
+http://localhost:8080/apex
+SQL> select dbms_xdb.gethttpport from dual;
+SQL> exec dbms_xdb.sethttpport(9090);
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+declare
+begin
+ :vnum :=0;
+end;
+/
+declare
+begin
+ exec pro18(:vnum);
+end;
+/

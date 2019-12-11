@@ -1,0 +1,43 @@
+SQL> -- 스풀시작
+SQL> select deptno,dname from dept;
+
+    DEPTNO DNAME                                                                
+---------- ----------------------------                                         
+        10 ACCOUNTING                                                           
+        20 RESEARCH                                                             
+        30 SALES                                                                
+        40 OPERATIONS                                                           
+        50 총무                                                                 
+        60 회계                                                                 
+        70 인사                                                                 
+        80 영업                                                                 
+        90 임시                                                                 
+
+9 개의 행이 선택되었습니다.
+
+SQL> select deptno,dname from dept where deptno>50;
+
+    DEPTNO DNAME                                                                
+---------- ----------------------------                                         
+        60 회계                                                                 
+        70 인사                                                                 
+        80 영업                                                                 
+        90 임시                                                                 
+
+SQL> select deptno,dname from dept where deptno<50;
+
+    DEPTNO DNAME                                                                
+---------- ----------------------------                                         
+        10 ACCOUNTING                                                           
+        20 RESEARCH                                                             
+        30 SALES                                                                
+        40 OPERATIONS                                                           
+
+SQL> select deptno,dname from dept where deptno=50;
+
+    DEPTNO DNAME                                                                
+---------- ----------------------------                                         
+        50 총무                                                                 
+
+SQL> -- 스풀 종료
+SQL> spool off

@@ -1,0 +1,850 @@
+SQL> select tname from tab;
+
+TNAME                                                                           
+------------------------------------------------------------                    
+DEPT                                                                            
+BONUS                                                                           
+EMP                                                                             
+SALGRADE                                                                        
+COPY                                                                            
+STUDENT                                                                         
+TEMP01                                                                          
+
+7 °³ÀÇ ÇàÀÌ ¼±ÅÃµÇ¾ú½À´Ï´Ù.
+
+SQL> ed temp02.sql
+
+SQL> @ temp02.sql
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into temp02 values (1,'test',1);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into temp02 values (2,'test',2);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into temp02 values (2,'test',3);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into temp02 values (3,'test',1);
+insert into temp02 values (3,'test',1)
+*
+1Çà¿¡ ¿À·ù:
+ORA-00001: ¹«°á¼º Á¦¾à Á¶°Ç(SCOTT.SYS_C003997)¿¡ À§¹èµË´Ï´Ù 
+
+
+SQL> select * from temp02;
+
+       NUM NAME                        CNT                                      
+---------- -------------------- ----------                                      
+         1 test                          1                                      
+         2 test                          2                                      
+         2 test                          3                                      
+
+SQL> insert into temp02 values (4,'test',null);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> select * from temp02;
+
+       NUM NAME                        CNT                                      
+---------- -------------------- ----------                                      
+         1 test                          1                                      
+         2 test                          2                                      
+         2 test                          3                                      
+         4 test                                                                 
+
+SQL> insert into temp02 values (5,'test',null);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> select * from temp02;
+
+       NUM NAME                        CNT                                      
+---------- -------------------- ----------                                      
+         1 test                          1                                      
+         2 test                          2                                      
+         2 test                          3                                      
+         4 test                                                                 
+         5 test                                                                 
+
+SQL> ed temp02
+
+SQL> / temp02
+
+       NUM NAME                        CNT                                      
+---------- -------------------- ----------                                      
+         1 test                          1                                      
+         2 test                          2                                      
+         2 test                          3                                      
+         4 test                                                                 
+         5 test                                                                 
+
+SQL> @ temp02
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into temp02 values (1,'test1',1);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into temp02 values (2,'test2',2);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into temp02 values (3,'test2',3);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into temp02 values (4,null,4);
+insert into temp02 values (4,null,4)
+                             *
+1Çà¿¡ ¿À·ù:
+ORA-01400: NULLÀ» ("SCOTT"."TEMP02"."NAME") ¾È¿¡ »ðÀÔÇÒ ¼ö ¾ø½À´Ï´Ù 
+
+
+SQL> insert into temp02 values (4,'',4);
+insert into temp02 values (4,'',4)
+                             *
+1Çà¿¡ ¿À·ù:
+ORA-01400: NULLÀ» ("SCOTT"."TEMP02"."NAME") ¾È¿¡ »ðÀÔÇÒ ¼ö ¾ø½À´Ï´Ù 
+
+
+SQL> insert into temp02 values (null,'',5);
+insert into temp02 values (null,'',5)
+                                *
+1Çà¿¡ ¿À·ù:
+ORA-01400: NULLÀ» ("SCOTT"."TEMP02"."NAME") ¾È¿¡ »ðÀÔÇÒ ¼ö ¾ø½À´Ï´Ù 
+
+
+SQL> insert into temp02 values (null,'test5',5);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> select * from temp02
+  2  ;
+
+       NUM NAME                        CNT                                      
+---------- -------------------- ----------                                      
+         1 test1                         1                                      
+         2 test2                         2                                      
+         3 test2                         3                                      
+           test5                         5                                      
+
+SQL> insert into temp02 values ('','test6',6);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> select * from temp02 where num=3;
+
+       NUM NAME                        CNT                                      
+---------- -------------------- ----------                                      
+         3 test2                         3                                      
+
+SQL> select * from temp02 where name='test2';
+
+       NUM NAME                        CNT                                      
+---------- -------------------- ----------                                      
+         2 test2                         2                                      
+         3 test2                         3                                      
+
+SQL> select * from temp02 where cnt=3;
+
+       NUM NAME                        CNT                                      
+---------- -------------------- ----------                                      
+         3 test2                         3                                      
+
+SQL> insert into temp02 values (6,'test6',null);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> select * from temp02 where cnt=3;
+
+       NUM NAME                        CNT                                      
+---------- -------------------- ----------                                      
+         3 test2                         3                                      
+
+SQL> select * from temp02;
+
+       NUM NAME                        CNT                                      
+---------- -------------------- ----------                                      
+         1 test1                         1                                      
+         2 test2                         2                                      
+         3 test2                         3                                      
+           test5                         5                                      
+           test6                         6                                      
+         6 test6                                                                
+
+6 °³ÀÇ ÇàÀÌ ¼±ÅÃµÇ¾ú½À´Ï´Ù.
+
+SQL> select * from temp02 where cnt is null;
+
+       NUM NAME                        CNT                                      
+---------- -------------------- ----------                                      
+         6 test6                                                                
+
+SQL> insert into temp02 values (7,'test7',null);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> ed temp02
+
+SQL> @ temp02
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into temp02 values (1,'test1',1);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into temp02 values (2,'test2',2);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into temp02 values (null,'test3',3);
+insert into temp02 values (null,'test3',3)
+                           *
+1Çà¿¡ ¿À·ù:
+ORA-01400: NULLÀ» ("SCOTT"."TEMP02"."NUM") ¾È¿¡ »ðÀÔÇÒ ¼ö ¾ø½À´Ï´Ù 
+
+
+SQL> insert into temp02 values (2,'test3',3);
+insert into temp02 values (2,'test3',3)
+*
+1Çà¿¡ ¿À·ù:
+ORA-00001: ¹«°á¼º Á¦¾à Á¶°Ç(SCOTT.SYS_C004002)¿¡ À§¹èµË´Ï´Ù 
+
+
+SQL> ed temp02
+
+SQL> @ temp02
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+notÀÇ °ªÀ» ÀÔ·ÂÇÏ½Ê½Ã¿À: 
+indexÀÇ °ªÀ» ÀÔ·ÂÇÏ½Ê½Ã¿À: 
+±¸   2: 	-- primary key : unique & not null & index,
+½Å   2: 	-- primary key : unique  null ,
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> ed temp02
+
+SQL> @ temp02
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+notÀÇ °ªÀ» ÀÔ·ÂÇÏ½Ê½Ã¿À: 
+indexÀÇ °ªÀ» ÀÔ·ÂÇÏ½Ê½Ã¿À: 
+±¸   2: 	-- primary key = unique & not null & index,
+½Å   2: 	-- primary key = unique  null ,
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> ed temp02
+
+SQL> @ temp02
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into temp02 values (1,'test',1);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into temp02 values (2,'test',2);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into temp02 values (null,'test',2);
+insert into temp02 values (null,'test',2)
+                           *
+1Çà¿¡ ¿À·ù:
+ORA-01400: NULLÀ» ("SCOTT"."TEMP02"."NUM") ¾È¿¡ »ðÀÔÇÒ ¼ö ¾ø½À´Ï´Ù 
+
+
+SQL> insert into temp02 values (1,'test',2);
+insert into temp02 values (1,'test',2)
+*
+1Çà¿¡ ¿À·ù:
+ORA-00001: ¹«°á¼º Á¦¾à Á¶°Ç(SCOTT.SYS_C004011)¿¡ À§¹èµË´Ï´Ù 
+
+
+SQL> insert into temp02 values (1,'test',3);
+insert into temp02 values (1,'test',3)
+*
+1Çà¿¡ ¿À·ù:
+ORA-00001: ¹«°á¼º Á¦¾à Á¶°Ç(SCOTT.SYS_C004011)¿¡ À§¹èµË´Ï´Ù 
+
+
+SQL> ed temp02
+
+SQL> ed temp03.sql
+
+SQL> @ temp03
+drop table temp03
+           *
+1Çà¿¡ ¿À·ù:
+ORA-00942: Å×ÀÌºí ¶Ç´Â ºä°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù 
+
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> @ temp03
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> alter table temp03 add primary key(num);
+
+Å×ÀÌºíÀÌ º¯°æµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into temp03 values (1,'test',1);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into temp03 values (2,'test',1);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into temp03 values (2,'test',1);
+insert into temp03 values (2,'test',1)
+*
+1Çà¿¡ ¿À·ù:
+ORA-00001: ¹«°á¼º Á¦¾à Á¶°Ç(SCOTT.SYS_C004013)¿¡ À§¹èµË´Ï´Ù 
+
+
+SQL> insert into temp03 values (null,'test',1);
+insert into temp03 values (null,'test',1)
+                           *
+1Çà¿¡ ¿À·ù:
+ORA-01400: NULLÀ» ("SCOTT"."TEMP03"."NUM") ¾È¿¡ »ðÀÔÇÒ ¼ö ¾ø½À´Ï´Ù 
+
+
+SQL> ed temp03.sql
+
+SQL> @ temp03
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into temp03 values (1,'TEST',1);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into temp03 values (2,'TEST',2);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into temp03 values (2,'TEST',3);
+insert into temp03 values (2,'TEST',3)
+*
+1Çà¿¡ ¿À·ù:
+ORA-00001: ¹«°á¼º Á¦¾à Á¶°Ç(SCOTT.TEMP03_NUM_PK)¿¡ À§¹èµË´Ï´Ù 
+
+
+SQL> alter table temp03 drop constraint temp03_num_pk;
+
+Å×ÀÌºíÀÌ º¯°æµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into temp03 values (2,'TEST',3);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> alter table temp03 add primary key(num);
+alter table temp03 add primary key(num)
+*
+1Çà¿¡ ¿À·ù:
+ORA-02437: (SCOTT.SYS_C004015)À» °ËÁõÇÒ ¼ö ¾ø½À´Ï´Ù - Àß¸øµÈ ±âº» Å°ÀÔ´Ï´Ù 
+
+
+SQL> delete from temp03 where cnt=3;
+
+1 ÇàÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+SQL> alter table temp03 add constraint temp03_num_pk primary key(num);
+
+Å×ÀÌºíÀÌ º¯°æµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into temp03 values (2,'TEST',3);
+insert into temp03 values (2,'TEST',3)
+*
+1Çà¿¡ ¿À·ù:
+ORA-00001: ¹«°á¼º Á¦¾à Á¶°Ç(SCOTT.TEMP03_NUM_PK)¿¡ À§¹èµË´Ï´Ù 
+
+
+SQL> select * from temp03;
+
+       NUM NAME                        CNT                                      
+---------- -------------------- ----------                                      
+         1 TEST                          1                                      
+         2 TEST                          2                                      
+
+SQL> insert into temp03 values (3,'test',2);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> alter table temp03 add constraint temp03_cnt_uq unique(cnt);
+alter table temp03 add constraint temp03_cnt_uq unique(cnt)
+                                  *
+1Çà¿¡ ¿À·ù:
+ORA-02299: Á¦¾à (SCOTT.TEMP03_CNT_UQ)À» »ç¿ë °¡´ÉÇÏ°Ô ÇÒ ¼ö ¾øÀ½ - Áßº¹ Å°°¡
+ÀÖ½À´Ï´Ù 
+
+
+SQL> delete from temp03 where num=3;
+
+1 ÇàÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+SQL> alter table temp03 add constraint temp03_cnt_uq unique(cnt);
+
+Å×ÀÌºíÀÌ º¯°æµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into temp03 values (3,'test',2);
+insert into temp03 values (3,'test',2)
+*
+1Çà¿¡ ¿À·ù:
+ORA-00001: ¹«°á¼º Á¦¾à Á¶°Ç(SCOTT.TEMP03_CNT_UQ)¿¡ À§¹èµË´Ï´Ù 
+
+
+SQL> alter table temp03 disable constraint temp03_cnt_uq;
+
+Å×ÀÌºíÀÌ º¯°æµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into temp03 values (3,'test',2);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> alter table temp03 enable constraint temp03_cnt_uq;
+alter table temp03 enable constraint temp03_cnt_uq
+*
+1Çà¿¡ ¿À·ù:
+ORA-02299: Á¦¾à (SCOTT.TEMP03_CNT_UQ)À» »ç¿ë °¡´ÉÇÏ°Ô ÇÒ ¼ö ¾øÀ½ - Áßº¹ Å°°¡
+ÀÖ½À´Ï´Ù 
+
+
+SQL> delete from temp03 where num=3;
+
+1 ÇàÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+SQL> alter table temp03 enable constraint temp03_cnt_uq;
+
+Å×ÀÌºíÀÌ º¯°æµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into temp03 values (3,'test',2);
+insert into temp03 values (3,'test',2)
+*
+1Çà¿¡ ¿À·ù:
+ORA-00001: ¹«°á¼º Á¦¾à Á¶°Ç(SCOTT.TEMP03_CNT_UQ)¿¡ À§¹èµË´Ï´Ù 
+
+
+SQL> ed temp02;
+
+SQL> select * from temp02;
+
+       NUM NAME                        CNT                                      
+---------- -------------------- ----------                                      
+         1 test                          1                                      
+         2 test                          2                                      
+
+SQL> insert into temp02 values (3,'test',2);
+insert into temp02 values (3,'test',2)
+*
+1Çà¿¡ ¿À·ù:
+ORA-00001: ¹«°á¼º Á¦¾à Á¶°Ç(SCOTT.SYS_C004012)¿¡ À§¹èµË´Ï´Ù 
+
+
+SQL> alter table temp02 remove constraint SYS_C004012;
+alter table temp02 remove constraint SYS_C004012
+                   *
+1Çà¿¡ ¿À·ù:
+ORA-01735: ºÎÀûÇÕÇÑ ALTER TABLE ¿É¼ÇÀÔ´Ï´Ù 
+
+
+SQL> alter table temp02 drop constraint SYS_C004012;
+
+Å×ÀÌºíÀÌ º¯°æµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into temp02 values (3,'test',2);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> ed temp04.sql
+
+SQL> @ temp04.sql
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+	id number references temp04(id),
+	                            *
+3Çà¿¡ ¿À·ù:
+ORA-02270: ÀÌ ¿­¸ñ·Ï¿¡ ´ëÇØ ÀÏÄ¡ÇÏ´Â °íÀ¯ ¶Ç´Â ±âº» Å°°¡ ¾ø½À´Ï´Ù. 
+
+
+SQL> drop table temp04;
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+SQL> ed temp04.sql
+
+SQL> @ temp04
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into temp04 values (1,'test1',1111);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into temp04 values (2,'test2',2222);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> select * from temp04;
+
+       NUM NAME                         ID                                      
+---------- -------------------- ----------                                      
+         1 test1                      1111                                      
+         2 test2                      2222                                      
+
+SQL> insert into temp05 values (1,1111,'sub1');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into temp05 values (2,2222,'sub2');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into temp05 values (3,1111,'sub3');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> select * from temp05;
+
+       NUM         ID SUB                                                       
+---------- ---------- --------------------                                      
+         1       1111 sub1                                                      
+         2       2222 sub2                                                      
+         3       1111 sub3                                                      
+
+SQL> insert into temp05 values (4,3333,'sub4');
+insert into temp05 values (4,3333,'sub4')
+*
+1Çà¿¡ ¿À·ù:
+ORA-02291: ¹«°á¼º Á¦¾àÁ¶°Ç(SCOTT.SYS_C004023)ÀÌ À§¹èµÇ¾ú½À´Ï´Ù- ºÎ¸ð Å°°¡
+¾ø½À´Ï´Ù 
+
+
+SQL> select id from temp04;
+
+        ID                                                                      
+----------                                                                      
+      1111                                                                      
+      2222                                                                      
+
+SQL> insert into temp04 values (3,'test3',3333);
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into temp05 values (4,3333,'sub4');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> drop table temp04;
+drop table temp04
+           *
+1Çà¿¡ ¿À·ù:
+ORA-02449: ¿Ü·¡ Å°¿¡ ÀÇÇØ ÂüÁ¶µÇ´Â °íÀ¯/±âº» Å°°¡ Å×ÀÌºí¿¡ ÀÖ½À´Ï´Ù 
+
+
+SQL> drop table temp05;
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+SQL> drop table temp04;
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+SQL> ed temp04
+
+SQL> @ temp04
+drop table temp05
+           *
+1Çà¿¡ ¿À·ù:
+ORA-00942: Å×ÀÌºí ¶Ç´Â ºä°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù 
+
+
+drop table temp04
+           *
+1Çà¿¡ ¿À·ù:
+ORA-00942: Å×ÀÌºí ¶Ç´Â ºä°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù 
+
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+	constraint temp05_id_fk foreign key(id)  references temp04(id)
+	                                                             *
+5Çà¿¡ ¿À·ù:
+ORA-00907: ´©¶ôµÈ ¿ì°ýÈ£ 
+
+
+SP2-0042: ¾Ë ¼ö ¾ø´Â ¸í·É¾î ")" - ³ª¸ÓÁö ÁÙ ¹«½Ã.
+insert into temp05 values (1,1111,'sub1')
+            *
+1Çà¿¡ ¿À·ù:
+ORA-00942: Å×ÀÌºí ¶Ç´Â ºä°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù 
+
+
+insert into temp05 values (2,3333,'sub2')
+            *
+1Çà¿¡ ¿À·ù:
+ORA-00942: Å×ÀÌºí ¶Ç´Â ºä°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù 
+
+
+insert into temp05 values (3,1111,'sub3')
+            *
+1Çà¿¡ ¿À·ù:
+ORA-00942: Å×ÀÌºí ¶Ç´Â ºä°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù 
+
+
+insert into temp05 values (4,2222,'sub4')
+            *
+1Çà¿¡ ¿À·ù:
+ORA-00942: Å×ÀÌºí ¶Ç´Â ºä°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù 
+
+
+SQL> ed temp04
+
+SQL> @ temp04
+drop table temp05
+           *
+1Çà¿¡ ¿À·ù:
+ORA-00942: Å×ÀÌºí ¶Ç´Â ºä°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù 
+
+
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> select * from temp04;
+
+       NUM NAME                         ID                                      
+---------- -------------------- ----------                                      
+         1 test1                      1111                                      
+         2 test2                      2222                                      
+         3 test3                      3333                                      
+
+SQL> select * from temp05;
+
+       NUM         ID SUB                                                       
+---------- ---------- --------------------                                      
+         1       1111 sub1                                                      
+         2       3333 sub2                                                      
+         3       1111 sub3                                                      
+         4       2222 sub4                                                      
+
+SQL> alter table temp05 drop constraint temp05_id_fk;
+
+Å×ÀÌºíÀÌ º¯°æµÇ¾ú½À´Ï´Ù.
+
+SQL> drop table temp04;
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+SQL> select * from temp05;
+
+       NUM         ID SUB                                                       
+---------- ---------- --------------------                                      
+         1       1111 sub1                                                      
+         2       3333 sub2                                                      
+         3       1111 sub3                                                      
+         4       2222 sub4                                                      
+
+SQL> drop table temp05;
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+SQL> @ temp04
+drop table temp05
+           *
+1Çà¿¡ ¿À·ù:
+ORA-00942: Å×ÀÌºí ¶Ç´Â ºä°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù 
+
+
+drop table temp04
+           *
+1Çà¿¡ ¿À·ù:
+ORA-00942: Å×ÀÌºí ¶Ç´Â ºä°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù 
+
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> alter table temp05 drop constraint temp05_id_fk;
+
+Å×ÀÌºíÀÌ º¯°æµÇ¾ú½À´Ï´Ù.
+
+SQL> alter table temp05 add constraint temp05_id_fk foreign key(id) reference temp04(id);
+alter table temp05 add constraint temp05_id_fk foreign key(id) reference temp04(id)
+                                                               *
+1Çà¿¡ ¿À·ù:
+ORA-00905: ´©¶ôµÈ Å°¿öµå 
+
+
+SQL> alter table temp05 add constraint temp05_id_fk foreign key(id) references temp04(id);
+
+Å×ÀÌºíÀÌ º¯°æµÇ¾ú½À´Ï´Ù.
+
+SQL> ed temp06.sql
+
+SQL> @ temp06
+drop table temp06
+           *
+1Çà¿¡ ¿À·ù:
+ORA-00942: Å×ÀÌºí ¶Ç´Â ºä°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù 
+
+
+	gender char(3) check(gender in('ë‚¨','ì—¬'))
+	                                     *
+5Çà¿¡ ¿À·ù:
+ORA-00907: ´©¶ôµÈ ¿ì°ýÈ£ 
+
+
+SQL> ed temp06.sql
+
+SQL> @ temp06
+drop table temp06
+           *
+1Çà¿¡ ¿À·ù:
+ORA-00942: Å×ÀÌºí ¶Ç´Â ºä°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù 
+
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into temp06 values (1,'test1',10,'m');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into temp06 values (2,'test2',20,'f');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into temp06 values (3,'test3',30,'g');
+insert into temp06 values (3,'test3',30,'g')
+*
+1Çà¿¡ ¿À·ù:
+ORA-02290: Ã¼Å© Á¦¾àÁ¶°Ç(SCOTT.SYS_C004035)ÀÌ À§¹èµÇ¾ú½À´Ï´Ù 
+
+
+SQL> ed temp06.sql
+
+SQL> @ temp06
+
+Å×ÀÌºíÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.
+
+
+Å×ÀÌºíÀÌ »ý¼ºµÇ¾ú½À´Ï´Ù.
+
+SQL> insert into temp06 values (1,'test1',10,'m');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into temp06 values (2,'test2',20,'f');
+
+1 °³ÀÇ ÇàÀÌ ¸¸µé¾îÁ³½À´Ï´Ù.
+
+SQL> insert into temp06 values (3,'test3',0,'f');
+insert into temp06 values (3,'test3',0,'f')
+*
+1Çà¿¡ ¿À·ù:
+ORA-02290: Ã¼Å© Á¦¾àÁ¶°Ç(SCOTT.TEMP06_AGE_CK)ÀÌ À§¹èµÇ¾ú½À´Ï´Ù 
+
+
+SQL> insert into temp06 values (3,'test3',100,'f');
+insert into temp06 values (3,'test3',100,'f')
+*
+1Çà¿¡ ¿À·ù:
+ORA-02290: Ã¼Å© Á¦¾àÁ¶°Ç(SCOTT.TEMP06_AGE_CK)ÀÌ À§¹èµÇ¾ú½À´Ï´Ù 
+
+
+SQL> spool off

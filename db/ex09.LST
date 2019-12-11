@@ -1,0 +1,291 @@
+SQL> select empno,ename,(select ename from emp B where A.mgr=B.empno) from emp A;
+
+     EMPNO ENAME                (SELECTENAMEFROMEMPB                            
+---------- -------------------- --------------------                            
+      7369 SMITH                FORD                                            
+      7499 ALLEN                BLAKE                                           
+      7521 WARD                 BLAKE                                           
+      7566 JONES                KING                                            
+      7654 MARTIN               BLAKE                                           
+      7698 BLAKE                KING                                            
+      7782 CLARK                KING                                            
+      7788 SCOTT                JONES                                           
+      7839 KING                                                                 
+      7844 TURNER               BLAKE                                           
+      7876 ADAMS                SCOTT                                           
+
+     EMPNO ENAME                (SELECTENAMEFROMEMPB                            
+---------- -------------------- --------------------                            
+      7900 JAMES                BLAKE                                           
+      7902 FORD                 JONES                                           
+      7934 MILLER               CLARK                                           
+
+14 개의 행이 선택되었습니다.
+
+SQL> select * from (select * from dept);
+
+    DEPTNO DNAME                        LOC                                     
+---------- ---------------------------- --------------------------              
+        10 ACCOUNTING                   NEW YORK                                
+        20 RESEARCH                     DALLAS                                  
+        30 SALES                        CHICAGO                                 
+        40 OPERATIONS                   BOSTON                                  
+        50 영업                         서울                                    
+
+SQL> select idx,name,(select sysdate from dual ) from temp01;
+
+       IDX NAME       (SELECTS                                                  
+---------- ---------- --------                                                  
+         1 aaaa       19/12/04                                                  
+         2 bbbb       19/12/04                                                  
+         3 cccc       19/12/04                                                  
+         4 dddd       19/12/04                                                  
+
+SQL> select idx,name,(select sysdate from temp01 ) from temp01;
+select idx,name,(select sysdate from temp01 ) from temp01
+                 *
+1행에 오류:
+ORA-01427: 단일 행 하위 질의에 2개 이상의 행이 리턴되었습니다. 
+
+
+SQL> select idx,name,(select sysdate,sysdate from dual ) from temp01;
+select idx,name,(select sysdate,sysdate from dual ) from temp01
+                 *
+1행에 오류:
+ORA-00913: 값의 수가 너무 많습니다 
+
+
+SQL> select ename,sal,(select sum(sal) from emp) from emp;
+
+ENAME                       SAL (SELECTSUM(SAL)FROMEMP)                         
+-------------------- ---------- -----------------------                         
+SMITH                       800                   29025                         
+ALLEN                      1600                   29025                         
+WARD                       1250                   29025                         
+JONES                      2975                   29025                         
+MARTIN                     1250                   29025                         
+BLAKE                      2850                   29025                         
+CLARK                      2450                   29025                         
+SCOTT                      3000                   29025                         
+KING                       5000                   29025                         
+TURNER                     1500                   29025                         
+ADAMS                      1100                   29025                         
+
+ENAME                       SAL (SELECTSUM(SAL)FROMEMP)                         
+-------------------- ---------- -----------------------                         
+JAMES                       950                   29025                         
+FORD                       3000                   29025                         
+MILLER                     1300                   29025                         
+
+14 개의 행이 선택되었습니다.
+
+SQL> select ename,sal-(select sum(sal) from emp) from emp;
+
+ENAME                SAL-(SELECTSUM(SAL)FROMEMP)                                
+-------------------- ---------------------------                                
+SMITH                                     -28225                                
+ALLEN                                     -27425                                
+WARD                                      -27775                                
+JONES                                     -26050                                
+MARTIN                                    -27775                                
+BLAKE                                     -26175                                
+CLARK                                     -26575                                
+SCOTT                                     -26025                                
+KING                                      -24025                                
+TURNER                                    -27525                                
+ADAMS                                     -27925                                
+
+ENAME                SAL-(SELECTSUM(SAL)FROMEMP)                                
+-------------------- ---------------------------                                
+JAMES                                     -28075                                
+FORD                                      -26025                                
+MILLER                                    -27725                                
+
+14 개의 행이 선택되었습니다.
+
+SQL> select ename,sal-(select avg(sal) from emp) from emp;
+
+ENAME                SAL-(SELECTAVG(SAL)FROMEMP)                                
+-------------------- ---------------------------                                
+SMITH                                 -1273.2143                                
+ALLEN                                 -473.21429                                
+WARD                                  -823.21429                                
+JONES                                 901.785714                                
+MARTIN                                -823.21429                                
+BLAKE                                 776.785714                                
+CLARK                                 376.785714                                
+SCOTT                                 926.785714                                
+KING                                  2926.78571                                
+TURNER                                -573.21429                                
+ADAMS                                 -973.21429                                
+
+ENAME                SAL-(SELECTAVG(SAL)FROMEMP)                                
+-------------------- ---------------------------                                
+JAMES                                 -1123.2143                                
+FORD                                  926.785714                                
+MILLER                                -773.21429                                
+
+14 개의 행이 선택되었습니다.
+
+SQL> select ename,sal from emp where sal>(select avg(sal) from emp);
+
+ENAME                       SAL                                                 
+-------------------- ----------                                                 
+JONES                      2975                                                 
+BLAKE                      2850                                                 
+CLARK                      2450                                                 
+SCOTT                      3000                                                 
+KING                       5000                                                 
+FORD                       3000                                                 
+
+6 개의 행이 선택되었습니다.
+
+SQL> select ename,sal from emp where sal=(select sal from emp);
+select ename,sal from emp where sal=(select sal from emp)
+                                     *
+1행에 오류:
+ORA-01427: 단일 행 하위 질의에 2개 이상의 행이 리턴되었습니다. 
+
+
+SQL> select ename,sal from emp where sal in (select sal from emp where sal<1000);
+
+ENAME                       SAL                                                 
+-------------------- ----------                                                 
+SMITH                       800                                                 
+JAMES                       950                                                 
+
+SQL> select ename,sal from emp where sal in (800,950);
+
+ENAME                       SAL                                                 
+-------------------- ----------                                                 
+SMITH                       800                                                 
+JAMES                       950                                                 
+
+SQL> select * from temp01;
+
+       IDX NAME              NUM                                                
+---------- ---------- ----------                                                
+         1 aaaa             1111                                                
+         2 bbbb             2222                                                
+         3 cccc             3333                                                
+         4 dddd             4444                                                
+
+SQL> insert into temp01 in (select * from temp01);
+insert into temp01 in (select * from temp01)
+                   *
+1행에 오류:
+ORA-00926: 누락된 VALUES 키워드 
+
+
+SQL> insert into temp01 values (select * from temp01);
+insert into temp01 values (select * from temp01)
+                           *
+1행에 오류:
+ORA-00936: 누락된 표현식 
+
+
+SQL> insert into temp01 (select * from temp01);
+
+4 개의 행이 만들어졌습니다.
+
+SQL> select * from temp01;
+
+       IDX NAME              NUM                                                
+---------- ---------- ----------                                                
+         1 aaaa             1111                                                
+         2 bbbb             2222                                                
+         3 cccc             3333                                                
+         4 dddd             4444                                                
+         1 aaaa             1111                                                
+         2 bbbb             2222                                                
+         3 cccc             3333                                                
+         4 dddd             4444                                                
+
+8 개의 행이 선택되었습니다.
+
+SQL> create table temp03 as (select * from temp02);
+
+테이블이 생성되었습니다.
+
+SQL> select * from temp03;
+
+       NUM SUB                                                                  
+---------- ----------                                                           
+      1111 test1                                                                
+      2222 test2                                                                
+      5555 test5                                                                
+
+SQL> create table empcopy as (select * from emp where 1=0);
+
+테이블이 생성되었습니다.
+
+SQL> desc empcopy;
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(4)
+ ENAME                                              VARCHAR2(10)
+ JOB                                                VARCHAR2(9)
+ MGR                                                NUMBER(4)
+ HIREDATE                                           DATE
+ SAL                                                NUMBER(7,2)
+ COMM                                               NUMBER(7,2)
+ DEPTNO                                             NUMBER(2)
+
+SQL> select * from empcopy;
+
+선택된 레코드가 없습니다.
+
+SQL> select * from temp01;
+
+       IDX NAME              NUM                                                
+---------- ---------- ----------                                                
+         1 aaaa             1111                                                
+         2 bbbb             2222                                                
+         3 cccc             3333                                                
+         4 dddd             4444                                                
+         1 aaaa             1111                                                
+         2 bbbb             2222                                                
+         3 cccc             3333                                                
+         4 dddd             4444                                                
+
+8 개의 행이 선택되었습니다.
+
+SQL> delete from temp01 where num in (select num from temp02);
+
+4 행이 삭제되었습니다.
+
+SQL> select num from temp02;
+
+       NUM                                                                      
+----------                                                                      
+      1111                                                                      
+      2222                                                                      
+      5555                                                                      
+
+SQL> select * from temp01;
+
+       IDX NAME              NUM                                                
+---------- ---------- ----------                                                
+         3 cccc             3333                                                
+         4 dddd             4444                                                
+         3 cccc             3333                                                
+         4 dddd             4444                                                
+
+SQL> insert into empcopy (select * from emp where sal<1000);
+
+2 개의 행이 만들어졌습니다.
+
+SQL> select * from empcopy;
+
+     EMPNO ENAME                JOB                       MGR HIREDATE          
+---------- -------------------- ------------------ ---------- --------          
+       SAL       COMM     DEPTNO                                                
+---------- ---------- ----------                                                
+      7369 SMITH                CLERK                    7902 80/12/17          
+       800                    20                                                
+                                                                                
+      7900 JAMES                CLERK                    7698 81/12/03          
+       950                    30                                                
+                                                                                
+
+SQL> spool off

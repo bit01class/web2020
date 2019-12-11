@@ -1,0 +1,732 @@
+SQL> select deptno,dname from dept where deptno<50;
+
+    DEPTNO DNAME                                                                
+---------- ----------------------------                                         
+        10 ACCOUNTING                                                           
+        20 RESEARCH                                                             
+        30 SALES                                                                
+        40 OPERATIONS                                                           
+
+SQL> set heading off
+SQL> select deptno,dname from dept where deptno<50;
+
+        10 ACCOUNTING                                                           
+        20 RESEARCH                                                             
+        30 SALES                                                                
+        40 OPERATIONS                                                           
+
+SQL> set heading on
+SQL> select deptno,dname from dept where deptno<50;
+
+    DEPTNO DNAME                                                                
+---------- ----------------------------                                         
+        10 ACCOUNTING                                                           
+        20 RESEARCH                                                             
+        30 SALES                                                                
+        40 OPERATIONS                                                           
+
+SQL> select * from emp;
+
+     EMPNO ENAME                JOB                       MGR HIREDATE          
+---------- -------------------- ------------------ ---------- --------          
+       SAL       COMM     DEPTNO                                                
+---------- ---------- ----------                                                
+      7369 SMITH                CLERK                    7902 80/12/17          
+       800                    20                                                
+                                                                                
+      7499 ALLEN                SALESMAN                 7698 81/02/20          
+      1600        300         30                                                
+                                                                                
+      7521 WARD                 SALESMAN                 7698 81/02/22          
+      1250        500         30                                                
+                                                                                
+
+     EMPNO ENAME                JOB                       MGR HIREDATE          
+---------- -------------------- ------------------ ---------- --------          
+       SAL       COMM     DEPTNO                                                
+---------- ---------- ----------                                                
+      7566 JONES                MANAGER                  7839 81/04/02          
+      2975                    20                                                
+                                                                                
+      7654 MARTIN               SALESMAN                 7698 81/09/28          
+      1250       1400         30                                                
+                                                                                
+      7698 BLAKE                MANAGER                  7839 81/05/01          
+      2850                    30                                                
+                                                                                
+
+     EMPNO ENAME                JOB                       MGR HIREDATE          
+---------- -------------------- ------------------ ---------- --------          
+       SAL       COMM     DEPTNO                                                
+---------- ---------- ----------                                                
+      7782 CLARK                MANAGER                  7839 81/06/09          
+      2450                    10                                                
+                                                                                
+      7788 SCOTT                ANALYST                  7566 87/04/19          
+      3000                    20                                                
+                                                                                
+      7839 KING                 PRESIDENT                     81/11/17          
+      5000                    10                                                
+                                                                                
+
+     EMPNO ENAME                JOB                       MGR HIREDATE          
+---------- -------------------- ------------------ ---------- --------          
+       SAL       COMM     DEPTNO                                                
+---------- ---------- ----------                                                
+      7844 TURNER               SALESMAN                 7698 81/09/08          
+      1500          0         30                                                
+                                                                                
+      7876 ADAMS                CLERK                    7788 87/05/23          
+      1100                    20                                                
+                                                                                
+      7900 JAMES                CLERK                    7698 81/12/03          
+       950                    30                                                
+                                                                                
+
+     EMPNO ENAME                JOB                       MGR HIREDATE          
+---------- -------------------- ------------------ ---------- --------          
+       SAL       COMM     DEPTNO                                                
+---------- ---------- ----------                                                
+      7902 FORD                 ANALYST                  7566 81/12/03          
+      3000                    20                                                
+                                                                                
+      7934 MILLER               CLERK                    7782 82/01/23          
+      1300                    10                                                
+                                                                                
+
+14 개의 행이 선택되었습니다.
+
+SQL> set linesize 120
+SQL> select * from emp;
+
+     EMPNO ENAME                JOB                       MGR HIREDATE        SAL       COMM     DEPTNO                 
+---------- -------------------- ------------------ ---------- -------- ---------- ---------- ----------                 
+      7369 SMITH                CLERK                    7902 80/12/17        800                    20                 
+      7499 ALLEN                SALESMAN                 7698 81/02/20       1600        300         30                 
+      7521 WARD                 SALESMAN                 7698 81/02/22       1250        500         30                 
+      7566 JONES                MANAGER                  7839 81/04/02       2975                    20                 
+      7654 MARTIN               SALESMAN                 7698 81/09/28       1250       1400         30                 
+      7698 BLAKE                MANAGER                  7839 81/05/01       2850                    30                 
+      7782 CLARK                MANAGER                  7839 81/06/09       2450                    10                 
+      7788 SCOTT                ANALYST                  7566 87/04/19       3000                    20                 
+      7839 KING                 PRESIDENT                     81/11/17       5000                    10                 
+      7844 TURNER               SALESMAN                 7698 81/09/08       1500          0         30                 
+      7876 ADAMS                CLERK                    7788 87/05/23       1100                    20                 
+
+     EMPNO ENAME                JOB                       MGR HIREDATE        SAL       COMM     DEPTNO                 
+---------- -------------------- ------------------ ---------- -------- ---------- ---------- ----------                 
+      7900 JAMES                CLERK                    7698 81/12/03        950                    30                 
+      7902 FORD                 ANALYST                  7566 81/12/03       3000                    20                 
+      7934 MILLER               CLERK                    7782 82/01/23       1300                    10                 
+
+14 개의 행이 선택되었습니다.
+
+SQL> set linesize 80
+SQL> select * from emp;
+
+     EMPNO ENAME                JOB                       MGR HIREDATE          
+---------- -------------------- ------------------ ---------- --------          
+       SAL       COMM     DEPTNO                                                
+---------- ---------- ----------                                                
+      7369 SMITH                CLERK                    7902 80/12/17          
+       800                    20                                                
+                                                                                
+      7499 ALLEN                SALESMAN                 7698 81/02/20          
+      1600        300         30                                                
+                                                                                
+      7521 WARD                 SALESMAN                 7698 81/02/22          
+      1250        500         30                                                
+                                                                                
+
+     EMPNO ENAME                JOB                       MGR HIREDATE          
+---------- -------------------- ------------------ ---------- --------          
+       SAL       COMM     DEPTNO                                                
+---------- ---------- ----------                                                
+      7566 JONES                MANAGER                  7839 81/04/02          
+      2975                    20                                                
+                                                                                
+      7654 MARTIN               SALESMAN                 7698 81/09/28          
+      1250       1400         30                                                
+                                                                                
+      7698 BLAKE                MANAGER                  7839 81/05/01          
+      2850                    30                                                
+                                                                                
+
+     EMPNO ENAME                JOB                       MGR HIREDATE          
+---------- -------------------- ------------------ ---------- --------          
+       SAL       COMM     DEPTNO                                                
+---------- ---------- ----------                                                
+      7782 CLARK                MANAGER                  7839 81/06/09          
+      2450                    10                                                
+                                                                                
+      7788 SCOTT                ANALYST                  7566 87/04/19          
+      3000                    20                                                
+                                                                                
+      7839 KING                 PRESIDENT                     81/11/17          
+      5000                    10                                                
+                                                                                
+
+     EMPNO ENAME                JOB                       MGR HIREDATE          
+---------- -------------------- ------------------ ---------- --------          
+       SAL       COMM     DEPTNO                                                
+---------- ---------- ----------                                                
+      7844 TURNER               SALESMAN                 7698 81/09/08          
+      1500          0         30                                                
+                                                                                
+      7876 ADAMS                CLERK                    7788 87/05/23          
+      1100                    20                                                
+                                                                                
+      7900 JAMES                CLERK                    7698 81/12/03          
+       950                    30                                                
+                                                                                
+
+     EMPNO ENAME                JOB                       MGR HIREDATE          
+---------- -------------------- ------------------ ---------- --------          
+       SAL       COMM     DEPTNO                                                
+---------- ---------- ----------                                                
+      7902 FORD                 ANALYST                  7566 81/12/03          
+      3000                    20                                                
+                                                                                
+      7934 MILLER               CLERK                    7782 82/01/23          
+      1300                    10                                                
+                                                                                
+
+14 개의 행이 선택되었습니다.
+
+SQL> select empno,ename from emp;
+
+     EMPNO ENAME                                                                
+---------- --------------------                                                 
+      7369 SMITH                                                                
+      7499 ALLEN                                                                
+      7521 WARD                                                                 
+      7566 JONES                                                                
+      7654 MARTIN                                                               
+      7698 BLAKE                                                                
+      7782 CLARK                                                                
+      7788 SCOTT                                                                
+      7839 KING                                                                 
+      7844 TURNER                                                               
+      7876 ADAMS                                                                
+
+     EMPNO ENAME                                                                
+---------- --------------------                                                 
+      7900 JAMES                                                                
+      7902 FORD                                                                 
+      7934 MILLER                                                               
+
+14 개의 행이 선택되었습니다.
+
+SQL> set pagesize 14
+SQL> select empno,ename from emp;
+
+     EMPNO ENAME                                                                
+---------- --------------------                                                 
+      7369 SMITH                                                                
+      7499 ALLEN                                                                
+      7521 WARD                                                                 
+      7566 JONES                                                                
+      7654 MARTIN                                                               
+      7698 BLAKE                                                                
+      7782 CLARK                                                                
+      7788 SCOTT                                                                
+      7839 KING                                                                 
+      7844 TURNER                                                               
+      7876 ADAMS                                                                
+
+     EMPNO ENAME                                                                
+---------- --------------------                                                 
+      7900 JAMES                                                                
+      7902 FORD                                                                 
+      7934 MILLER                                                               
+
+14 개의 행이 선택되었습니다.
+
+SQL> set pagesize 17
+SQL> select empno,ename from emp;
+
+     EMPNO ENAME                                                                
+---------- --------------------                                                 
+      7369 SMITH                                                                
+      7499 ALLEN                                                                
+      7521 WARD                                                                 
+      7566 JONES                                                                
+      7654 MARTIN                                                               
+      7698 BLAKE                                                                
+      7782 CLARK                                                                
+      7788 SCOTT                                                                
+      7839 KING                                                                 
+      7844 TURNER                                                               
+      7876 ADAMS                                                                
+      7900 JAMES                                                                
+      7902 FORD                                                                 
+      7934 MILLER                                                               
+
+14 개의 행이 선택되었습니다.
+
+SQL> set pagesize 13
+SQL> select empno,ename from emp;
+
+     EMPNO ENAME                                                                
+---------- --------------------                                                 
+      7369 SMITH                                                                
+      7499 ALLEN                                                                
+      7521 WARD                                                                 
+      7566 JONES                                                                
+      7654 MARTIN                                                               
+      7698 BLAKE                                                                
+      7782 CLARK                                                                
+      7788 SCOTT                                                                
+      7839 KING                                                                 
+      7844 TURNER                                                               
+
+     EMPNO ENAME                                                                
+---------- --------------------                                                 
+      7876 ADAMS                                                                
+      7900 JAMES                                                                
+      7902 FORD                                                                 
+      7934 MILLER                                                               
+
+14 개의 행이 선택되었습니다.
+
+SQL> desc emp;
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                     NOT NULL NUMBER(4)
+ ENAME                                              VARCHAR2(10)
+ JOB                                                VARCHAR2(9)
+ MGR                                                NUMBER(4)
+ HIREDATE                                           DATE
+ SAL                                                NUMBER(7,2)
+ COMM                                               NUMBER(7,2)
+ DEPTNO                                             NUMBER(2)
+
+SQL> select empno,ename from emp;
+
+     EMPNO ENAME                                                                
+---------- --------------------                                                 
+      7369 SMITH                                                                
+      7499 ALLEN                                                                
+      7521 WARD                                                                 
+      7566 JONES                                                                
+      7654 MARTIN                                                               
+      7698 BLAKE                                                                
+      7782 CLARK                                                                
+      7788 SCOTT                                                                
+      7839 KING                                                                 
+      7844 TURNER                                                               
+
+     EMPNO ENAME                                                                
+---------- --------------------                                                 
+      7876 ADAMS                                                                
+      7900 JAMES                                                                
+      7902 FORD                                                                 
+      7934 MILLER                                                               
+
+14 개의 행이 선택되었습니다.
+
+SQL> select empno,ename,sal,comm from emp;
+
+     EMPNO ENAME                       SAL       COMM                           
+---------- -------------------- ---------- ----------                           
+      7369 SMITH                       800                                      
+      7499 ALLEN                      1600        300                           
+      7521 WARD                       1250        500                           
+      7566 JONES                      2975                                      
+      7654 MARTIN                     1250       1400                           
+      7698 BLAKE                      2850                                      
+      7782 CLARK                      2450                                      
+      7788 SCOTT                      3000                                      
+      7839 KING                       5000                                      
+      7844 TURNER                     1500          0                           
+
+     EMPNO ENAME                       SAL       COMM                           
+---------- -------------------- ---------- ----------                           
+      7876 ADAMS                      1100                                      
+      7900 JAMES                       950                                      
+      7902 FORD                       3000                                      
+      7934 MILLER                     1300                                      
+
+14 개의 행이 선택되었습니다.
+
+SQL> column ename format A6
+SQL> select empno,ename,sal,comm from emp;
+
+     EMPNO ENAME         SAL       COMM                                         
+---------- ------ ---------- ----------                                         
+      7369 SMITH         800                                                    
+      7499 ALLEN        1600        300                                         
+      7521 WARD         1250        500                                         
+      7566 JONES        2975                                                    
+      7654 MARTIN       1250       1400                                         
+      7698 BLAKE        2850                                                    
+      7782 CLARK        2450                                                    
+      7788 SCOTT        3000                                                    
+      7839 KING         5000                                                    
+      7844 TURNER       1500          0                                         
+
+     EMPNO ENAME         SAL       COMM                                         
+---------- ------ ---------- ----------                                         
+      7876 ADAMS        1100                                                    
+      7900 JAMES         950                                                    
+      7902 FORD         3000                                                    
+      7934 MILLER       1300                                                    
+
+14 개의 행이 선택되었습니다.
+
+SQL> column ename
+COLUMN   ename ON
+FORMAT   A6
+SQL> column empno
+SP2-0046: COLUMN 'empno'이(가) 정의되지 않았습니다.
+SQL> select empno,ename,sal,comm from emp;
+
+     EMPNO ENAME         SAL       COMM                                         
+---------- ------ ---------- ----------                                         
+      7369 SMITH         800                                                    
+      7499 ALLEN        1600        300                                         
+      7521 WARD         1250        500                                         
+      7566 JONES        2975                                                    
+      7654 MARTIN       1250       1400                                         
+      7698 BLAKE        2850                                                    
+      7782 CLARK        2450                                                    
+      7788 SCOTT        3000                                                    
+      7839 KING         5000                                                    
+      7844 TURNER       1500          0                                         
+
+     EMPNO ENAME         SAL       COMM                                         
+---------- ------ ---------- ----------                                         
+      7876 ADAMS        1100                                                    
+      7900 JAMES         950                                                    
+      7902 FORD         3000                                                    
+      7934 MILLER       1300                                                    
+
+14 개의 행이 선택되었습니다.
+
+SQL> column sal format 0,000
+SQL> select empno,ename,sal,comm from emp;
+
+     EMPNO ENAME     SAL       COMM                                             
+---------- ------ ------ ----------                                             
+      7369 SMITH   0,800                                                        
+      7499 ALLEN   1,600        300                                             
+      7521 WARD    1,250        500                                             
+      7566 JONES   2,975                                                        
+      7654 MARTIN  1,250       1400                                             
+      7698 BLAKE   2,850                                                        
+      7782 CLARK   2,450                                                        
+      7788 SCOTT   3,000                                                        
+      7839 KING    5,000                                                        
+      7844 TURNER  1,500          0                                             
+
+     EMPNO ENAME     SAL       COMM                                             
+---------- ------ ------ ----------                                             
+      7876 ADAMS   1,100                                                        
+      7900 JAMES   0,950                                                        
+      7902 FORD    3,000                                                        
+      7934 MILLER  1,300                                                        
+
+14 개의 행이 선택되었습니다.
+
+SQL> column sal clear
+SQL> select empno,ename,sal,comm from emp;
+
+     EMPNO ENAME         SAL       COMM                                         
+---------- ------ ---------- ----------                                         
+      7369 SMITH         800                                                    
+      7499 ALLEN        1600        300                                         
+      7521 WARD         1250        500                                         
+      7566 JONES        2975                                                    
+      7654 MARTIN       1250       1400                                         
+      7698 BLAKE        2850                                                    
+      7782 CLARK        2450                                                    
+      7788 SCOTT        3000                                                    
+      7839 KING         5000                                                    
+      7844 TURNER       1500          0                                         
+
+     EMPNO ENAME         SAL       COMM                                         
+---------- ------ ---------- ----------                                         
+      7876 ADAMS        1100                                                    
+      7900 JAMES         950                                                    
+      7902 FORD         3000                                                    
+      7934 MILLER       1300                                                    
+
+14 개의 행이 선택되었습니다.
+
+SQL> column sal format 9,999
+SQL> select empno,ename,sal,comm from emp;
+
+     EMPNO ENAME     SAL       COMM                                             
+---------- ------ ------ ----------                                             
+      7369 SMITH     800                                                        
+      7499 ALLEN   1,600        300                                             
+      7521 WARD    1,250        500                                             
+      7566 JONES   2,975                                                        
+      7654 MARTIN  1,250       1400                                             
+      7698 BLAKE   2,850                                                        
+      7782 CLARK   2,450                                                        
+      7788 SCOTT   3,000                                                        
+      7839 KING    5,000                                                        
+      7844 TURNER  1,500          0                                             
+
+     EMPNO ENAME     SAL       COMM                                             
+---------- ------ ------ ----------                                             
+      7876 ADAMS   1,100                                                        
+      7900 JAMES     950                                                        
+      7902 FORD    3,000                                                        
+      7934 MILLER  1,300                                                        
+
+14 개의 행이 선택되었습니다.
+
+SQL> column sal format 0000
+SQL> select empno,ename,sal,comm from emp;
+
+     EMPNO ENAME    SAL       COMM                                              
+---------- ------ ----- ----------                                              
+      7369 SMITH   0800                                                         
+      7499 ALLEN   1600        300                                              
+      7521 WARD    1250        500                                              
+      7566 JONES   2975                                                         
+      7654 MARTIN  1250       1400                                              
+      7698 BLAKE   2850                                                         
+      7782 CLARK   2450                                                         
+      7788 SCOTT   3000                                                         
+      7839 KING    5000                                                         
+      7844 TURNER  1500          0                                              
+
+     EMPNO ENAME    SAL       COMM                                              
+---------- ------ ----- ----------                                              
+      7876 ADAMS   1100                                                         
+      7900 JAMES   0950                                                         
+      7902 FORD    3000                                                         
+      7934 MILLER  1300                                                         
+
+14 개의 행이 선택되었습니다.
+
+SQL> column sal format #0000
+SP2-0246: FORMAT 문자열 "#0000"이 부적합합니다.
+SQL> column sal format "#0000"
+SP2-0246: FORMAT 문자열 "#0000"이 부적합합니다.
+SQL> column sal format 0000
+SQL> select empno,ename,sal,comm from emp;
+
+     EMPNO ENAME    SAL       COMM                                              
+---------- ------ ----- ----------                                              
+      7369 SMITH   0800                                                         
+      7499 ALLEN   1600        300                                              
+      7521 WARD    1250        500                                              
+      7566 JONES   2975                                                         
+      7654 MARTIN  1250       1400                                              
+      7698 BLAKE   2850                                                         
+      7782 CLARK   2450                                                         
+      7788 SCOTT   3000                                                         
+      7839 KING    5000                                                         
+      7844 TURNER  1500          0                                              
+
+     EMPNO ENAME    SAL       COMM                                              
+---------- ------ ----- ----------                                              
+      7876 ADAMS   1100                                                         
+      7900 JAMES   0950                                                         
+      7902 FORD    3000                                                         
+      7934 MILLER  1300                                                         
+
+14 개의 행이 선택되었습니다.
+
+SQL> column sal format 9999
+SQL> select empno,ename,sal,comm from emp;
+
+     EMPNO ENAME    SAL       COMM                                              
+---------- ------ ----- ----------                                              
+      7369 SMITH    800                                                         
+      7499 ALLEN   1600        300                                              
+      7521 WARD    1250        500                                              
+      7566 JONES   2975                                                         
+      7654 MARTIN  1250       1400                                              
+      7698 BLAKE   2850                                                         
+      7782 CLARK   2450                                                         
+      7788 SCOTT   3000                                                         
+      7839 KING    5000                                                         
+      7844 TURNER  1500          0                                              
+
+     EMPNO ENAME    SAL       COMM                                              
+---------- ------ ----- ----------                                              
+      7876 ADAMS   1100                                                         
+      7900 JAMES    950                                                         
+      7902 FORD    3000                                                         
+      7934 MILLER  1300                                                         
+
+14 개의 행이 선택되었습니다.
+
+SQL> select empno,ename,sal,comm,deptno from emp;
+
+     EMPNO ENAME    SAL       COMM     DEPTNO                                   
+---------- ------ ----- ---------- ----------                                   
+      7369 SMITH    800                    20                                   
+      7499 ALLEN   1600        300         30                                   
+      7521 WARD    1250        500         30                                   
+      7566 JONES   2975                    20                                   
+      7654 MARTIN  1250       1400         30                                   
+      7698 BLAKE   2850                    30                                   
+      7782 CLARK   2450                    10                                   
+      7788 SCOTT   3000                    20                                   
+      7839 KING    5000                    10                                   
+      7844 TURNER  1500          0         30                                   
+
+     EMPNO ENAME    SAL       COMM     DEPTNO                                   
+---------- ------ ----- ---------- ----------                                   
+      7876 ADAMS   1100                    20                                   
+      7900 JAMES    950                    30                                   
+      7902 FORD    3000                    20                                   
+      7934 MILLER  1300                    10                                   
+
+14 개의 행이 선택되었습니다.
+
+SQL> column deptno format a5
+SQL> select empno,ename,sal,comm,deptno from emp;
+
+     EMPNO ENAME    SAL       COMM     DEPTNO                                   
+---------- ------ ----- ---------- ----------                                   
+      7369 SMITH    800            ##########                                   
+      7499 ALLEN   1600        300 ##########                                   
+      7521 WARD    1250        500 ##########                                   
+      7566 JONES   2975            ##########                                   
+      7654 MARTIN  1250       1400 ##########                                   
+      7698 BLAKE   2850            ##########                                   
+      7782 CLARK   2450            ##########                                   
+      7788 SCOTT   3000            ##########                                   
+      7839 KING    5000            ##########                                   
+      7844 TURNER  1500          0 ##########                                   
+
+     EMPNO ENAME    SAL       COMM     DEPTNO                                   
+---------- ------ ----- ---------- ----------                                   
+      7876 ADAMS   1100            ##########                                   
+      7900 JAMES    950            ##########                                   
+      7902 FORD    3000            ##########                                   
+      7934 MILLER  1300            ##########                                   
+
+14 개의 행이 선택되었습니다.
+
+SQL> column deptno format A5
+SQL> select empno,ename,sal,comm,deptno from emp;
+
+     EMPNO ENAME    SAL       COMM     DEPTNO                                   
+---------- ------ ----- ---------- ----------                                   
+      7369 SMITH    800            ##########                                   
+      7499 ALLEN   1600        300 ##########                                   
+      7521 WARD    1250        500 ##########                                   
+      7566 JONES   2975            ##########                                   
+      7654 MARTIN  1250       1400 ##########                                   
+      7698 BLAKE   2850            ##########                                   
+      7782 CLARK   2450            ##########                                   
+      7788 SCOTT   3000            ##########                                   
+      7839 KING    5000            ##########                                   
+      7844 TURNER  1500          0 ##########                                   
+
+     EMPNO ENAME    SAL       COMM     DEPTNO                                   
+---------- ------ ----- ---------- ----------                                   
+      7876 ADAMS   1100            ##########                                   
+      7900 JAMES    950            ##########                                   
+      7902 FORD    3000            ##########                                   
+      7934 MILLER  1300            ##########                                   
+
+14 개의 행이 선택되었습니다.
+
+SQL> column deptno format 99999
+SQL> select empno,ename,sal,comm,deptno from emp;
+
+     EMPNO ENAME    SAL       COMM DEPTNO                                       
+---------- ------ ----- ---------- ------                                       
+      7369 SMITH    800                20                                       
+      7499 ALLEN   1600        300     30                                       
+      7521 WARD    1250        500     30                                       
+      7566 JONES   2975                20                                       
+      7654 MARTIN  1250       1400     30                                       
+      7698 BLAKE   2850                30                                       
+      7782 CLARK   2450                10                                       
+      7788 SCOTT   3000                20                                       
+      7839 KING    5000                10                                       
+      7844 TURNER  1500          0     30                                       
+
+     EMPNO ENAME    SAL       COMM DEPTNO                                       
+---------- ------ ----- ---------- ------                                       
+      7876 ADAMS   1100                20                                       
+      7900 JAMES    950                30                                       
+      7902 FORD    3000                20                                       
+      7934 MILLER  1300                10                                       
+
+14 개의 행이 선택되었습니다.
+
+SQL> column deptno format 999
+SQL> select empno,ename,sal,comm,deptno from emp;
+
+     EMPNO ENAME    SAL       COMM DEPTNO                                       
+---------- ------ ----- ---------- ------                                       
+      7369 SMITH    800                20                                       
+      7499 ALLEN   1600        300     30                                       
+      7521 WARD    1250        500     30                                       
+      7566 JONES   2975                20                                       
+      7654 MARTIN  1250       1400     30                                       
+      7698 BLAKE   2850                30                                       
+      7782 CLARK   2450                10                                       
+      7788 SCOTT   3000                20                                       
+      7839 KING    5000                10                                       
+      7844 TURNER  1500          0     30                                       
+
+     EMPNO ENAME    SAL       COMM DEPTNO                                       
+---------- ------ ----- ---------- ------                                       
+      7876 ADAMS   1100                20                                       
+      7900 JAMES    950                30                                       
+      7902 FORD    3000                20                                       
+      7934 MILLER  1300                10                                       
+
+14 개의 행이 선택되었습니다.
+
+SQL> column deptno format 99999999999999
+SQL> select empno,ename,sal,comm,deptno from emp;
+
+     EMPNO ENAME    SAL       COMM          DEPTNO                              
+---------- ------ ----- ---------- ---------------                              
+      7369 SMITH    800                         20                              
+      7499 ALLEN   1600        300              30                              
+      7521 WARD    1250        500              30                              
+      7566 JONES   2975                         20                              
+      7654 MARTIN  1250       1400              30                              
+      7698 BLAKE   2850                         30                              
+      7782 CLARK   2450                         10                              
+      7788 SCOTT   3000                         20                              
+      7839 KING    5000                         10                              
+      7844 TURNER  1500          0              30                              
+
+     EMPNO ENAME    SAL       COMM          DEPTNO                              
+---------- ------ ----- ---------- ---------------                              
+      7876 ADAMS   1100                         20                              
+      7900 JAMES    950                         30                              
+      7902 FORD    3000                         20                              
+      7934 MILLER  1300                         10                              
+
+14 개의 행이 선택되었습니다.
+
+SQL> select * from deptno;
+select * from deptno
+              *
+1행에 오류:
+ORA-00942: 테이블 또는 뷰가 존재하지 않습니다 
+
+
+SQL> select * from dept;
+
+         DEPTNO DNAME                        LOC                                
+--------------- ---------------------------- --------------------------         
+             10 ACCOUNTING                   NEW YORK                           
+             20 RESEARCH                     DALLAS                             
+             30 SALES                        CHICAGO                            
+             40 OPERATIONS                   BOSTON                             
+             50 총무                         서울                               
+             60 회계                         부산                               
+             70 인사                         대구                               
+             80 영업                         광주                               
+             90 임시                         제주                               
+
+9 개의 행이 선택되었습니다.
+
+SQL> spool off

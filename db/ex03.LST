@@ -1,0 +1,1629 @@
+SQL> select 1+2+3+4+5 from dept;
+
+ 1+2+3+4+5                                                                      
+----------                                                                      
+        15                                                                      
+        15                                                                      
+        15                                                                      
+        15                                                                      
+        15                                                                      
+        15                                                                      
+        15                                                                      
+        15                                                                      
+        15                                                                      
+
+9 개의 행이 선택되었습니다.
+
+SQL> select 1+2+3+4+5 from dual;
+
+ 1+2+3+4+5                                                                      
+----------                                                                      
+        15                                                                      
+
+SQL> select * from dual;
+
+DU                                                                              
+--                                                                              
+X                                                                               
+
+SQL> desc dual;
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ----------------------------
+ DUMMY                                              VARCHAR2(1)
+
+SQL> select 1+2+3+4+5 from dual;
+
+ 1+2+3+4+5                                                                      
+----------                                                                      
+        15                                                                      
+
+SQL> select 1+2+3+4+5 as "1부터 5까지 합은" from dual;
+
+1부터 5까지 합은                                                                
+----------------                                                                
+              15                                                                
+
+SQL> select 3-1 from dual;
+
+       3-1                                                                      
+----------                                                                      
+         2                                                                      
+
+SQL> select 3*2 from dual;
+
+       3*2                                                                      
+----------                                                                      
+         6                                                                      
+
+SQL> select 6/2 from dual;
+
+       6/2                                                                      
+----------                                                                      
+         3                                                                      
+
+SQL> select 5/2 from dual;
+
+       5/2                                                                      
+----------                                                                      
+       2.5                                                                      
+
+SQL> select 5%2 from dual;
+select 5%2 from dual
+        *
+1행에 오류:
+ORA-00911: 문자가 부적합합니다 
+
+
+SQL> select "aa" from dual;
+select "aa" from dual
+       *
+1행에 오류:
+ORA-00904: "aa": 부적합한 식별자 
+
+
+SQL> select 'abc' from dual;
+
+'ABC'                                                                           
+------                                                                          
+abc                                                                             
+
+SQL> select abc from dual;
+select abc from dual
+       *
+1행에 오류:
+ORA-00904: "ABC": 부적합한 식별자 
+
+
+SQL> select 'abc' from dual;
+
+'ABC'                                                                           
+------                                                                          
+abc                                                                             
+
+SQL> select 'abc','defg' from dual;
+
+'ABC'  'DEFG'                                                                   
+------ --------                                                                 
+abc    defg                                                                     
+
+SQL> select 'abc','defg','hijk' from dual;
+
+'ABC'  'DEFG'   'HIJK'                                                          
+------ -------- --------                                                        
+abc    defg     hijk                                                            
+
+SQL> select 'abc','defg','hijk','lmn' from dual;
+
+'ABC'  'DEFG'   'HIJK'   'LMN'                                                  
+------ -------- -------- ------                                                 
+abc    defg     hijk     lmn                                                    
+
+SQL> select empno,'사번의 이름은 ', ename from emp;
+
+     EMPNO '사번의이름은'                           ENAME                       
+---------- ---------------------------------------- ------                      
+      7369 사번의 이름은                            SMITH                       
+      7499 사번의 이름은                            ALLEN                       
+      7521 사번의 이름은                            WARD                        
+      7566 사번의 이름은                            JONES                       
+      7654 사번의 이름은                            MARTIN                      
+      7698 사번의 이름은                            BLAKE                       
+      7782 사번의 이름은                            CLARK                       
+      7788 사번의 이름은                            SCOTT                       
+      7839 사번의 이름은                            KING                        
+      7844 사번의 이름은                            TURNER                      
+
+     EMPNO '사번의이름은'                           ENAME                       
+---------- ---------------------------------------- ------                      
+      7876 사번의 이름은                            ADAMS                       
+      7900 사번의 이름은                            JAMES                       
+      7902 사번의 이름은                            FORD                        
+      7934 사번의 이름은                            MILLER                      
+
+14 개의 행이 선택되었습니다.
+
+SQL> select 'abc'+'defg' from dual;
+select 'abc'+'defg' from dual
+       *
+1행에 오류:
+ORA-01722: 수치가 부적합합니다 
+
+
+SQL> select concat('abc','defg') from dual;
+
+CONCAT('ABC','                                                                  
+--------------                                                                  
+abcdefg                                                                         
+
+SQL> select 'abc','defg' from dual;
+
+'ABC'  'DEFG'                                                                   
+------ --------                                                                 
+abc    defg                                                                     
+
+SQL> select 'abc'|'defg' from dual;
+select 'abc'|'defg' from dual
+            *
+1행에 오류:
+ORA-00996: 연접 연산자는 | 이 아니고 || 입니다 
+
+
+SQL> select 'abc'||'defg' from dual;
+
+'ABC'||'DEFG'                                                                   
+--------------                                                                  
+abcdefg                                                                         
+
+SQL> select 'abc'||1234 from dual;
+
+'ABC'||1234                                                                     
+--------------                                                                  
+abc1234                                                                         
+
+SQL> select 4321||1234 from dual;
+
+4321||1234                                                                      
+----------------                                                                
+43211234                                                                        
+
+SQL> select concat(ename,'님') from emp;
+
+CONCAT(ENAME,'님')                                                              
+--------------------------                                                      
+SMITH님                                                                         
+ALLEN님                                                                         
+WARD님                                                                          
+JONES님                                                                         
+MARTIN님                                                                        
+BLAKE님                                                                         
+CLARK님                                                                         
+SCOTT님                                                                         
+KING님                                                                          
+TURNER님                                                                        
+
+CONCAT(ENAME,'님')                                                              
+--------------------------                                                      
+ADAMS님                                                                         
+JAMES님                                                                         
+FORD님                                                                          
+MILLER님                                                                        
+
+14 개의 행이 선택되었습니다.
+
+SQL> select sal from emp;
+
+  SAL                                                                           
+-----                                                                           
+  800                                                                           
+ 1600                                                                           
+ 1250                                                                           
+ 2975                                                                           
+ 1250                                                                           
+ 2850                                                                           
+ 2450                                                                           
+ 3000                                                                           
+ 5000                                                                           
+ 1500                                                                           
+
+  SAL                                                                           
+-----                                                                           
+ 1100                                                                           
+  950                                                                           
+ 3000                                                                           
+ 1300                                                                           
+
+14 개의 행이 선택되었습니다.
+
+SQL> select sum(sal) from emp;
+
+  SUM(SAL)                                                                      
+----------                                                                      
+     29025                                                                      
+
+SQL> select ename,sum(sal) from emp;
+select ename,sum(sal) from emp
+       *
+1행에 오류:
+ORA-00937: 단일 그룹의 그룹 함수가 아닙니다 
+
+
+SQL> desc emp;
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                     NOT NULL NUMBER(4)
+ ENAME                                              VARCHAR2(10)
+ JOB                                                VARCHAR2(9)
+ MGR                                                NUMBER(4)
+ HIREDATE                                           DATE
+ SAL                                                NUMBER(7,2)
+ COMM                                               NUMBER(7,2)
+ DEPTNO                                             NUMBER(2)
+
+SQL> create table student(
+  2  num number,
+  3  name varchar2(5),
+  4  kor number(3),
+  5  eng number(3),
+  6  math number(3)
+  7  );
+
+테이블이 생성되었습니다.
+
+SQL> desc student
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ----------------------------
+ NUM                                                NUMBER
+ NAME                                               VARCHAR2(5)
+ KOR                                                NUMBER(3)
+ ENG                                                NUMBER(3)
+ MATH                                               NUMBER(3)
+
+SQL> select * from student;
+
+선택된 레코드가 없습니다.
+
+SQL> insert into student values (1901,'aaaaa',100,90,80);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from student;
+
+       NUM NAME              KOR        ENG       MATH                          
+---------- ---------- ---------- ---------- ----------                          
+      1901 aaaaa             100         90         80                          
+
+SQL> insert into student values (1902,'bbbbb',60,90,80);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from student;
+
+       NUM NAME              KOR        ENG       MATH                          
+---------- ---------- ---------- ---------- ----------                          
+      1901 aaaaa             100         90         80                          
+      1902 bbbbb              60         90         80                          
+
+SQL> insert into student values (1902,'bbbbb',60,90,1080);
+insert into student values (1902,'bbbbb',60,90,1080)
+                                               *
+1행에 오류:
+ORA-01438: 이 열에 대해 지정된 전체 자릿수보다 큰 값이 허용됩니다. 
+
+
+SQL> insert into student values (1902,'cccccc',60,90,80);
+insert into student values (1902,'cccccc',60,90,80)
+                                 *
+1행에 오류:
+ORA-12899: "SCOTT"."STUDENT"."NAME" 열에 대한 값이 너무 큼(실제: 6, 최대값: 5) 
+
+
+SQL> insert into student values (1903,'한글',60,90,80);
+insert into student values (1903,'한글',60,90,80)
+                                 *
+1행에 오류:
+ORA-12899: "SCOTT"."STUDENT"."NAME" 열에 대한 값이 너무 큼(실제: 6, 최대값: 5) 
+
+
+SQL> insert into student values (1903,'한글도',60,90,80);
+insert into student values (1903,'한글도',60,90,80)
+                                 *
+1행에 오류:
+ORA-12899: "SCOTT"."STUDENT"."NAME" 열에 대한 값이 너무 큼(실제: 9, 최대값: 5) 
+
+
+SQL> select * from nls_database_parameters
+  2  ;
+
+PARAMETER                                                                       
+------------------------------------------------------------                    
+VALUE                                                                           
+--------------------------------------------------------------------------------
+NLS_LANGUAGE                                                                    
+AMERICAN                                                                        
+                                                                                
+NLS_TERRITORY                                                                   
+AMERICA                                                                         
+                                                                                
+NLS_CURRENCY                                                                    
+$                                                                               
+
+PARAMETER                                                                       
+------------------------------------------------------------                    
+VALUE                                                                           
+--------------------------------------------------------------------------------
+                                                                                
+NLS_ISO_CURRENCY                                                                
+AMERICA                                                                         
+                                                                                
+NLS_NUMERIC_CHARACTERS                                                          
+.,                                                                              
+                                                                                
+NLS_CHARACTERSET                                                                
+
+PARAMETER                                                                       
+------------------------------------------------------------                    
+VALUE                                                                           
+--------------------------------------------------------------------------------
+AL32UTF8                                                                        
+                                                                                
+NLS_CALENDAR                                                                    
+GREGORIAN                                                                       
+                                                                                
+NLS_DATE_FORMAT                                                                 
+DD-MON-RR                                                                       
+                                                                                
+
+PARAMETER                                                                       
+------------------------------------------------------------                    
+VALUE                                                                           
+--------------------------------------------------------------------------------
+NLS_DATE_LANGUAGE                                                               
+AMERICAN                                                                        
+                                                                                
+NLS_SORT                                                                        
+BINARY                                                                          
+                                                                                
+NLS_TIME_FORMAT                                                                 
+HH.MI.SSXFF AM                                                                  
+
+PARAMETER                                                                       
+------------------------------------------------------------                    
+VALUE                                                                           
+--------------------------------------------------------------------------------
+                                                                                
+NLS_TIMESTAMP_FORMAT                                                            
+DD-MON-RR HH.MI.SSXFF AM                                                        
+                                                                                
+NLS_TIME_TZ_FORMAT                                                              
+HH.MI.SSXFF AM TZR                                                              
+                                                                                
+NLS_TIMESTAMP_TZ_FORMAT                                                         
+
+PARAMETER                                                                       
+------------------------------------------------------------                    
+VALUE                                                                           
+--------------------------------------------------------------------------------
+DD-MON-RR HH.MI.SSXFF AM TZR                                                    
+                                                                                
+NLS_DUAL_CURRENCY                                                               
+$                                                                               
+                                                                                
+NLS_COMP                                                                        
+BINARY                                                                          
+                                                                                
+
+PARAMETER                                                                       
+------------------------------------------------------------                    
+VALUE                                                                           
+--------------------------------------------------------------------------------
+NLS_LENGTH_SEMANTICS                                                            
+BYTE                                                                            
+                                                                                
+NLS_NCHAR_CONV_EXCP                                                             
+FALSE                                                                           
+                                                                                
+NLS_NCHAR_CHARACTERSET                                                          
+AL16UTF16                                                                       
+
+PARAMETER                                                                       
+------------------------------------------------------------                    
+VALUE                                                                           
+--------------------------------------------------------------------------------
+                                                                                
+NLS_RDBMS_VERSION                                                               
+10.2.0.1.0                                                                      
+                                                                                
+
+20 개의 행이 선택되었습니다.
+
+SQL> select * from nls_database_parameters;
+
+PARAMETER                                                                       
+------------------------------------------------------------                    
+VALUE                                                                           
+--------------------------------------------------------------------------------
+NLS_LANGUAGE                                                                    
+AMERICAN                                                                        
+                                                                                
+NLS_TERRITORY                                                                   
+AMERICA                                                                         
+                                                                                
+NLS_CURRENCY                                                                    
+$                                                                               
+
+PARAMETER                                                                       
+------------------------------------------------------------                    
+VALUE                                                                           
+--------------------------------------------------------------------------------
+                                                                                
+NLS_ISO_CURRENCY                                                                
+AMERICA                                                                         
+                                                                                
+NLS_NUMERIC_CHARACTERS                                                          
+.,                                                                              
+                                                                                
+NLS_CHARACTERSET                                                                
+
+PARAMETER                                                                       
+------------------------------------------------------------                    
+VALUE                                                                           
+--------------------------------------------------------------------------------
+AL32UTF8                                                                        
+                                                                                
+NLS_CALENDAR                                                                    
+GREGORIAN                                                                       
+                                                                                
+NLS_DATE_FORMAT                                                                 
+DD-MON-RR                                                                       
+                                                                                
+
+PARAMETER                                                                       
+------------------------------------------------------------                    
+VALUE                                                                           
+--------------------------------------------------------------------------------
+NLS_DATE_LANGUAGE                                                               
+AMERICAN                                                                        
+                                                                                
+NLS_SORT                                                                        
+BINARY                                                                          
+                                                                                
+NLS_TIME_FORMAT                                                                 
+HH.MI.SSXFF AM                                                                  
+
+PARAMETER                                                                       
+------------------------------------------------------------                    
+VALUE                                                                           
+--------------------------------------------------------------------------------
+                                                                                
+NLS_TIMESTAMP_FORMAT                                                            
+DD-MON-RR HH.MI.SSXFF AM                                                        
+                                                                                
+NLS_TIME_TZ_FORMAT                                                              
+HH.MI.SSXFF AM TZR                                                              
+                                                                                
+NLS_TIMESTAMP_TZ_FORMAT                                                         
+
+PARAMETER                                                                       
+------------------------------------------------------------                    
+VALUE                                                                           
+--------------------------------------------------------------------------------
+DD-MON-RR HH.MI.SSXFF AM TZR                                                    
+                                                                                
+NLS_DUAL_CURRENCY                                                               
+$                                                                               
+                                                                                
+NLS_COMP                                                                        
+BINARY                                                                          
+                                                                                
+
+PARAMETER                                                                       
+------------------------------------------------------------                    
+VALUE                                                                           
+--------------------------------------------------------------------------------
+NLS_LENGTH_SEMANTICS                                                            
+BYTE                                                                            
+                                                                                
+NLS_NCHAR_CONV_EXCP                                                             
+FALSE                                                                           
+                                                                                
+NLS_NCHAR_CHARACTERSET                                                          
+AL16UTF16                                                                       
+
+PARAMETER                                                                       
+------------------------------------------------------------                    
+VALUE                                                                           
+--------------------------------------------------------------------------------
+                                                                                
+NLS_RDBMS_VERSION                                                               
+10.2.0.1.0                                                                      
+                                                                                
+
+20 개의 행이 선택되었습니다.
+
+SQL> desc nls_database_parameters;
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ----------------------------
+ PARAMETER                                 NOT NULL VARCHAR2(30)
+ VALUE                                              VARCHAR2(160)
+
+SQL> select * from nls_database_parameters;
+
+PARAMETER                                                                       
+------------------------------------------------------------                    
+VALUE                                                                           
+--------------------------------------------------------------------------------
+NLS_LANGUAGE                                                                    
+AMERICAN                                                                        
+                                                                                
+NLS_TERRITORY                                                                   
+AMERICA                                                                         
+                                                                                
+NLS_CURRENCY                                                                    
+$                                                                               
+
+PARAMETER                                                                       
+------------------------------------------------------------                    
+VALUE                                                                           
+--------------------------------------------------------------------------------
+                                                                                
+NLS_ISO_CURRENCY                                                                
+AMERICA                                                                         
+                                                                                
+NLS_NUMERIC_CHARACTERS                                                          
+.,                                                                              
+                                                                                
+NLS_CHARACTERSET                                                                
+
+PARAMETER                                                                       
+------------------------------------------------------------                    
+VALUE                                                                           
+--------------------------------------------------------------------------------
+AL32UTF8                                                                        
+                                                                                
+NLS_CALENDAR                                                                    
+GREGORIAN                                                                       
+                                                                                
+NLS_DATE_FORMAT                                                                 
+DD-MON-RR                                                                       
+                                                                                
+
+PARAMETER                                                                       
+------------------------------------------------------------                    
+VALUE                                                                           
+--------------------------------------------------------------------------------
+NLS_DATE_LANGUAGE                                                               
+AMERICAN                                                                        
+                                                                                
+NLS_SORT                                                                        
+BINARY                                                                          
+                                                                                
+NLS_TIME_FORMAT                                                                 
+HH.MI.SSXFF AM                                                                  
+
+PARAMETER                                                                       
+------------------------------------------------------------                    
+VALUE                                                                           
+--------------------------------------------------------------------------------
+                                                                                
+NLS_TIMESTAMP_FORMAT                                                            
+DD-MON-RR HH.MI.SSXFF AM                                                        
+                                                                                
+NLS_TIME_TZ_FORMAT                                                              
+HH.MI.SSXFF AM TZR                                                              
+                                                                                
+NLS_TIMESTAMP_TZ_FORMAT                                                         
+
+PARAMETER                                                                       
+------------------------------------------------------------                    
+VALUE                                                                           
+--------------------------------------------------------------------------------
+DD-MON-RR HH.MI.SSXFF AM TZR                                                    
+                                                                                
+NLS_DUAL_CURRENCY                                                               
+$                                                                               
+                                                                                
+NLS_COMP                                                                        
+BINARY                                                                          
+                                                                                
+
+PARAMETER                                                                       
+------------------------------------------------------------                    
+VALUE                                                                           
+--------------------------------------------------------------------------------
+NLS_LENGTH_SEMANTICS                                                            
+BYTE                                                                            
+                                                                                
+NLS_NCHAR_CONV_EXCP                                                             
+FALSE                                                                           
+                                                                                
+NLS_NCHAR_CHARACTERSET                                                          
+AL16UTF16                                                                       
+
+PARAMETER                                                                       
+------------------------------------------------------------                    
+VALUE                                                                           
+--------------------------------------------------------------------------------
+                                                                                
+NLS_RDBMS_VERSION                                                               
+10.2.0.1.0                                                                      
+                                                                                
+
+20 개의 행이 선택되었습니다.
+
+SQL> select * from nls_database_parameters where parameter='NLS_CHARTERSET';
+
+선택된 레코드가 없습니다.
+
+SQL> select * from nls_database_parameters where parameter='NLS_CHARATERSET';
+
+선택된 레코드가 없습니다.
+
+SQL> select * from nls_database_parameters where parameter='NLS_CHARACTERSET';
+
+PARAMETER                                                                       
+------------------------------------------------------------                    
+VALUE                                                                           
+--------------------------------------------------------------------------------
+NLS_CHARACTERSET                                                                
+AL32UTF8                                                                        
+                                                                                
+
+SQL> select '문자열','또문자열' from dual;
+
+'문자열'           '또문자열'                                                   
+------------------ ------------------------                                     
+문자열             또문자열                                                     
+
+SQL> select '문자열'|'또문자열' from dual;
+select '문자열'|'또문자열' from dual
+                   *
+1행에 오류:
+ORA-00996: 연접 연산자는 | 이 아니고 || 입니다 
+
+
+SQL> select '문자열'||'또문자열' from dual;
+
+'문자열'||'또문자열'                                                            
+------------------------------------------                                      
+문자열또문자열                                                                  
+
+SQL> select concat('문자열','또문자열') from dual;
+
+CONCAT('문자열','또문자열')                                                     
+------------------------------------------                                      
+문자열또문자열                                                                  
+
+SQL> select substr('abcdefg',2) from dual;
+
+SUBSTR('ABCD                                                                    
+------------                                                                    
+bcdefg                                                                          
+
+SQL> select substr('abcdefg',2,4) from dual;
+
+SUBSTR('                                                                        
+--------                                                                        
+bcde                                                                            
+
+SQL> select length('abcdefg') from dual;
+
+LENGTH('ABCDEFG')                                                               
+-----------------                                                               
+                7                                                               
+
+SQL> select substrb('abcdefg',2,4) from dual;
+
+SUBSTRB(                                                                        
+--------                                                                        
+bcde                                                                            
+
+SQL> select lengthb('abcdefg') from dual;
+
+LENGTHB('ABCDEFG')                                                              
+------------------                                                              
+                 7                                                              
+
+SQL> select length('한글로') from dual;
+
+LENGTH('한글로')                                                                
+----------------                                                                
+               3                                                                
+
+SQL> select lengthb('한글로') from dual;
+
+LENGTHB('한글로')                                                               
+-----------------                                                               
+                9                                                               
+
+SQL> select '한글로작성' from dual;
+
+'한글로작성'                                                                    
+------------------------------                                                  
+한글로작성                                                                      
+
+SQL> select substr('한글로작성',1,2) from dual;
+
+SUBSTR('한글                                                                    
+------------                                                                    
+한글                                                                            
+
+SQL> select substr('한글로작성',4,2) from dual;
+
+SUBSTR('한글                                                                    
+------------                                                                    
+작성                                                                            
+
+SQL> select substrb('한글로작성',4,2) from dual;
+
+SUBS                                                                            
+----                                                                            
+                                                                                
+
+SQL> select substrb('한글로작성',1,6) from dual;
+
+SUBSTRB('한                                                                     
+------------                                                                    
+한글                                                                            
+
+SQL> select substrb('한글로작성',1,5) from dual;
+
+SUBSTRB('                                                                       
+----------                                                                      
+한                                                                              
+
+SQL> select substrb('한글로작성',10,6) from dual;
+
+SUBSTRB('한                                                                     
+------------                                                                    
+작성                                                                            
+
+SQL> select substrb('한글로작성',2,6) from dual;
+
+SUBSTRB('한                                                                     
+------------                                                                    
+  글                                                                            
+
+SQL> select instr('한글로작성','로') from dual;
+
+INSTR('한글로작성','로')                                                        
+------------------------                                                        
+                       3                                                        
+
+SQL> select instr('java web spring','a') from dual;
+
+INSTR('JAVAWEBSPRING','A')                                                      
+--------------------------                                                      
+                         2                                                      
+
+SQL> select instr('java web spring','a',2) from dual;
+
+INSTR('JAVAWEBSPRING','A',2)                                                    
+----------------------------                                                    
+                           2                                                    
+
+SQL> select instr('java web spring','a',3) from dual;
+
+INSTR('JAVAWEBSPRING','A',3)                                                    
+----------------------------                                                    
+                           4                                                    
+
+SQL> select instr('java web spring','a',-1) from dual;
+
+INSTR('JAVAWEBSPRING','A',-1)                                                   
+-----------------------------                                                   
+                            4                                                   
+
+SQL> select instr('abcdabcdabcd','b',1) from dual;
+
+INSTR('ABCDABCDABCD','B',1)                                                     
+---------------------------                                                     
+                          2                                                     
+
+SQL> select instr('abcdabcdabcd','b') from dual;
+
+INSTR('ABCDABCDABCD','B')                                                       
+-------------------------                                                       
+                        2                                                       
+
+SQL> select instr('abcdabcdabcd','b',3) from dual;
+
+INSTR('ABCDABCDABCD','B',3)                                                     
+---------------------------                                                     
+                          6                                                     
+
+SQL> select instr('abcdabcdabcd','b',-1) from dual;
+
+INSTR('ABCDABCDABCD','B',-1)                                                    
+----------------------------                                                    
+                          10                                                    
+
+SQL> select instrb('한글로 작성','로') from dual;
+
+INSTRB('한글로작성','로')                                                       
+-------------------------                                                       
+                        7                                                       
+
+SQL> select instrb('한글로 작성','한') from dual;
+
+INSTRB('한글로작성','한')                                                       
+-------------------------                                                       
+                        1                                                       
+
+SQL> select instrb('한글로 작성','한',2) from dual;
+
+INSTRB('한글로작성','한',2)                                                     
+---------------------------                                                     
+                          0                                                     
+
+SQL> select instrb('한글로 작성한','한',2) from dual;
+
+INSTRB('한글로작성한','한',2)                                                   
+-----------------------------                                                   
+                           17                                                   
+
+SQL> select instrb('한글로 작성한','한',-1) from dual;
+
+INSTRB('한글로작성한','한',-1)                                                  
+------------------------------                                                  
+                            17                                                  
+
+SQL> select instrb('한글로 작성한','한',-2) from dual;
+
+INSTRB('한글로작성한','한',-2)                                                  
+------------------------------                                                  
+                            17                                                  
+
+SQL> select 'java database web spring' from dual;
+
+'JAVADATABASEWEBSPRING'                                                         
+------------------------------------------------                                
+java database web spring                                                        
+
+SQL> select replace('java database web spring','web','jsp') from dual;
+
+REPLACE('JAVADATABASEWEBSPRING','WEB','JSP')                                    
+------------------------------------------------                                
+java database jsp spring                                                        
+
+SQL> select replace('java database web spring',' ','#') from dual;
+
+REPLACE('JAVADATABASEWEBSPRING','','#')                                         
+------------------------------------------------                                
+java#database#web#spring                                                        
+
+SQL> select '#####'||'   abc   '||'#####' from dual;
+
+'#####'||'ABC'||'#####'                                                         
+--------------------------------------                                          
+#####   abc   #####                                                             
+
+SQL> select '#####'||'   ab cd   '||'#####' from dual;
+
+'#####'||'ABCD'||'#####'                                                        
+------------------------------------------                                      
+#####   ab cd   #####                                                           
+
+SQL> select '#####'||trim('   ab cd   ')||'#####' from dual;
+
+'#####'||TRIM('ABCD')||'#####'                                                  
+------------------------------                                                  
+#####ab cd#####                                                                 
+
+SQL> select 'abc ABC' from dual;
+
+'ABCABC'                                                                        
+--------------                                                                  
+abc ABC                                                                         
+
+SQL> select lower('abc ABC') from dual;
+
+LOWER('ABCABC'                                                                  
+--------------                                                                  
+abc abc                                                                         
+
+SQL> select upper('abc ABC') from dual;
+
+UPPER('ABCABC'                                                                  
+--------------                                                                  
+ABC ABC                                                                         
+
+SQL> select empno,ename from emp where ename='scott';
+
+선택된 레코드가 없습니다.
+
+SQL> select empno,ename from emp where ename='SCOTT';
+
+     EMPNO ENAME                                                                
+---------- ------                                                               
+      7788 SCOTT                                                                
+
+SQL> select empno,ename from emp where ename=UPPER('scott');
+
+     EMPNO ENAME                                                                
+---------- ------                                                               
+      7788 SCOTT                                                                
+
+SQL> select 'java database web spring' from dual;
+
+'JAVADATABASEWEBSPRING'                                                         
+------------------------------------------------                                
+java database web spring                                                        
+
+SQL> select initcap('java database web spring') from dual;
+
+INITCAP('JAVADATABASEWEBSPRING')                                                
+------------------------------------------------                                
+Java Database Web Spring                                                        
+
+SQL> select ename,lpad(sal,'#',10) from emp;
+select ename,lpad(sal,'#',10) from emp
+                      *
+1행에 오류:
+ORA-01722: 수치가 부적합합니다 
+
+
+SQL> select ename,lpad(sal,10,'#') from emp;
+
+ENAME                                                                           
+------                                                                          
+LPAD(SAL,10,'#')                                                                
+--------------------------------------------------------------------------------
+SMITH                                                                           
+#######800                                                                      
+                                                                                
+ALLEN                                                                           
+######1600                                                                      
+                                                                                
+WARD                                                                            
+######1250                                                                      
+
+ENAME                                                                           
+------                                                                          
+LPAD(SAL,10,'#')                                                                
+--------------------------------------------------------------------------------
+                                                                                
+JONES                                                                           
+######2975                                                                      
+                                                                                
+MARTIN                                                                          
+######1250                                                                      
+                                                                                
+BLAKE                                                                           
+
+ENAME                                                                           
+------                                                                          
+LPAD(SAL,10,'#')                                                                
+--------------------------------------------------------------------------------
+######2850                                                                      
+                                                                                
+CLARK                                                                           
+######2450                                                                      
+                                                                                
+SCOTT                                                                           
+######3000                                                                      
+                                                                                
+
+ENAME                                                                           
+------                                                                          
+LPAD(SAL,10,'#')                                                                
+--------------------------------------------------------------------------------
+KING                                                                            
+######5000                                                                      
+                                                                                
+TURNER                                                                          
+######1500                                                                      
+                                                                                
+ADAMS                                                                           
+######1100                                                                      
+
+ENAME                                                                           
+------                                                                          
+LPAD(SAL,10,'#')                                                                
+--------------------------------------------------------------------------------
+                                                                                
+JAMES                                                                           
+#######950                                                                      
+                                                                                
+FORD                                                                            
+######3000                                                                      
+                                                                                
+MILLER                                                                          
+
+ENAME                                                                           
+------                                                                          
+LPAD(SAL,10,'#')                                                                
+--------------------------------------------------------------------------------
+######1300                                                                      
+                                                                                
+
+14 개의 행이 선택되었습니다.
+
+SQL> select ename,lpad(empno,5,'#') from emp;
+
+ENAME  LPAD(EMPNO,5,'#')                                                        
+------ ----------------------------------------                                 
+SMITH  #7369                                                                    
+ALLEN  #7499                                                                    
+WARD   #7521                                                                    
+JONES  #7566                                                                    
+MARTIN #7654                                                                    
+BLAKE  #7698                                                                    
+CLARK  #7782                                                                    
+SCOTT  #7788                                                                    
+KING   #7839                                                                    
+TURNER #7844                                                                    
+
+ENAME  LPAD(EMPNO,5,'#')                                                        
+------ ----------------------------------------                                 
+ADAMS  #7876                                                                    
+JAMES  #7900                                                                    
+FORD   #7902                                                                    
+MILLER #7934                                                                    
+
+14 개의 행이 선택되었습니다.
+
+SQL> select ename,lpad(ename,6,'#') from emp;
+
+ENAME  LPAD(ENAME,6,'#')                                                        
+------ ------------------------------------------------                         
+SMITH  #SMITH                                                                   
+ALLEN  #ALLEN                                                                   
+WARD   ##WARD                                                                   
+JONES  #JONES                                                                   
+MARTIN MARTIN                                                                   
+BLAKE  #BLAKE                                                                   
+CLARK  #CLARK                                                                   
+SCOTT  #SCOTT                                                                   
+KING   ##KING                                                                   
+TURNER TURNER                                                                   
+
+ENAME  LPAD(ENAME,6,'#')                                                        
+------ ------------------------------------------------                         
+ADAMS  #ADAMS                                                                   
+JAMES  #JAMES                                                                   
+FORD   ##FORD                                                                   
+MILLER MILLER                                                                   
+
+14 개의 행이 선택되었습니다.
+
+SQL> select ename,rpad(ename,6,'#') from emp;
+
+ENAME  RPAD(ENAME,6,'#')                                                        
+------ ------------------------------------------------                         
+SMITH  SMITH#                                                                   
+ALLEN  ALLEN#                                                                   
+WARD   WARD##                                                                   
+JONES  JONES#                                                                   
+MARTIN MARTIN                                                                   
+BLAKE  BLAKE#                                                                   
+CLARK  CLARK#                                                                   
+SCOTT  SCOTT#                                                                   
+KING   KING##                                                                   
+TURNER TURNER                                                                   
+
+ENAME  RPAD(ENAME,6,'#')                                                        
+------ ------------------------------------------------                         
+ADAMS  ADAMS#                                                                   
+JAMES  JAMES#                                                                   
+FORD   FORD##                                                                   
+MILLER MILLER                                                                   
+
+14 개의 행이 선택되었습니다.
+
+SQL> select ascii(65) from dual;
+
+ ASCII(65)                                                                      
+----------                                                                      
+        54                                                                      
+
+SQL> select ascii(97) from dual;
+
+ ASCII(97)                                                                      
+----------                                                                      
+        57                                                                      
+
+SQL> select chr('A') from dual;
+select chr('A') from dual
+           *
+1행에 오류:
+ORA-01722: 수치가 부적합합니다 
+
+
+SQL> select chr(65) from dual;
+
+CH                                                                              
+--                                                                              
+A                                                                               
+
+SQL> select ascii('A') from dual;
+
+ASCII('A')                                                                      
+----------                                                                      
+        65                                                                      
+
+SQL> select abs(100) from dual;
+
+  ABS(100)                                                                      
+----------                                                                      
+       100                                                                      
+
+SQL> select abs(-100) from dual;
+
+ ABS(-100)                                                                      
+----------                                                                      
+       100                                                                      
+
+SQL> select 3.14 from dual;
+
+      3.14                                                                      
+----------                                                                      
+      3.14                                                                      
+
+SQL> select floor(3.14) from dual;
+
+FLOOR(3.14)                                                                     
+-----------                                                                     
+          3                                                                     
+
+SQL> select round(3.14) from dual;
+
+ROUND(3.14)                                                                     
+-----------                                                                     
+          3                                                                     
+
+SQL> select round(3.54) from dual;
+
+ROUND(3.54)                                                                     
+-----------                                                                     
+          4                                                                     
+
+SQL> select trunc(3.14) from dual;
+
+TRUNC(3.14)                                                                     
+-----------                                                                     
+          3                                                                     
+
+SQL> select trunc(78.98745,2) from dual;
+
+TRUNC(78.98745,2)                                                               
+-----------------                                                               
+            78.98                                                               
+
+SQL> select trunc(78.98745,0) from dual;
+
+TRUNC(78.98745,0)                                                               
+-----------------                                                               
+               78                                                               
+
+SQL> select trunc(78.98745,1) from dual;
+
+TRUNC(78.98745,1)                                                               
+-----------------                                                               
+             78.9                                                               
+
+SQL> select trunc(78.98745,2) from dual;
+
+TRUNC(78.98745,2)                                                               
+-----------------                                                               
+            78.98                                                               
+
+SQL> select trunc(78.98745,3) from dual;
+
+TRUNC(78.98745,3)                                                               
+-----------------                                                               
+           78.987                                                               
+
+SQL> select trunc(78.98745,-1) from dual;
+
+TRUNC(78.98745,-1)                                                              
+------------------                                                              
+                70                                                              
+
+SQL> select 5/3 from dual;
+
+       5/3                                                                      
+----------                                                                      
+1.66666667                                                                      
+
+SQL> select floor(5/3) from dual;
+
+FLOOR(5/3)                                                                      
+----------                                                                      
+         1                                                                      
+
+SQL> select 5/3,floor(5/3),mod(5,3) from dual;
+
+       5/3 FLOOR(5/3)   MOD(5,3)                                                
+---------- ---------- ----------                                                
+1.66666667          1          2                                                
+
+SQL> select 5/3,floor(5/3) as "몪",mod(5,3) as "나머지" from dual;
+
+       5/3         몪     나머지                                                
+---------- ---------- ----------                                                
+1.66666667          1          2                                                
+
+SQL> select sysdate from dual;
+
+SYSDATE                                                                         
+--------                                                                        
+19/12/03                                                                        
+
+SQL> select sysdate,hiredate from emp;
+
+SYSDATE  HIREDATE                                                               
+-------- --------                                                               
+19/12/03 80/12/17                                                               
+19/12/03 81/02/20                                                               
+19/12/03 81/02/22                                                               
+19/12/03 81/04/02                                                               
+19/12/03 81/09/28                                                               
+19/12/03 81/05/01                                                               
+19/12/03 81/06/09                                                               
+19/12/03 87/04/19                                                               
+19/12/03 81/11/17                                                               
+19/12/03 81/09/08                                                               
+
+SYSDATE  HIREDATE                                                               
+-------- --------                                                               
+19/12/03 87/05/23                                                               
+19/12/03 81/12/03                                                               
+19/12/03 81/12/03                                                               
+19/12/03 82/01/23                                                               
+
+14 개의 행이 선택되었습니다.
+
+SQL> select sysdate,hiredate,sysdate-hiredate from emp;
+
+SYSDATE  HIREDATE SYSDATE-HIREDATE                                              
+-------- -------- ----------------                                              
+19/12/03 80/12/17       14230.5322                                              
+19/12/03 81/02/20       14165.5322                                              
+19/12/03 81/02/22       14163.5322                                              
+19/12/03 81/04/02       14124.5322                                              
+19/12/03 81/09/28       13945.5322                                              
+19/12/03 81/05/01       14095.5322                                              
+19/12/03 81/06/09       14056.5322                                              
+19/12/03 87/04/19       11916.5322                                              
+19/12/03 81/11/17       13895.5322                                              
+19/12/03 81/09/08       13965.5322                                              
+
+SYSDATE  HIREDATE SYSDATE-HIREDATE                                              
+-------- -------- ----------------                                              
+19/12/03 87/05/23       11882.5322                                              
+19/12/03 81/12/03       13879.5322                                              
+19/12/03 81/12/03       13879.5322                                              
+19/12/03 82/01/23       13828.5322                                              
+
+14 개의 행이 선택되었습니다.
+
+SQL> select sysdate,hiredate,months_between(sysdate,hiredate) from emp;
+
+SYSDATE  HIREDATE MONTHS_BETWEEN(SYSDATE,HIREDATE)                              
+-------- -------- --------------------------------                              
+19/12/03 80/12/17                       467.565612                              
+19/12/03 81/02/20                       465.468837                              
+19/12/03 81/02/22                       465.404321                              
+19/12/03 81/04/02                       464.049483                              
+19/12/03 81/09/28                       458.210773                              
+19/12/03 81/05/01                       463.081741                              
+19/12/03 81/06/09                       461.823676                              
+19/12/03 87/04/19                       391.501095                              
+19/12/03 81/11/17                       456.565612                              
+19/12/03 81/09/08                       458.855934                              
+
+SYSDATE  HIREDATE MONTHS_BETWEEN(SYSDATE,HIREDATE)                              
+-------- -------- --------------------------------                              
+19/12/03 87/05/23                       390.372063                              
+19/12/03 81/12/03                              456                              
+19/12/03 81/12/03                              456                              
+19/12/03 82/01/23                       454.372063                              
+
+14 개의 행이 선택되었습니다.
+
+SQL> select add_months(sysdate,3) from dual;
+
+ADD_MONT                                                                        
+--------                                                                        
+20/03/03                                                                        
+
+SQL> select add_months(sysdate,1) from dual;
+
+ADD_MONT                                                                        
+--------                                                                        
+20/01/03                                                                        
+
+SQL> select last_day(sysdate) from dual;
+
+LAST_DAY                                                                        
+--------                                                                        
+19/12/31                                                                        
+
+SQL> select next_day(sysdate,'월') from dual;
+
+NEXT_DAY                                                                        
+--------                                                                        
+19/12/09                                                                        
+
+SQL> select next_day(sysdate,4) from dual;
+
+NEXT_DAY                                                                        
+--------                                                                        
+19/12/04                                                                        
+
+SQL> select next_day(sysdate,3) from dual;
+
+NEXT_DAY                                                                        
+--------                                                                        
+19/12/10                                                                        
+
+SQL> select round(sysdate) from dual;
+
+ROUND(SY                                                                        
+--------                                                                        
+19/12/04                                                                        
+
+SQL> select trunc(sysdate) from dual;
+
+TRUNC(SY                                                                        
+--------                                                                        
+19/12/03                                                                        
+
+SQL> select trunc(sysdate,'MONTH') from dual;
+
+TRUNC(SY                                                                        
+--------                                                                        
+19/12/01                                                                        
+
+SQL> select trunc(sysdate,'year') from dual;
+
+TRUNC(SY                                                                        
+--------                                                                        
+19/01/01                                                                        
+
+SQL> select trunc(sysdate,'month') from dual;
+
+TRUNC(SY                                                                        
+--------                                                                        
+19/12/01                                                                        
+
+SQL> select round(sysdate,'month') from dual;
+
+ROUND(SY                                                                        
+--------                                                                        
+19/12/01                                                                        
+
+SQL> select round(sysdate,'year') from dual;
+
+ROUND(SY                                                                        
+--------                                                                        
+20/01/01                                                                        
+
+SQL> select hiredate,sysdate-hiredate from dual;
+select hiredate,sysdate-hiredate from dual
+                        *
+1행에 오류:
+ORA-00904: "HIREDATE": 부적합한 식별자 
+
+
+SQL> select hiredate,sysdate-hiredate from emp;
+
+HIREDATE SYSDATE-HIREDATE                                                       
+-------- ----------------                                                       
+80/12/17       14230.5517                                                       
+81/02/20       14165.5517                                                       
+81/02/22       14163.5517                                                       
+81/04/02       14124.5517                                                       
+81/09/28       13945.5517                                                       
+81/05/01       14095.5517                                                       
+81/06/09       14056.5517                                                       
+87/04/19       11916.5517                                                       
+81/11/17       13895.5517                                                       
+81/09/08       13965.5517                                                       
+
+HIREDATE SYSDATE-HIREDATE                                                       
+-------- ----------------                                                       
+87/05/23       11882.5517                                                       
+81/12/03       13879.5517                                                       
+81/12/03       13879.5517                                                       
+82/01/23       13828.5517                                                       
+
+14 개의 행이 선택되었습니다.
+
+SQL> select hiredate,trac(sysdate-hiredate) from emp;
+select hiredate,trac(sysdate-hiredate) from emp
+                *
+1행에 오류:
+ORA-00904: "TRAC": 부적합한 식별자 
+
+
+SQL> select hiredate,tranc(sysdate-hiredate) from emp;
+select hiredate,tranc(sysdate-hiredate) from emp
+                *
+1행에 오류:
+ORA-00904: "TRANC": 부적합한 식별자 
+
+
+SQL> select hiredate,trunc(sysdate-hiredate) from emp;
+
+HIREDATE TRUNC(SYSDATE-HIREDATE)                                                
+-------- -----------------------                                                
+80/12/17                   14230                                                
+81/02/20                   14165                                                
+81/02/22                   14163                                                
+81/04/02                   14124                                                
+81/09/28                   13945                                                
+81/05/01                   14095                                                
+81/06/09                   14056                                                
+87/04/19                   11916                                                
+81/11/17                   13895                                                
+81/09/08                   13965                                                
+
+HIREDATE TRUNC(SYSDATE-HIREDATE)                                                
+-------- -----------------------                                                
+87/05/23                   11882                                                
+81/12/03                   13879                                                
+81/12/03                   13879                                                
+82/01/23                   13828                                                
+
+14 개의 행이 선택되었습니다.
+
+SQL> select hiredate,trunc(sysdate,'dd')-trunc(hiredate,'dd') from emp;
+
+HIREDATE TRUNC(SYSDATE,'DD')-TRUNC(HIREDATE,'DD')                               
+-------- ----------------------------------------                               
+80/12/17                                    14230                               
+81/02/20                                    14165                               
+81/02/22                                    14163                               
+81/04/02                                    14124                               
+81/09/28                                    13945                               
+81/05/01                                    14095                               
+81/06/09                                    14056                               
+87/04/19                                    11916                               
+81/11/17                                    13895                               
+81/09/08                                    13965                               
+
+HIREDATE TRUNC(SYSDATE,'DD')-TRUNC(HIREDATE,'DD')                               
+-------- ----------------------------------------                               
+87/05/23                                    11882                               
+81/12/03                                    13879                               
+81/12/03                                    13879                               
+82/01/23                                    13828                               
+
+14 개의 행이 선택되었습니다.
+
+SQL> select hiredate,trunc(sysdate,'mon')-trunc(hiredate,'mon') from emp;
+
+HIREDATE TRUNC(SYSDATE,'MON')-TRUNC(HIREDATE,'MON')                             
+-------- ------------------------------------------                             
+80/12/17                                      14244                             
+81/02/20                                      14182                             
+81/02/22                                      14182                             
+81/04/02                                      14123                             
+81/09/28                                      13970                             
+81/05/01                                      14093                             
+81/06/09                                      14062                             
+87/04/19                                      11932                             
+81/11/17                                      13909                             
+81/09/08                                      13970                             
+
+HIREDATE TRUNC(SYSDATE,'MON')-TRUNC(HIREDATE,'MON')                             
+-------- ------------------------------------------                             
+87/05/23                                      11902                             
+81/12/03                                      13879                             
+81/12/03                                      13879                             
+82/01/23                                      13848                             
+
+14 개의 행이 선택되었습니다.
+
+SQL> select hiredate,trunc(sysdate,'mon') from emp;
+
+HIREDATE TRUNC(SY                                                               
+-------- --------                                                               
+80/12/17 19/12/01                                                               
+81/02/20 19/12/01                                                               
+81/02/22 19/12/01                                                               
+81/04/02 19/12/01                                                               
+81/09/28 19/12/01                                                               
+81/05/01 19/12/01                                                               
+81/06/09 19/12/01                                                               
+87/04/19 19/12/01                                                               
+81/11/17 19/12/01                                                               
+81/09/08 19/12/01                                                               
+
+HIREDATE TRUNC(SY                                                               
+-------- --------                                                               
+87/05/23 19/12/01                                                               
+81/12/03 19/12/01                                                               
+81/12/03 19/12/01                                                               
+82/01/23 19/12/01                                                               
+
+14 개의 행이 선택되었습니다.
+
+SQL> select trunc(hiredate,'mon'),trunc(sysdate,'mon') from emp;
+
+TRUNC(HI TRUNC(SY                                                               
+-------- --------                                                               
+80/12/01 19/12/01                                                               
+81/02/01 19/12/01                                                               
+81/02/01 19/12/01                                                               
+81/04/01 19/12/01                                                               
+81/09/01 19/12/01                                                               
+81/05/01 19/12/01                                                               
+81/06/01 19/12/01                                                               
+87/04/01 19/12/01                                                               
+81/11/01 19/12/01                                                               
+81/09/01 19/12/01                                                               
+
+TRUNC(HI TRUNC(SY                                                               
+-------- --------                                                               
+87/05/01 19/12/01                                                               
+81/12/01 19/12/01                                                               
+81/12/01 19/12/01                                                               
+82/01/01 19/12/01                                                               
+
+14 개의 행이 선택되었습니다.
+
+SQL> select between(trunc(hiredate,'mon'),trunc(sysdate,'mon')) from emp;
+select between(trunc(hiredate,'mon'),trunc(sysdate,'mon')) from emp
+       *
+1행에 오류:
+ORA-00936: 누락된 표현식 
+
+
+SQL> select month_between(trunc(hiredate,'mon'),trunc(sysdate,'mon')) from emp;
+select month_between(trunc(hiredate,'mon'),trunc(sysdate,'mon')) from emp
+       *
+1행에 오류:
+ORA-00904: "MONTH_BETWEEN": 부적합한 식별자 
+
+
+SQL> select months_between(trunc(hiredate,'mon'),trunc(sysdate,'mon')) from emp;
+
+MONTHS_BETWEEN(TRUNC(HIREDATE,'MON'),TRUNC(SYSDATE,'MON'))                      
+----------------------------------------------------------                      
+                                                      -468                      
+                                                      -466                      
+                                                      -466                      
+                                                      -464                      
+                                                      -459                      
+                                                      -463                      
+                                                      -462                      
+                                                      -392                      
+                                                      -457                      
+                                                      -459                      
+
+MONTHS_BETWEEN(TRUNC(HIREDATE,'MON'),TRUNC(SYSDATE,'MON'))                      
+----------------------------------------------------------                      
+                                                      -391                      
+                                                      -456                      
+                                                      -456                      
+                                                      -455                      
+
+14 개의 행이 선택되었습니다.
+
+SQL> select abs(months_between(trunc(hiredate,'mon'),trunc(sysdate,'mon'))) from emp;
+
+ABS(MONTHS_BETWEEN(TRUNC(HIREDATE,'MON'),TRUNC(SYSDATE,'MON')))                 
+---------------------------------------------------------------                 
+                                                            468                 
+                                                            466                 
+                                                            466                 
+                                                            464                 
+                                                            459                 
+                                                            463                 
+                                                            462                 
+                                                            392                 
+                                                            457                 
+                                                            459                 
+
+ABS(MONTHS_BETWEEN(TRUNC(HIREDATE,'MON'),TRUNC(SYSDATE,'MON')))                 
+---------------------------------------------------------------                 
+                                                            391                 
+                                                            456                 
+                                                            456                 
+                                                            455                 
+
+14 개의 행이 선택되었습니다.
+
+SQL> spool off

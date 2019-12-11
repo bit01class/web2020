@@ -1,0 +1,41 @@
+데이터베이스 관리 시스템(database management system, DBMS)
+관계형 데이터베이스 관리 시스템(relational database management system, RDBMS)
+
+SQL(Structured Query Language, 구조화 질의어, S-Q-L)
+
+1. DML (Data Manipullation Language)	- commit,rollback
+	a.insert (Create)
+	b.select (Read) - DQL
+	c.update (Update)
+	d.delete (Delete)
+2. DDL (Date Definition Language) - auto commit[컬럼명변경시는 commit해야함]
+	a.create
+	b.alter
+	c.drop
+	d.rename
+	e.truncate
+3. DCL (Data Control Language)
+	a.grant
+	b.revoke
+4. TCL (Transaction Control Language)
+	a.commit
+	b.rollback
+	c.savepoint
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

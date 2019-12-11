@@ -1,0 +1,484 @@
+SQL> clr scn
+SP2-0042: 알 수 없는 명령어 "clr scn" - 나머지 줄 무시.
+SQL> clr
+SP2-0042: 알 수 없는 명령어 "clr" - 나머지 줄 무시.
+SQL> clear screen
+
+SQL> select * from emp;
+
+     EMPNO ENAME                JOB                       MGR HIREDATE          
+---------- -------------------- ------------------ ---------- --------          
+       SAL       COMM     DEPTNO                                                
+---------- ---------- ----------                                                
+      7369 SMITH                CLERK                    7902 80/12/17          
+       800                    20                                                
+                                                                                
+      7499 ALLEN                SALESMAN                 7698 81/02/20          
+      1600        300         30                                                
+                                                                                
+      7521 WARD                 SALESMAN                 7698 81/02/22          
+      1250        500         30                                                
+                                                                                
+
+     EMPNO ENAME                JOB                       MGR HIREDATE          
+---------- -------------------- ------------------ ---------- --------          
+       SAL       COMM     DEPTNO                                                
+---------- ---------- ----------                                                
+      7566 JONES                MANAGER                  7839 81/04/02          
+      2975                    20                                                
+                                                                                
+      7654 MARTIN               SALESMAN                 7698 81/09/28          
+      1250       1400         30                                                
+                                                                                
+      7698 BLAKE                MANAGER                  7839 81/05/01          
+      2850                    30                                                
+                                                                                
+
+     EMPNO ENAME                JOB                       MGR HIREDATE          
+---------- -------------------- ------------------ ---------- --------          
+       SAL       COMM     DEPTNO                                                
+---------- ---------- ----------                                                
+      7782 CLARK                MANAGER                  7839 81/06/09          
+      2450                    10                                                
+                                                                                
+      7788 SCOTT                ANALYST                  7566 87/04/19          
+      3000                    20                                                
+                                                                                
+      7839 KING                 PRESIDENT                     81/11/17          
+      5000                    10                                                
+                                                                                
+
+     EMPNO ENAME                JOB                       MGR HIREDATE          
+---------- -------------------- ------------------ ---------- --------          
+       SAL       COMM     DEPTNO                                                
+---------- ---------- ----------                                                
+      7844 TURNER               SALESMAN                 7698 81/09/08          
+      1500          0         30                                                
+                                                                                
+      7876 ADAMS                CLERK                    7788 87/05/23          
+      1100                    20                                                
+                                                                                
+      7900 JAMES                CLERK                    7698 81/12/03          
+       950                    30                                                
+                                                                                
+
+     EMPNO ENAME                JOB                       MGR HIREDATE          
+---------- -------------------- ------------------ ---------- --------          
+       SAL       COMM     DEPTNO                                                
+---------- ---------- ----------                                                
+      7902 FORD                 ANALYST                  7566 81/12/03          
+      3000                    20                                                
+                                                                                
+      7934 MILLER               CLERK                    7782 82/01/23          
+      1300                    10                                                
+                                                                                
+
+14 개의 행이 선택되었습니다.
+
+SQL> desc emp;
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                     NOT NULL NUMBER(4)
+ ENAME                                              VARCHAR2(10)
+ JOB                                                VARCHAR2(9)
+ MGR                                                NUMBER(4)
+ HIREDATE                                           DATE
+ SAL                                                NUMBER(7,2)
+ COMM                                               NUMBER(7,2)
+ DEPTNO                                             NUMBER(2)
+
+SQL> desc dept;
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ----------------------------
+ DEPTNO                                    NOT NULL NUMBER(2)
+ DNAME                                              VARCHAR2(14)
+ LOC                                                VARCHAR2(13)
+
+SQL> select sal from emp;
+
+       SAL                                                                      
+----------                                                                      
+       800                                                                      
+      1600                                                                      
+      1250                                                                      
+      2975                                                                      
+      1250                                                                      
+      2850                                                                      
+      2450                                                                      
+      3000                                                                      
+      5000                                                                      
+      1500                                                                      
+      1100                                                                      
+
+       SAL                                                                      
+----------                                                                      
+       950                                                                      
+      3000                                                                      
+      1300                                                                      
+
+14 개의 행이 선택되었습니다.
+
+SQL> select sum(sal) from emp;
+
+  SUM(SAL)                                                                      
+----------                                                                      
+     29025                                                                      
+
+SQL> select ename,sum(sal) from emp;
+select ename,sum(sal) from emp
+       *
+1행에 오류:
+ORA-00937: 단일 그룹의 그룹 함수가 아닙니다 
+
+
+SQL> select sum(sal) from emp;
+
+  SUM(SAL)                                                                      
+----------                                                                      
+     29025                                                                      
+
+SQL> select avg(sal) from emp;
+
+  AVG(SAL)                                                                      
+----------                                                                      
+2073.21429                                                                      
+
+SQL> select max(sal) from emp;
+
+  MAX(SAL)                                                                      
+----------                                                                      
+      5000                                                                      
+
+SQL> select min(sal) from emp;
+
+  MIN(SAL)                                                                      
+----------                                                                      
+       800                                                                      
+
+SQL> select ename from emp where sal=min(sal);
+select ename from emp where sal=min(sal)
+                                *
+1행에 오류:
+ORA-00934: 그룹 함수는 허가되지 않습니다 
+
+
+SQL> select count(sal) from emp;
+
+COUNT(SAL)                                                                      
+----------                                                                      
+        14                                                                      
+
+SQL> select sum(sal),avg(sal),max(sal) from emp;
+
+  SUM(SAL)   AVG(SAL)   MAX(SAL)                                                
+---------- ---------- ----------                                                
+     29025 2073.21429       5000                                                
+
+SQL> select sum(sal),avg(sal),max(comm) from emp;
+
+  SUM(SAL)   AVG(SAL)  MAX(COMM)                                                
+---------- ---------- ----------                                                
+     29025 2073.21429       1400                                                
+
+SQL> select ename, sal from emp where sal<1000;
+
+ENAME                       SAL                                                 
+-------------------- ----------                                                 
+SMITH                       800                                                 
+JAMES                       950                                                 
+
+SQL> select sum(sal) from emp where sal<1000;
+
+  SUM(SAL)                                                                      
+----------                                                                      
+      1750                                                                      
+
+SQL> select sum(sal),avg(sal) from emp where sal<1000;
+
+  SUM(SAL)   AVG(SAL)                                                           
+---------- ----------                                                           
+      1750        875                                                           
+
+SQL> select sum(sal),avg(sal) from emp where deptno=10;
+
+  SUM(SAL)   AVG(SAL)                                                           
+---------- ----------                                                           
+      8750 2916.66667                                                           
+
+SQL> select sum(sal),avg(sal) from emp where deptno=20;
+
+  SUM(SAL)   AVG(SAL)                                                           
+---------- ----------                                                           
+     10875       2175                                                           
+
+SQL> select sum(sal),avg(sal) from emp where deptno=30;
+
+  SUM(SAL)   AVG(SAL)                                                           
+---------- ----------                                                           
+      9400 1566.66667                                                           
+
+SQL> select sum(sal),avg(sal),deptno from emp where deptno=30;
+select sum(sal),avg(sal),deptno from emp where deptno=30
+                         *
+1행에 오류:
+ORA-00937: 단일 그룹의 그룹 함수가 아닙니다 
+
+
+SQL> select sum(sal),avg(sal),max(sal) from emp group by deptno;
+
+  SUM(SAL)   AVG(SAL)   MAX(SAL)                                                
+---------- ---------- ----------                                                
+      9400 1566.66667       2850                                                
+     10875       2175       3000                                                
+      8750 2916.66667       5000                                                
+
+SQL> select sum(sal),avg(sal),max(sal),deptno from emp group by deptno;
+
+  SUM(SAL)   AVG(SAL)   MAX(SAL)     DEPTNO                                     
+---------- ---------- ---------- ----------                                     
+      9400 1566.66667       2850         30                                     
+     10875       2175       3000         20                                     
+      8750 2916.66667       5000         10                                     
+
+SQL> select sum(sal),avg(sal),max(sal),deptno from emp where sal>1000 group by deptno;
+
+  SUM(SAL)   AVG(SAL)   MAX(SAL)     DEPTNO                                     
+---------- ---------- ---------- ----------                                     
+      8450       1690       2850         30                                     
+     10075    2518.75       3000         20                                     
+      8750 2916.66667       5000         10                                     
+
+SQL> select sum(sal),avg(sal),min(sal),deptno from emp where sal>1000 group by deptno;
+
+  SUM(SAL)   AVG(SAL)   MIN(SAL)     DEPTNO                                     
+---------- ---------- ---------- ----------                                     
+      8450       1690       1250         30                                     
+     10075    2518.75       1100         20                                     
+      8750 2916.66667       1300         10                                     
+
+SQL> clear screenb
+SP2-0158: 알 수 없는 CLEAR 옵션 "screenb"
+SQL> clear screen
+
+SQL> select deptno,count(*) from emp group by deptno;
+
+    DEPTNO   COUNT(*)                                                           
+---------- ----------                                                           
+        30          6                                                           
+        20          5                                                           
+        10          3                                                           
+
+SQL> select deptno,count(*) from emp where comm>0 group by deptno;
+
+    DEPTNO   COUNT(*)                                                           
+---------- ----------                                                           
+        30          3                                                           
+
+SQL> select deptno,comm from emp;
+
+    DEPTNO       COMM                                                           
+---------- ----------                                                           
+        20                                                                      
+        30        300                                                           
+        30        500                                                           
+        20                                                                      
+        30       1400                                                           
+        30                                                                      
+        10                                                                      
+        20                                                                      
+        10                                                                      
+        30          0                                                           
+        20                                                                      
+
+    DEPTNO       COMM                                                           
+---------- ----------                                                           
+        30                                                                      
+        20                                                                      
+        10                                                                      
+
+14 개의 행이 선택되었습니다.
+
+SQL> select deptno,count(*) from emp where sal>avg(sal)  group by deptno;
+select deptno,count(*) from emp where sal>avg(sal)  group by deptno
+                                          *
+1행에 오류:
+ORA-00934: 그룹 함수는 허가되지 않습니다 
+
+
+SQL> SELECT DEPTNO, AVG(SAL)
+  2  FROM EMP
+  3  GROUP BY DEPTNO
+  4  HAVING AVG(SAL) >= 2000;
+
+    DEPTNO   AVG(SAL)                                                           
+---------- ----------                                                           
+        20       2175                                                           
+        10 2916.66667                                                           
+
+SQL> SELECT DEPTNO, AVG(SAL)
+  2  FROM EMP
+  3  GROUP BY DEPTNO
+  4  ;
+
+    DEPTNO   AVG(SAL)                                                           
+---------- ----------                                                           
+        30 1566.66667                                                           
+        20       2175                                                           
+        10 2916.66667                                                           
+
+SQL> select tname from tab;
+
+TNAME                                                                           
+------------------------------------------------------------                    
+DEPT                                                                            
+BONUS                                                                           
+EMP                                                                             
+SALGRADE                                                                        
+COPY                                                                            
+STUDENT                                                                         
+TEMP01                                                                          
+TEMP04                                                                          
+TEMP02                                                                          
+TEMP03                                                                          
+TEMP05                                                                          
+
+TNAME                                                                           
+------------------------------------------------------------                    
+TEMP06                                                                          
+
+12 개의 행이 선택되었습니다.
+
+SQL> select * from temp01;
+
+선택된 레코드가 없습니다.
+
+SQL> select * from temp02;
+
+       NUM NAME                        CNT                                      
+---------- -------------------- ----------                                      
+         1 test                          1                                      
+         2 test                          2                                      
+         3 test                          2                                      
+
+SQL> desc temp02;
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ----------------------------
+ NUM                                       NOT NULL NUMBER
+ NAME                                      NOT NULL VARCHAR2(10)
+ CNT                                                NUMBER
+
+SQL> select * from temp03;
+
+       NUM NAME                        CNT                                      
+---------- -------------------- ----------                                      
+         1 TEST                          1                                      
+         2 TEST                          2                                      
+
+SQL> desc temp03;
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ----------------------------
+ NUM                                       NOT NULL NUMBER
+ NAME                                               VARCHAR2(10)
+ CNT                                                NUMBER
+
+SQL> select * from temp03;
+
+       NUM NAME                        CNT                                      
+---------- -------------------- ----------                                      
+         1 TEST                          1                                      
+         2 TEST                          2                                      
+
+SQL> insert into temp03 values (3,'test',0);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into temp03 values (3,'test',0);
+insert into temp03 values (3,'test',0)
+*
+1행에 오류:
+ORA-00001: 무결성 제약 조건(SCOTT.TEMP03_NUM_PK)에 위배됩니다 
+
+
+SQL> select max(num) from temp03;
+
+  MAX(NUM)                                                                      
+----------                                                                      
+         3                                                                      
+
+SQL> select max(num)+1 from temp03;
+
+MAX(NUM)+1                                                                      
+----------                                                                      
+         4                                                                      
+
+SQL> insert into temp03 values ((select max(num)+1 from temp03),'test',0);
+insert into temp03 values ((select max(num)+1 from temp03),'test',0)
+*
+1행에 오류:
+ORA-00001: 무결성 제약 조건(SCOTT.TEMP03_CNT_UQ)에 위배됩니다 
+
+
+SQL> alter table temp03 drop constraint temp03_cnt_uq;
+
+테이블이 변경되었습니다.
+
+SQL> insert into temp03 values ((select max(num)+1 from temp03),'test',0);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into temp03 values ((select max(num)+1 from temp03),'test',0);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into temp03 values ((select max(num)+1 from temp03),'test',0);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into temp03 values ((select max(num)+1 from temp03),'test',0);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into temp03 values ((select max(num)+1 from temp03),'test',0);
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from temp03;
+
+       NUM NAME                        CNT                                      
+---------- -------------------- ----------                                      
+         1 TEST                          1                                      
+         2 TEST                          2                                      
+         5 test                          0                                      
+         3 test                          0                                      
+         4 test                          0                                      
+         6 test                          0                                      
+         7 test                          0                                      
+         8 test                          0                                      
+
+8 개의 행이 선택되었습니다.
+
+SQL> select ename from emp;
+
+ENAME                                                                           
+--------------------                                                            
+SMITH                                                                           
+ALLEN                                                                           
+WARD                                                                            
+JONES                                                                           
+MARTIN                                                                          
+BLAKE                                                                           
+CLARK                                                                           
+SCOTT                                                                           
+KING                                                                            
+TURNER                                                                          
+ADAMS                                                                           
+
+ENAME                                                                           
+--------------------                                                            
+JAMES                                                                           
+FORD                                                                            
+MILLER                                                                          
+
+14 개의 행이 선택되었습니다.
+
+SQL> spool off
