@@ -36,11 +36,22 @@
 				if(search==null)search="sub";
 				String keyword=request.getParameter("keyword");
 				if(keyword==null)keyword="";
+				// p1 1~10 -1 00~09  (p-1)*10+1
+				// p2 11~20 -1 10~19
+				// p3 21~30 -1 20~29
+				
+				int show=5;
+				int p=1;
+				String param=request.getParameter("p");
+				if(param!=null)p=Integer.parseInt(param);
+				int start=(p-1)*show+1;
+				int end=start+show-1;
 				String sql="SELECT * FROM "; 
 				sql+="(SELECT ROWNUM AS RN, NUM,SUB,ID,CNT FROM "; 
 				sql+="(SELECT  NUM,SUB,ID,CNT FROM BBS01 where "
 					+search+" LIKE '%"+keyword+"%' ORDER BY NUM DESC))";
-				sql+=" WHERE RN BETWEEN 1 AND 10";
+				sql+=" WHERE RN BETWEEN "+start+" AND "+end;
+				
 				String driver="oracle.jdbc.driver.OracleDriver";
 				String url="jdbc:oracle:thin:@192.168.3.23:1521:xe";
 				String user="scott";
@@ -49,10 +60,13 @@
 				Connection conn=null;
 				Statement stmt=null;
 				ResultSet rs=null;
-				
+				int total=0;
 				try{
 					Class.forName(driver);
 					conn=DriverManager.getConnection(url,user,password);
+					stmt=conn.createStatement();
+					rs=stmt.executeQuery("select count(*) from bbs01");
+					if(rs.next())total=rs.getInt(1);
 					stmt=conn.createStatement();
 					rs=stmt.executeQuery(sql);
 					while(rs.next()){
@@ -76,6 +90,34 @@
 				
 			</table>
 			<center>
+			<br>
+			<%
+			//12345678910	01 (p-1)/10*10+1 
+			//11~20			11
+			//21~30			21
+			int su=5;
+			int limit=total/show+1;
+			if(total%show==0)limit--;
+			int forstart=(p-1)/su*su+1;
+			int forend=forstart+(su-1);
+			
+			if(limit<forend)forend=limit;
+			int i=0;
+			if(forstart!=1){
+			%>
+			<a href="list.jsp?p=<%=forstart-1%>">[prev]</a>
+			<%
+			}
+			for(i=forstart; i<=forend; i++){ 
+			%>
+			<a href="list.jsp?p=<%=i%>">[<%=i%>]</a>
+			<%
+			} 
+			if(limit>forend){
+			%>
+			<a href="list.jsp?p=<%=i%>">[next]</a>
+			<%} %>
+			<br>
 			<form>
 			<br>
 			<select name="search">
