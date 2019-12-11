@@ -68,8 +68,10 @@
 				<td colspan="4"><%=rs.getString(6).replace("\n", "<br>") %>
 			</tr>
 			<tr>
-				<td colspan="4" bgcolor="#dddddd">
+				<td colspan="4" align="center" bgcolor="#dddddd">
+					<a href="list.jsp">[리스트]</a>
 					<a href="edit.jsp?idx=<%=rs.getInt("num")%>">[수 정]</a>
+					<a href="del.jsp?idx=<%=rs.getInt("num")%>">[삭 제]</a>
 				</td>
 			</tr>		
 		</table>
