@@ -32,7 +32,15 @@
 					<th bgcolor="dddddd">조회수</th>
 				</tr>
 				<%
-				String sql="SELECT NUM,SUB,ID,CNT FROM BBS01 ORDER BY NUM DESC";
+				String search=request.getParameter("search");
+				if(search==null)search="sub";
+				String keyword=request.getParameter("keyword");
+				if(keyword==null)keyword="";
+				String sql="SELECT * FROM "; 
+				sql+="(SELECT ROWNUM AS RN, NUM,SUB,ID,CNT FROM "; 
+				sql+="(SELECT  NUM,SUB,ID,CNT FROM BBS01 where "
+					+search+" LIKE '%"+keyword+"%' ORDER BY NUM DESC))";
+				sql+=" WHERE RN BETWEEN 1 AND 10";
 				String driver="oracle.jdbc.driver.OracleDriver";
 				String url="jdbc:oracle:thin:@192.168.3.23:1521:xe";
 				String user="scott";
@@ -51,10 +59,10 @@
 				%>
 				
 				<tr>
-					<td><a href="detail.jsp?idx=<%=rs.getObject(1) %>"><%=rs.getObject(1) %></a></td>
-					<td><a href="detail.jsp?idx=<%=rs.getObject(1) %>"><%=rs.getObject(2) %></a></td>
-					<td><a href="detail.jsp?idx=<%=rs.getObject(1) %>"><%=rs.getObject(3) %></a></td>
-					<td><a href="detail.jsp?idx=<%=rs.getObject(1) %>"><%=rs.getObject(4) %></a></td>
+					<td><a href="detail.jsp?idx=<%=rs.getObject(2) %>"><%=rs.getObject(2) %></a></td>
+					<td><a href="detail.jsp?idx=<%=rs.getObject(2) %>"><%=rs.getObject(3) %></a></td>
+					<td><a href="detail.jsp?idx=<%=rs.getObject(2) %>"><%=rs.getObject(4) %></a></td>
+					<td><a href="detail.jsp?idx=<%=rs.getObject(2) %>"><%=rs.getObject(5) %></a></td>
 				</tr>
 				
 				<%
@@ -67,6 +75,19 @@
 				%>
 				
 			</table>
+			<center>
+			<form>
+			<br>
+			<select name="search">
+				<option value="sub">제목</option>
+				<option value="content">내용</option>
+				<option value="id">글쓴이</option>
+			</select>
+			<input type="text" name="keyword">
+			<input type="submit" value="검색">
+			</form>
+			</center>
+			
 			<p><a href="add.jsp">[입 력]</a></p>
 		</td>
 	</tr>
