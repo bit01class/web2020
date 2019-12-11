@@ -22,11 +22,13 @@
 	</tr>
 	<tr>
 		<td colspan="7">
-		<h1>상세보기</h1>
+		<h1>수정페이지</h1>
+		<form action="update.jsp">
+		
 		<%@ page import="java.sql.*" %>
 		<%
 		String param=request.getParameter("idx");
-		String sql="select num,nalja,id,cnt,sub,content from bbs01 where num="+param;
+		String sql="select * from bbs01 where num="+param;
 		String driver="oracle.jdbc.driver.OracleDriver";
 		String url="jdbc:oracle:thin:@localhost:1521:xe";
 		String user="scott";
@@ -40,41 +42,38 @@
 			Class.forName(driver);
 			conn=DriverManager.getConnection(url, user, password);
 			stmt=conn.createStatement();
-			String sql2="update bbs01 set cnt=cnt+1 where num="+param;
-			int result=stmt.executeUpdate(sql2);
-			if(result>0){
-				stmt=conn.createStatement();
-				rs=stmt.executeQuery(sql);
-				if(rs.next()){
+			rs=stmt.executeQuery(sql);
+			
+			if(rs.next()){
 		%>
-		<table width="80%" align="center">
-			<tr>
-				<td width="80" align="center" bgcolor="#dddddd">글번호</td>
-				<td><%=rs.getInt(1) %></td>
-				<td width="80" align="center" bgcolor="#dddddd">날짜</td>
-				<td><%=rs.getDate(2) %></td>
+		<table align="center" width="80%">
+			<tr>		
+				<td align="center" width="80" bgcolor="#dddddd">글번호</td>
+				<td><input type="text" name="num" value="<%=rs.getInt("num") %>" readonly="readonly"></td>
+				<td align="center" width="80" bgcolor="#dddddd">날짜</td>
+				<td><%=rs.getDate("nalja") %></td>
+			</tr>
+			<tr>	
+				<td align="center" bgcolor="#dddddd">글쓴이</td>
+				<td><%=rs.getString("id") %></td>
+				<td align="center" bgcolor="#dddddd">조회수</td>
+				<td><%=rs.getInt("cnt") %></td>
 			</tr>
 			<tr>
-				<td width="80" align="center" bgcolor="#dddddd">글쓴이</td>
-				<td><%=rs.getString(3) %></td>
-				<td width="80" align="center" bgcolor="#dddddd">조회수</td>
-				<td><%=rs.getInt(4) %></td>
-			</tr>
+				<td align="center" bgcolor="#dddddd">제목</td>
+				<td colspan="3"><input type="text" name="sub" value="<%=rs.getString("sub") %>"></td>
+			</tr>		
 			<tr>
-				<td width="80" align="center" bgcolor="#dddddd">제목</td>
-				<td colspan="3"><%=rs.getString(5) %></td>
-			</tr>
+				<td colspan="4"><textarea name="content" rows="5" cols="50"><%=rs.getString("content") %></textarea></td>
+			</tr>		
 			<tr>
-				<td colspan="4"><%=rs.getString(6).replace("\n", "<br>") %>
-			</tr>
-			<tr>
-				<td colspan="4" bgcolor="#dddddd">
-					<a href="edit.jsp?idx=<%=rs.getInt("num")%>">[수 정]</a>
+				<td colspan="4" align="center" bgcolor="#dddddd">
+				<input type="submit" value="수 정">
+				<input type="reset" value="취 소">
 				</td>
 			</tr>		
 		</table>
 		<%
-				}
 			}
 		}finally{
 			if(rs!=null)rs.close();
@@ -82,6 +81,7 @@
 			if(conn!=null)conn.close();
 		}
 		%>
+		</form>
 		</td>
 	</tr>
 	<tr>
@@ -92,14 +92,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
