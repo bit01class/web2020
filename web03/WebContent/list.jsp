@@ -49,12 +49,14 @@
 					rs=stmt.executeQuery(sql);
 					while(rs.next()){
 				%>
+				
 				<tr>
-					<td><%=rs.getObject(1) %></td>
-					<td><%=rs.getObject(2) %></td>
-					<td><%=rs.getObject(3) %></td>
-					<td><%=rs.getObject(4) %></td>
+					<td><a href="detail.jsp?idx=<%=rs.getObject(1) %>"><%=rs.getObject(1) %></a></td>
+					<td><a href="detail.jsp?idx=<%=rs.getObject(1) %>"><%=rs.getObject(2) %></a></td>
+					<td><a href="detail.jsp?idx=<%=rs.getObject(1) %>"><%=rs.getObject(3) %></a></td>
+					<td><a href="detail.jsp?idx=<%=rs.getObject(1) %>"><%=rs.getObject(4) %></a></td>
 				</tr>
+				
 				<%
 					}
 				}finally{
