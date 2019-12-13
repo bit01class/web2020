@@ -7,7 +7,19 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+Object obj=session.getAttribute("login");
+if(obj!=null){
+	Bbs01userBean user=(Bbs01userBean)obj;
+	out.print(user.getNick()+"님 환영합니다");
+	out.print("<a href=\"logout.jsp\">[logout]</a>");
+}else{
+%>
+<a href="login.jsp">[login]</a>
+<%} %>
+
 	<h1>게시판</h1>
+<a href="add.jsp">[글쓰기]</a>
 	<%@ page import="java.sql.*,java.util.*" %>
 	<%@ page import="com.bit.web05.*"%>
 	<%
@@ -39,6 +51,9 @@
 		if(stmt!=null)stmt.close();
 		if(conn!=null)conn.close();
 	}
+	
+	
+	
 	%>
 	
 	<table>

@@ -6,12 +6,17 @@ public class JavaBean {
 	
 	private int num;
 	private String sub;
+	private String id;
 	private String nick;
 	private Date nalja;
 	private int cnt;
 	private String content;
 	
 	// setter
+	public void setId(String id) {
+		this.id = id;
+	}
+	
 	public void setNum(int num){
 		this.num=num;
 	}
@@ -38,6 +43,10 @@ public class JavaBean {
 	
 	
 	//getter
+	public String getId() {
+		return id;
+	}
+	
 	public int getNum() {
 		return num;
 	}

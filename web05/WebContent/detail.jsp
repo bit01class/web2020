@@ -11,7 +11,7 @@
 	<%@ page import="java.sql.*,com.bit.web05.*" %>
 	<%
 	int num=Integer.parseInt(request.getParameter("num"));
-	String sql="select A.num,B.nick,A.nalja,A.cnt,A.sub "
+	String sql="select A.id, A.num,B.nick,A.nalja,A.cnt,A.sub "
 			+" ,A.content from bbs01 A inner join bbs01user B "
 			+" on A.id=B.id where A.num="+num;
 	JavaBean bean=new JavaBean();
@@ -24,6 +24,7 @@
 		stmt=conn.createStatement();
 		rs=stmt.executeQuery(sql);
 		if(rs.next()){
+			bean.setId(rs.getString("id"));
 			bean.setNum(rs.getInt("num"));
 			bean.setNick(rs.getString("nick"));
 			bean.setNalja(rs.getDate("nalja"));
@@ -44,7 +45,22 @@
 		조회수:<%=bean.getCnt() %><br></p>
 	<p>제목:<%=bean.getSub() %></p>
 	<p><%=bean.getContent() %></p>
-	
+	<p>
+	<%
+	Object obj=session.getAttribute("login");
+	if(obj!=null){
+		Bbs01userBean login=(Bbs01userBean)obj;
+		String wID=bean.getId();
+		String loginID=login.getId();
+		if(wID.equals(loginID)){
+	%>
+	<a href="edit.jsp?num=<%=bean.getNum() %>">[수 정]</a>
+	<a href="delete.jsp?num=<%=bean.getNum() %>">[삭 제]</a>
+	<%
+		}
+	}
+	%>
+	</p>
 </body>
 </html>
 
