@@ -12,17 +12,20 @@
 	int p=1;
 	int pcnt=10;
 	int total=0;
+	String word="";
 	String param1=request.getParameter("page");
 	String param2=request.getParameter("pcnt");
+	String param3=request.getParameter("word");
 	
 	if(param1!=null)p=Integer.parseInt(param1);
 	if(param2!=null)pcnt=Integer.parseInt(param2);
+	if(param3!=null)word+=param3.trim();
 	
 	int pstart=pcnt*(p-1)+1;
 	int pend=pstart+(pcnt-1);
 	String sql="select * from (select rownum as rn,num,sub,id,nalja ";
 	sql+=",num_lev from (select num,sub,id,nalja,num_lev from bbs02 ";
-	sql+=" order by num_ref desc, num_no desc)) ";
+	sql+=" where sub like '%"+word+"%' order by num_ref desc, num_no desc)) ";
 	sql+=" where rn between "+pstart+" and "+pend;
 
 	ArrayList<Bbs02Bean> list=new ArrayList<Bbs02Bean>();
@@ -30,7 +33,7 @@
 	try{
 		conn=getConnection();
 		stmt=conn.createStatement();
-		rs=stmt.executeQuery("select count(*) from bbs02");
+		rs=stmt.executeQuery("select count(*) from bbs02 where sub like '%"+word+"%'");
 		if(rs.next())total=rs.getInt(1);
 		stmt=conn.createStatement();
 		rs=stmt.executeQuery(sql);
@@ -50,6 +53,7 @@
 	}
 %>
 <form>
+	<input type="hidden" name="word" value="<%=word %>" >
 	<select name="pcnt">
 		<option value="5" <%
 		if(pcnt==5)out.print(" selected=\"selected\"");
@@ -114,23 +118,28 @@ int gap=5;
 int start=(p-1)/gap*gap+1;
 int end=start+(gap-1);//(total-1)/pcnt+1;
 if(end>(total-1)/pcnt+1)end=(total-1)/pcnt+1;
-if(start!=1)out.print("<a href=\"index.jsp?page="+(start-1)+"&pcnt="+pcnt+"\">[이전]</a>");
+if(start!=1)out.print("<a href=\"index.jsp?page="+(start-1)+"&pcnt="+pcnt+"&word="+word+"\">[이전]</a>");
 else out.print("<a>[이전]</a>");
 
 for(int i=start; i<=end; i++){
 	String msg2="";
-	if(p!=i)msg2="href=\"index.jsp?page="+i+"&pcnt="+pcnt+"\"";
+	if(p!=i)msg2="href=\"index.jsp?page="+i+"&pcnt="+pcnt+"&word="+word+"\"";
 %>
 	<a <%=msg2 %>>[<%=i %>]</a>	
 <%
 } 
 String msg="";
 if(end<(total-1)/pcnt+1){
-	msg="href=\"index.jsp?page="+(end+1)+"&pcnt="+pcnt+"\"";
+	msg="href=\"index.jsp?page="+(end+1)+"&pcnt="+pcnt+"&word="+word+"\"";
 }
 %>
 <a <%=msg %>>[다음]</a>
 <br>
+<form>
+	<input type="hidden" name="pcnt" value="<%=pcnt%>">
+	<input type="text" name="word">
+	<input type="submit" value="검 색">
+</form>
 <br>
 <br>
 <a href="add.jsp">[입 력]</a>
