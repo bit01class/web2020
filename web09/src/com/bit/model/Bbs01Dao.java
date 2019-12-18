@@ -129,6 +129,25 @@ public class Bbs01Dao {
 		}
 		
 	}
+	
+	public void delete(int num){
+		String sql="DELETE FROM BBS01 WHERE NUM=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }
 
 

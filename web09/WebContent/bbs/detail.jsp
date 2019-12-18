@@ -34,9 +34,17 @@
 		<tr>
 			<td colspan="6">
 				<a href="./?p=edit&num=<%=bean.getNum()%>">[수 정]</a>
-				<a>[]</a>
+				<a href="./?p=delete&num=<%=bean.getNum()%>">[삭 제]</a>
 			</td>
 		</tr>
 	</table>
 </body>
 </html>
+
+
+
+
+
+
+
+
