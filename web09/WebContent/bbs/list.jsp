@@ -8,6 +8,7 @@
 </head>
 <body>
 	<h1>게시판</h1>
+	<a href="./?p=add">[글쓰기]</a>
 	<table align="center" border="1" cellspacing="0" width="90%">
 		<tr>
 			<th>글번호</th>
@@ -25,7 +26,7 @@
 		%>
 		<tr>
 			<td><%=bean.getNum() %></td>
-			<td><%=bean.getSub() %></td>
+			<td><a href="./?p=detail&num=<%=bean.getNum() %>"><%=bean.getSub() %></a></td>
 			<td><%=bean.getId() %></td>
 			<td><%=bean.getNalja() %></td>
 		</tr>
