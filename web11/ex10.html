@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+    h1~div{
+        background-color: gray;
+        margin-top: 10px;
+        width: 306px;
+    }
+    div>div{
+        width: 100px;
+        background-color: aqua;
+        display: inline-block;
+        border-right: solid red 1px;
+        border-left-width: 1px;
+        border-left-style: solid;
+        border-left-color: red;
+    }
+    div>span{
+        background-color: aqua;
+    }
+    div>div:nth-child(2),span:nth-child(2){
+        /*
+        background-color: rgba(0,0,0,0);
+        opacity: 0;
+        visibility: hidden;
+        */
+        display: none;
+        
+    }
+</style>
+</head>
+<body>
+    <h1>box modeling</h1>
+    <div>
+        <div>box1</div><div>box2</div><div>box3</div>
+    </div>
+    <div>
+        <span>inline1</span>
+        <span>inline2</span>
+        <span>inline3</span>
+    </div>
+</body>
+</html>
