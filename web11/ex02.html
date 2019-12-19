@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            /*
+            , + ~ > &nbsp;
+            */
+            div>div>div span{
+                background-color: yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>선택자</h1>
+        <div>
+            <p>내용1</p>
+            <p>내용2</p>
+        </div>
+        <div>
+            <span>그룹1</span>
+            <span>그룹2</span>
+            <span>그룹3</span>
+        </div>
+        <p>div와 span 태그</p>
+        <p>결과는 위와 같습니다</p>
+        <div>
+            <p>div</p>
+            <div>
+                <p>div>div</p>
+                    <div>
+                        <p>
+                            div><span> div > div</span>
+                        </p>
+                    </div>
+            </div>
+        </div>
+    </body>
+</html>

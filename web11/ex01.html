@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<HTML>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="css/test01.css" />
+        <style type="text/css">
+            /*
+            태그선택자: 태그명
+            아이디선택자: #아이디
+            클래스선택자: .클래스명
+우선순위
+        동등선택자 : 마지막 적용
+    
+    인라인>아이디선택자>클래스선택자>태그선택자
+            */
+            #id1,#id3,.cl1{
+                color:red;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>대제목</h1>
+        <p>아래와 같이 설명하겠습니다</p>
+        <h2>중제목1</h2>
+        <p id="id1">내용1</p>
+        <h2 id="id3">중제목2</h2>
+        <h3>소제목1</h3>
+        <p id="id2" class="cl1">내용2</p>
+        <h3>소제목2</h3>
+        <p class="cl1">내용3</p>
+    </body>
+</HTML>
