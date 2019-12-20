@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+
+    table{
+        width: 500px;
+        border-collapse: collapse;
+    }
+    table,th,td{
+        border: 1px solid gray;
+    }
+    table tr{}
+    table tr>th{
+        background-color: darkgray;
+    }
+    table tr>th:first-child,
+    table tr>th:nth-child(3),
+    table tr>th:last-child
+    {
+        width: 15%;
+    }
+    table tr>td{
+        height: 50px;
+        text-align: right;
+        vertical-align: bottom;
+    }
+    table tr>td:nth-child(2n-1){
+        /*background-color: #dddddd;*/
+    }
+    table tbody>tr:nth-child(2n)>td{
+        /*background-color: #ddd;*/
+    }
+    table tbody>tr:hover{
+        background-color: red;
+    }
+
+</style>
+</head>
+<body>
+<h1>테이블</h1>
+<table>
+    <thead>
+        <tr>
+            <th>글번호</th>
+            <th>제목</th>
+            <th>글쓴이</th>
+            <th>조회수</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>4</td>
+            <td>제목4</td>
+            <td>관리자</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>제목3</td>
+            <td>관리자</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>제목2</td>
+            <td>관리자</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>제목1</td>
+            <td>관리자</td>
+            <td>0</td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
