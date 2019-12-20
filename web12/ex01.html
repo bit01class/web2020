@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+    h1{
+        width: 200px;
+        text-align: center;
+        border-bottom-width: 3px;
+        border-bottom-color: gray;
+        border-bottom-style: double;
+        margin: 0px auto 20px auto;
+    }
+    h1+form{
+        width: 400px;
+        margin: 0px auto;
+        border: 1px solid gray;
+    }
+    form>div{
+        width: 300px;
+        height: 30px;
+        margin: 10px auto;
+    }
+    form>div:first-child,
+    form>div:first-child+div,
+    form>div:first-child+div+div,
+    form>div:first-child+div+div+div
+    {
+        text-align: center;
+        border-bottom-width: 1px;
+        border-bottom-color: gray;
+        border-bottom-style: dashed;
+    }
+    form>div>label:first-child{
+        display: inline-block;
+        width: 50px;
+        text-align: left;
+    }
+    form>div>label:first-child+input{
+        width: 150px;
+        
+    }
+    form>div>input:first-child~label{
+        display: inline-block;
+        width: 60px;
+        
+    }
+    form>div:nth-child(5){
+        height: 100px;
+        text-align: center;
+    }
+    form>div>textarea{
+        width: 200px;
+        height: 100px;
+    }
+    form>div:nth-child(6){
+        text-align: center;
+    }
+    form>div>button{
+        width: 100px;
+        height: 35px;
+    }
+    
+</style>
+</head>
+<body>
+    <h1>화원가입</h1>
+    <form>
+        <div>
+        <label for="id">id</label>
+        <input type="text" id="id"></div>
+        <div>
+        <label for="pw">pw</label>
+        <input type="password" id="pw">
+        </div>
+        <div>
+        <label for="name">name</label>
+        <input type="text" id="name">
+        </div>
+        <div>
+            <input type="checkbox" id="chk1"><label for="chk1">check1</label>
+            <input type="checkbox" id="chk2"><label for="chk2">check2</label>
+            <input type="checkbox" id="chk3"><label for="chk3">chk3</label>
+        </div>
+        <div>
+            <textarea></textarea>
+        </div>
+        <div>
+        <button>가입</button>
+        <button type="reset">취소</button>
+        </div>
+    </form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
