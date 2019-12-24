@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+/*
+all
+screen
+print
+speech
+*/
+@media print{
+    body{
+        background-color: yellow;
+    }
+    body>*{
+        color: black;
+        border-bottom: 1px solid gray;
+    }
+}         
+@media screen and (min-width:800px){
+    body{
+        background-color: black;
+        margin: 0px;
+    }
+    body>h1,body>p,body>h2{
+        width: 400px;
+        color: white;
+        margin: 0px auto;
+    }
+
+}
+@media screen and (min-width:600px) and (max-width:799px){
+    body{
+        background-color: red;
+    }
+}
+@media screen and (max-width:599px){
+    body{
+        background-color: gray;
+        margin: 0px;
+    }
+    body>h1,body>p,body>h2{
+        width: 400px;
+        color: black;
+        margin: 0px auto;
+    }
+
+}
+            
+        
+        </style>
+    </head>
+    <body>
+        <h1>제목</h1>
+        <p>설명</p>
+        <h2>부제목1</h2>
+        <p>설명1</p>
+        <h2>부제목2</h2>
+        <p>설명2</p>
+    </body>
+</html>

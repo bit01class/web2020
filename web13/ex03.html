@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style type="text/css">
+ul{
+    padding: 0px;
+}
+ul>li{
+    width: 50px;
+    margin: 1px 0px;
+    height: 50px;
+    background-image: url(imgs/car.jpg);
+    background-size: 50px;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+li:hover{
+    width: 800px;
+    transition-duration: 5s;
+}
+
+#id02:hover{
+    transition-timing-function: linear;
+}
+#id03:hover{
+    transition-timing-function: ease;
+}
+#id04:hover{
+    transition-delay: 2s;
+} 
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+            <li><a href="#">menu1</a></li>
+            <li id="id02"><a href="#">menu2</a></li>
+            <li id="id03"><a href="#">menu3</a></li>
+            <li id="id04"><a href="#">menu4</a></li>
+            <li id="id05"><a href="#">menu5</a></li>
+        </ul>
+
+    </div>
+
+</body>
+</html>

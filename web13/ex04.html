@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+<style type="text/css">
+    #menu{}
+    #menu>ul{
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+    }
+    #menu>ul>li{
+        float: left;
+        background-color: gray;
+        height: 50px;
+        overflow: hidden;
+    }
+    #menu>ul>li:hover{
+        height: 200px;
+        /*transition-duration: 1s;*/
+    }
+    #menu>ul>li>a{
+        display: inline-block;
+        width: 100px;
+        height: 50px;
+        color: white;
+        line-height: 50px;
+        text-decoration: none;
+        text-align: center;
+    }
+    li>ul{
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+    }
+    li>ul>li{
+        
+    }
+    li>ul>li>a{
+        display: block;
+        height: 49px;
+        line-height: 49px;
+        text-align: center;
+        text-decoration: none;
+        color: yellow;
+        border-top: 1px solid white;
+    }
+    li>ul>li>a:hover{
+        background-color: red;
+    }
+</style>
+</head>
+<body>
+<div id="header">
+    <h1>비트교육센터</h1>
+</div>
+<div id="menu">
+    <ul>
+        <li>
+            <a href="#">menu1</a>
+            <ul>
+                <li><a href="#">menu1-1</a></li>
+                <li><a href="#">menu1-2</a></li>
+                <li><a href="#">menu1-3</a></li>
+            </ul>
+        </li>
+        <li><a href="#">menu2</a>
+            <ul>
+                <li><a href="#">menu2-1</a></li>
+                <li><a href="#">menu2-2</a></li>
+                <li><a href="#">menu2-3</a></li>
+            </ul></li>
+        <li><a href="#">menu3</a>
+            <ul>
+                <li><a href="#">menu3-1</a></li>
+                <li><a href="#">menu3-2</a></li>
+                <li><a href="#">menu3-3</a></li>
+            </ul></li>
+        <li><a href="#">menu4</a></li>
+    </ul>
+
+</div>
+</body>
+</html>

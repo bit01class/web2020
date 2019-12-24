@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script type="text/javascript">
+
+    var a,b;
+    a=10;
+    b=3;
+    console.log(a+'+'+b+'='+(a+b));
+    console.log(a+'-'+b+'='+(a-b));
+    console.log(a+'x'+b+'='+a*b);
+    console.log(a+'/'+b+'='+a/b);
+    console.log(a+'%'+b+'='+a%b);
+    console.log(a+'/'+b+'='+(a-(a%b))/b);
+
+    console.log('1000'+2);
+    console.log('1000'-2);
+    console.log('1000'*2);
+    console.log('1000'/2);
+    
+    
+    var c,d;
+    c='3';
+    d=3;
+    console.log(c==d);
+    console.log(c!=d);
+    console.log(c===d); // == and 타입일치
+    console.log(c!==d); // != and 타입불일치
+    console.log(c>d);
+    console.log(c>=d);
+    console.log(c<d);
+    console.log(c<=d);
+    console.log('--------------------');
+    console.log(true && true);
+    console.log(true || true);
+    console.log(true && false);
+    console.log(true || false);
+    console.log(false && false);
+    console.log(false || false);
+    console.log('--------------------');
+    e=10;
+    e++;
+    console.log(e);
+    e-=2;
+    console.log(e);
+    console.log('--------------------');
+    console.log(true & true);
+    console.log(true | true);
+    console.log(true & false);
+    console.log(true | false);
+    console.log(false & false);
+    console.log(false | false);
+    console.log('--------------------');
+    /*제어문(조건문)*/
+    var g;
+    if(g){
+        console.log('참');
+       }else{
+           console.log('거짓');
+       }
+    console.log('--------------------');
+    var m;
+    m=true; //===
+    switch(m){
+        case 4-1-1-1: 
+            console.log('1입니다');
+            break;
+        case 4>2:
+            console.log('2입니다');
+            break;
+        case 4-1: 
+            console.log('3입니다');
+            break;
+        default:
+            console.log('모릅니다');
+    }
+    console.log('--------------------');
+    /*반복문*/
+    var i;
+    for(i=0; i<5; i++){
+        console.log('첫번째 반복문 '+i);
+    }
+    console.log(i);
+    for(i=0; i<5; i++){
+        console.log('두번째 반복문 '+i);
+    }
+    console.log(i);
+    console.log('--------------------');
+    /*while*/
+    var n;
+    n=5;
+    while(n--){
+        console.log('while : '+n);
+    }
+    console.log('--------------------');
+    /*do while*/
+    var p=5;
+    do{
+        console.log(p);
+    }while(--p);
+    console.log('--------------------');
+    /*삼항 연산자*/
+    var z='';
+    console.log(z?'참':'거짓');
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

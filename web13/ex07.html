@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+<script type="text/javascript">
+
+    function func01(){
+        history.back();
+    }
+    
+    function func02(){
+        if(frm.tf.value==''){
+            return false;
+        }else{
+            return true;
+        }
+    }
+</script>
+</head>
+<body>
+    <h1>자바스크립트</h1>
+    <a href="ex08.html">next</a>
+    <input type="text"/>
+    <input type="button" onclick="func01();" value="뒤로가기"/>
+    <form name="frm" onsubmit="return func02()" action="ex08.html">
+        <input name="tf" type="text"/>
+        <button type="submit">전송</button>
+    </form>
+
+</body>
+</html>
