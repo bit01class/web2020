@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script type="text/javascript">
+function func01(){
+    var date=new Date();
+    console.log(date.getYear()+1900
+                ,date.getMonth()+1
+                ,date.getDate()
+                ,date.getTime());
+    obj=window.setTimeout(func01,1000);
+}
+ /* BOM (Window) */
+//    window.alert('메시지');
+    var result;
+//    result=window.confirm('삭제하시겠습니까?');
+    
+//    result=window.prompt('입력','이렇게 입력하세요');
+    
+    
+    console.log(result);
+//    window.setTimeout(func01,1000);
+var obj;
+    function btnStart(){
+//     obj=window.setInterval(func01,1000);
+//        obj=window.setTimeout(func01,1000);
+        obj=window.open("ex10.html","_blank","width=400, height=400");//_blank,_self
+    }
+    function btnEnd(){
+//        window.clearInterval(obj);
+        window.clearTimeout(obj);
+    }
+</script>
+</head>
+<body>
+    <button onclick="btnStart();">시작</button>
+    <button onclick="btnEnd();">끝</button>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
