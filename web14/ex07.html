@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script type="text/javascript">
+
+    function func01(){
+        
+        return ;
+    }
+    var func02=function(){
+        return;
+    };
+    
+    window.func01();
+    window.func02();
+    (function(){
+        console.log('익명함수');
+        return;
+    })();
+    
+    function func03(a,b,c){
+        console.log(a,b,c);
+    }
+    
+    func03();
+    
+    function func04(){
+        var args=arguments;
+        console.log(typeof args);
+        console.log('func04 run..');
+        console.log(args.length);
+        for(var i=0; i<args.length; i++){
+            console.log(args[i]);
+        }
+        
+    }
+    func04(1,2,3,4);
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

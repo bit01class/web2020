@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script type="text/javascript">
+
+    var a;
+    a=1111;
+    var a=2222;
+    console.log(a);
+    var b;
+    b=3333;
+    function func01(){
+        b=4444;
+    }
+    
+    console.log(b);
+    func01();
+    console.log(b);
+    console.log(window.a);
+    console.log(typeof window);
+    
+    var d=new Object();
+    d.key1=1234;
+    console.log(window.d.key1);
+    console.log("-------------------------");
+    
+    var h={'key1':12
+            ,'key2':'aaa'
+            ,'key3':{'key1':222,'key2':'bbb','key3':function (){
+                alert('object function');
+                return this.key2;
+            }}
+            ,'key4':[333,'cccc',function(){
+                alert('array function');
+                return ;
+            }]
+            ,'key5':function(){
+                alert("h function");
+                return this.key2;
+            }
+          };
+    
+    console.log(h.key2);
+    console.log(h.key3.key2);
+    console.log(h.key4[1]);
+    console.log("-------------------------");
+    var result=h.key5();
+//    h.key4[2]();
+//    var result=h.key3.key3();
+    console.log(result);
+    var m=function(){
+        console.log(this);
+        console.log(this==window);
+    };
+    function func02(){
+        this.a=6666;
+        console.log(this);
+        console.log(this==window);
+    };
+    window.m();
+    window.func02();
+    console.log("-------------------------");
+    var n={'func01':function(a,b){
+        this[a]=b;
+    }};
+    n.func01('key1','aaa');
+    n.func01('key2','bbbb');
+    console.log(n);
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

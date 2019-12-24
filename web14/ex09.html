@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script type="text/javascript">
+
+    function func01(){
+        var a=function(){
+            console.log('지역변수');
+        };
+        return a;
+    }
+    
+    var obj=func01();
+    console.log(obj);
+    obj();
+</script>
+</head>
+<body>
+<h1>클로져</h1>
+</body>
+</html>

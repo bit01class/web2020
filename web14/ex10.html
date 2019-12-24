@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+    h1,table{
+        /*margin: 0px auto;*/
+    }
+    table,th,td{
+        border: 1px solid gray;
+    }    
+    table{
+        width: 400px;
+        border-collapse: collapse;
+        
+    }      
+</style>
+<script type="text/javascript">
+
+var arr=new Array();
+
+function newObj(){
+    var obj={'num':0,'kor':0,'eng':0,'math':0
+            ,getNum(){return this.num;}
+            ,getKor(){return this.kor;}
+            ,getEng(){return this.eng;}
+            ,getMath(){return this.math;}
+            ,setNum(a){this.num=a;}
+            ,setKor(a){this.kor=a;}
+            ,setEng(a){this.eng=a;}
+            ,setMath(a){this.math=a;}
+            }; 
+    return obj;
+}
+var stu1=newObj();
+stu1.setNum(1);
+stu1.setKor(99);
+stu1.setEng(98);
+stu1.setMath(97);
+arr.push(stu1);
+
+stu1=newObj();
+stu1.setNum(2);
+stu1.setKor(89);
+stu1.setEng(88);
+stu1.setMath(87);
+arr.push(stu1);
+    
+stu1=newObj();
+stu1.setNum(3);
+stu1.setKor(79);
+stu1.setEng(78);
+stu1.setMath(77);
+arr.push(stu1); 
+    
+stu1=newObj();
+stu1.setNum(4);
+stu1.setKor(69);
+stu1.setEng(68);
+stu1.setMath(67);
+arr.push(stu1);
+    
+
+document.write('<h1>학생성적관리프로그램</h1>');    
+document.write('<table>');    
+document.write('<tr><th>학번</th><th>국어</th><th>영어</th><th>수학</th></tr>');    
+for(var i=0; i<arr.length; i++){
+document.write('<tr>');    
+    obj=arr[i];
+    document.write('<td>'+obj.getNum()+'</td>');    
+    document.write('<td>'+obj.getKor()+'</td>');    
+    document.write('<td>'+obj.getEng()+'</td>');    
+    document.write('<td>'+obj.getMath()+'</td>');    
+document.write('</tr>');    
+}
+document.write('</table>');    
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>
