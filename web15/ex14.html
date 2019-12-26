@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+    .err{
+        color: red;
+        font-style: italic;
+    }    
+</style>
+<script type="text/javascript">
+var form,id,select,ra,pw;
+window.onload=function(){
+    form=document.querySelector('form');
+    form.onsubmit=function(){
+        alert('기본기능 취소');
+        return false;
+    };
+    
+    var callback=function(){
+        console.log(this.value);
+    };
+    
+    id=document.querySelector('#id');
+    select=document.querySelector("form select");
+    
+    id.onchange=callback;
+    select.onchange=callback;
+    ra=document.querySelectorAll('input[type="radio"]');
+    ra.forEach(function(ele){
+        ele.onchange=function(){
+            console.log(ele.id);
+        };
+        
+    });
+   
+var span=document.createElement('span');
+span.appendChild(document.createTextNode('6자리이상'));
+    pw=document.querySelector('input[type=password]');
+    pw.onblur=function(){
+        var parent=pw.parentElement;
+        if(pw.value.length<6){
+            
+//            parent.innerHTML=parent.innerHTML+'<span class="err">6자리이상</span>';
+parent.appendChild(span);
+            
+        }else{
+var spanidx=parent.innerHTML.indexOf('<span>');
+if(spanidx<0) parent.innerHTML.length;
+parent.innerHTML=parent.innerHTML.substr(0,spanidx);
+        }
+    };
+    
+    id.onfocus=function(){
+        id.value='';
+    };
+}
+
+</script>
+</head>
+<body>
+    <h1>고유기능</h1>
+
+    <form action="ex13.html">
+       <div>
+           <label for="id">id</label>
+           <input type="text" id="id" name="id"/>
+       </div>
+       <div>
+           <label for="pw">pw</label>
+           <input type="password" id="pw" name="pw"/>
+       </div>
+       
+       <div>
+           <input type="radio" id="ra1" name="ra"/>
+           <label for="ra1">radio1</label>
+           <input type="radio" id="ra2" name="ra"/>
+           <label for="ra2">radio2</label>
+           <input type="radio" id="ra3" name="ra"/>
+           <label for="ra3">radio3</label>
+       </div>
+       <div>
+           <select name="sel">
+               <option>item1</option>
+               <option>item2</option>
+               <option>item3</option>
+               <option>item4</option>
+           </select>
+       </div>
+        <button type="submit">전송</button>
+    </form>
+</body>
+</html>
