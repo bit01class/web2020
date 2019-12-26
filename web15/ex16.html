@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+    #header,#content{
+        width: 500px;
+        background-color: aqua;
+        margin: 0px auto;
+    }
+    #content{}
+    #content>#carousel{
+        width: 320px;
+        height: 320px;
+        margin: 0px auto;
+        overflow: hidden;
+    }
+    #content>#carousel>ul{
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+    }
+    #content>#carousel>ul>li{
+        float: left;
+    }
+    #content>#carousel>ul>li>img{
+        width: 320px;
+    }
+    
+</style>
+<script type="text/javascript">
+var carousel,ul;
+function nxtImg(){
+    var before=parseInt(ul.style.marginLeft);
+    if(before==-320*5){before=320;}
+    ul.style.marginLeft=before+(-320)+'px';
+}
+window.onload=function(){
+carousel=document.querySelector('#carousel');
+ul=carousel.querySelector('ul');
+ul.style.marginLeft='0px';
+//console.log(ul.style.marginLeft);
+window.setInterval(nxtImg,1000);
+};
+</script>
+</head>
+<body>
+<div id="header">
+    <h1>비트 쇼핑몰</h1>
+</div>
+<div id="content">
+   <div id="carousel">
+    <ul>
+        <li><img src="imgs/big01.jpg"/></li>
+        <li><img src="imgs/big02.jpg"/></li>
+        <li><img src="imgs/big03.jpg"/></li>
+        <li><img src="imgs/big04.jpg"/></li>
+        <li><img src="imgs/big05.jpg"/></li>
+        <li><img src="imgs/big06.jpg"/></li>
+    </ul>
+   </div>
+</div>
+</body>
+</html>
