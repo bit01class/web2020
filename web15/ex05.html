@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script type="text/javascript">
+    
+function add(){
+    var input=document.getElementById('source');
+    var target=document.getElementById('target');
+    
+    var li=document.createElement('li');
+    li.appendChild(document.createTextNode(input.value));
+    
+    target.appendChild(li);
+    input.value="";
+}
+
+function del(){
+    var target=document.getElementById('target');
+    if(target.childElementCount!=0){
+target.removeChild(target.lastElementChild);
+    }
+}
+
+function delAll(){
+    var target=document.getElementById('target');
+    var lis=document.getElementsByTagName('li');
+    
+    while(target.childElementCount){
+        target.removeChild(lis[0]);
+    }
+    
+    
+}
+
+</script>
+</head>
+<body>
+    <h1>DOM 추가&삭제2</h1>
+    <input id="source" type="text">
+    <button onclick="add()">추가</button>
+    <button onclick="del()">삭제</button>
+    <button onclick="delAll()">초기화</button>
+    <ul id="target"></ul>
+</body>
+</html>

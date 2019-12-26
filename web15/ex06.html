@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+    #header,#content{
+        width: 500px;
+        margin: 0px auto;
+        background-color: aqua;
+    }
+    #carousel{
+        width: 320px;
+        margin: 0px auto;
+    } 
+    #carousel>img:first-child~img{
+        display: none;
+    } 
+</style>
+<script type="text/javascript">
+var loop=window.setTimeout(imgLoop,3000);
+function imgLoop(){
+    var carousel=document.getElementById('carousel');
+    var imgs=document.getElementsByTagName("img");
+    var img=imgs[0];
+    carousel.appendChild(img);
+    loop=window.setTimeout(imgLoop,3000);
+}
+</script>
+</head>
+<body>
+<div id="header">
+    <h1>비트쇼핑몰</h1>
+</div>
+<div id="content">
+    <div id="carousel">
+        <img src="imgs/big01.jpg"/>
+        <img src="imgs/big02.jpg"/>
+        <img src="imgs/big03.jpg"/>
+        <img src="imgs/big04.jpg"/>
+        <img src="imgs/big05.jpg"/>
+        <img src="imgs/big06.jpg"/>
+    </div>
+ 
+</div>
+
+</body>
+</html>

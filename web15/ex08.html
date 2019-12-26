@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+    <head>
+<meta charset="utf-8">
+<style type="text/css">
+    #header,#content{
+        width: 500px;
+        margin: 0px auto;
+        /*background-color: aqua;*/
+    }
+    #content{
+        text-align: center;
+    }
+    #content>img{
+        width: 320px;
+        margin: 0px auto 100px auto;
+    }
+    
+</style>
+<script type="text/javascript">
+var su=0;
+var loop=window.setTimeout(imgLoop,1000);
+function imgLoop(){
+    
+    if(++su>6){
+        su=1;
+    }
+    var img=document.querySelector("#content>img");
+    img.outerHTML='<img src="imgs/big0'+su+'.jpg"/>';
+    loop=window.setTimeout(imgLoop,3000);
+}    
+
+</script>
+</head>
+<body>
+<div id="header">
+    <h1>비트 쇼핑몰</h1>
+</div>
+<div id="content">
+    <img/>
+</div>
+</body>
+</html>

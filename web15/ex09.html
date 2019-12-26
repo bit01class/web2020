@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script type="text/javascript">
+
+function add(){
+    var input=document.querySelector('input');
+    var ul=document.querySelector('ul');
+    ul.innerHTML=ul.innerHTML+'<li>'+input.value+'</li>';
+}
+function del(){
+    var ul=document.querySelector('ul');
+    var last=ul.innerHTML.lastIndexOf('<li>');
+    ul.innerHTML=ul.innerHTML.substr(0,last);
+}
+
+</script>
+</head>
+<body>
+    <h1>add&delete</h1>
+    <input type="text"/>
+    <button onclick="add();">add</button>
+    <button onclick="del();">delete</button>
+    <ul></ul>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style type="text/css">
+        h1{
+            cursor: pointer;
+        }
+    </style>
+    <script type="text/javascript">
+//event level1 -인라인
+function btn01(){
+    alert('버튼1이 눌렸습니다');
+    //location.href='http://daum.net';
+    return false;
+}
+
+    </script>
+</head>
+<body>
+    <h1 onclick="btn01();">이벤트</h1>
+    <p>네이버로 <a onclick="return btn01();" href="http://naver.com">이동</a></p>
+    <button onclick="btn01();">버튼</button>
+    <form onsubmit="return false;" action="ex01.html">
+       <input type="text" name="test"/>
+        <button type="submit">submit</button>
+        <button onclick="btn01();" type="button">button</button>
+    </form>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

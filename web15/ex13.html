@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+    div{
+        width: 100px;
+        height: 100px;
+        border: 1px solid gray;
+        background-color: aqua;
+    } 
+    #target2{
+        background-image: url(imgs/img06.jpg);
+        background-size: 100%;
+    }
+</style>
+<script type="text/javascript">
+var input,target1,target2;
+window.onload=function(){
+    input=document.querySelector("input");
+    target2=document.querySelector("#target2");
+//    input.onkeydown=function(e){
+//        console.log("onkeydown",e.key,e.keyCode,input.value);
+//    };
+//    input.onkeyup=function(e){
+//        console.log("onkeyup",e.key,e.keyCode,input.value);
+//    };
+//    input.onkeypress=function(e){
+//        console.log("onkeypress",e.key,e.keyCode,input.value);
+//    };
+    target2.style.marginLeft='0px';
+    target2.style.marginTop='0px';
+    window.onkeyup=function(e){
+//        38,39,40,37
+//        console.log(e.keyCode);
+        if(e.keyCode==39){
+            console.log(target2.style.marginLeft);
+            target2.style.marginLeft=parseInt(target2.style.marginLeft)+10+'px';
+        }else if(e.keyCode==40){
+            target2.style.marginTop=parseInt(target2.style.marginTop)+10+'px';
+        }else if(e.keyCode==37){
+            console.log(target2.style.marginLeft);
+            target2.style.marginLeft=parseInt(target2.style.marginLeft)-10+'px';
+        }else if(e.keyCode==38){
+            target2.style.marginTop=parseInt(target2.style.marginTop)-10+'px';
+        }
+    };
+};
+    
+    
+    
+
+</script>
+</head>
+<body>
+<h1>키보드 이벤트</h1>
+<input type="text"/>
+<div id="target1"></div>
+<div id="target2"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

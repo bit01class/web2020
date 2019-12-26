@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<script type="text/javascript">
+
+var h1;
+  
+window.onload=function (){
+    h1=document.querySelector('h1');
+    h1.onclick=eleClk;
+    function eleClk(){
+    alert('클릭됨');
+    }
+};
+</script>
+</head>
+<body>
+    <h1>DOM Level2 Event</h1>
+    <p>ex10 페이지로 <a href="ex10.html">이동</a></p>
+    <form action="ex09.html">
+        <input type="text" name="msg"/>
+        <button type="submit">전송</button>
+        <button type="button">뒤로</button>
+    </form>
+    
+</body>
+</html>

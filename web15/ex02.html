@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+    #content>ul{
+        list-style: none;
+    }    
+    #content>ul>li{display: none;}    
+    #content>ul>li:first-child{display: block;}    
+</style>
+<script type="text/javascript">
+var loop=window.setInterval(loopImg,3000);
+
+function loopImg(){
+
+    var ul=document.firstElementChild.lastElementChild.lastElementChild.firstElementChild;
+    
+    var li1=ul.firstElementChild;
+    
+    ul.appendChild(li1);
+}
+    
+</script>
+</head>
+<body>
+<div id="header">
+    <h1>비트쇼핑몰</h1>
+</div>
+<div id="content">
+    <ul>
+        <li><img src="imgs/big01.jpg"/></li>
+        <li><img src="imgs/big02.jpg"/></li>
+        <li><img src="imgs/big03.jpg"/></li>
+        <li><img src="imgs/big04.jpg"/></li>
+        <li><img src="imgs/big05.jpg"/></li>
+        <li><img src="imgs/big06.jpg"/></li>
+    </ul>
+</div>
+
+</body>
+</html>
