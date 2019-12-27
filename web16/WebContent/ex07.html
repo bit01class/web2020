@@ -119,8 +119,14 @@ var xhr,form,id,pw;
 
 function callback(){
 	if(xhr.readyState==4&&xhr.status==200){
-		var msg=xhr.responseText;
-		form.outerHTML=msg;
+		var xml=xhr.responseXML;
+		var result=xml.firstElementChild.children[0].children[0].childNodes[0].nodeValue;
+		var name=xml.firstElementChild.children[0].children[1].childNodes[0].nodeValue;
+		if(parseInt(result)>0){
+			form.innerHTML='<h2>'+name+'님 환영합니다'+'</h2>';
+		}else{
+			alert("id,pw다시 확인하세요");
+		}
 	}	
 }
 
@@ -132,7 +138,7 @@ window.onload=function(){
 		pw=form.querySelector('input[type=password]').value;
 		xhr=new XMLHttpRequest();
 		xhr.onreadystatechange=callback;
-		xhr.open('get','result01.jsp?id='+id+'&pw='+pw);
+		xhr.open('get','result02.jsp?id='+id+'&pw='+pw);
 		xhr.send();
 		return false;
 	};
