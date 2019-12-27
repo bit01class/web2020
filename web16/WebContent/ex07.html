@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+    #header,#menu,#content,#footer{
+        width: 800px;
+        background-color: aqua;
+        margin: 0px auto;
+    }
+    #header{
+    	overflow: hidden;
+    }
+    #header>h1{
+    	width: 300px;
+    }
+    #header>form,#header>h2{
+    	float: right;
+    }
+    #menu{
+        overflow: hidden;
+        height: 50px
+    }
+    #menu>ul>li>ol{
+        display: none;
+        position: absolute;
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+        z-index: 10;
+    }
+    #menu>ul>li>ol>li{
+    }
+    #menu>ul>li>ol>li>a{
+        border: 1px solid white;
+        box-sizing: border-box;
+        display: block;
+        width: 100px;
+        height: 50px;
+        background-color: gray;
+        color: white;
+        text-align: center;
+        line-height: 50px;
+        text-decoration: none;
+    }
+    #menu>ul>li>ol>li>a:hover{
+        background-color: red;
+    }
+    #menu>ul{
+        list-style: none;
+        margin: 0px auto;
+        padding: 0px;
+        width: 400px;
+        height: 50px;
+    }
+    #menu>ul>li{
+        float: left;
+    }
+    #menu>ul>li>a{
+        border: 1px solid white;
+        box-sizing: border-box;
+        display: inline-block;
+        width: 100px;
+        height: 50px;
+        background-color: gray;
+        color: white;
+        text-align: center;
+        line-height: 50px;
+        text-decoration: none;
+    }
+    #menu>ul>li>a:hover{
+        background-color: red;
+    }
+    #content{}
+    #content>#carousel{
+        position: relative;
+        width: 320px;
+        height: 320px;
+        margin: 0px auto;
+        overflow: hidden;
+    }
+    
+    #content>#carousel>a{
+        position: absolute;
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        background-color: rgba(200,200,200,0.5);
+        left: 0px;
+        top: 150px;
+        z-index: 5;
+        color: white;
+        border-radius: 25px;
+        text-align: center;
+        text-decoration: none;
+        line-height: 45px;
+        font-size: 2em;
+        font-weight: bold;
+    }
+    #content>#carousel>a:nth-child(2){
+        left: 270px;
+    }
+    #content>#carousel>ul{
+        list-style: none;
+        width: 1920px;‬
+        margin: 0px;
+        padding: 0px;
+        /*margin-left: -320px*/
+    }
+    #content>#carousel>ul>li{
+        float: left;
+    }
+    #content>#carousel>ul>li>img{
+        z-index: 0;
+    }
+</style>
+<script type="text/javascript">
+var xhr,form,id,pw;
+
+function callback(){
+	if(xhr.readyState==4&&xhr.status==200){
+		var msg=xhr.responseText;
+		form.outerHTML=msg;
+	}	
+}
+
+window.onload=function(){
+	form=document.querySelector("#header>form");
+	alert(id+":"+pw);
+	form.onsubmit=function(){
+		id=form.querySelector('input[type=text]').value;
+		pw=form.querySelector('input[type=password]').value;
+		xhr=new XMLHttpRequest();
+		xhr.onreadystatechange=callback;
+		xhr.open('get','result01.jsp?id='+id+'&pw='+pw);
+		xhr.send();
+		return false;
+	};
+	
+	
+	
+	
+};
+
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="header">
+            <h1>비트교육센터</h1>
+            <form action="result01.jsp">
+            	<label for="id">id</label>
+            	<input type="text" id="id" name="id"/>
+            	<label for="pw">pw</label>
+            	<input type="password" id="pw" name="pw"/>
+            	<button>로그인</button>
+            </form>
+        </div>
+        <div id="menu">
+            <ul>
+                <li>
+                <a href="#">menu1</a>
+                    <ol>
+                        <li><a href="#">menu1-1</a></li>
+                        <li><a href="#">menu1-2</a></li>
+                        <li><a href="#">menu1-3</a></li>
+                    </ol>
+                
+                </li>
+                <li><a href="#">menu2</a>
+                    <ol>
+                        <li><a href="#">menu2-1</a></li>
+                        <li><a href="#">menu2-2</a></li>
+                        <li><a href="#">menu2-3</a></li>
+                    </ol></li>
+                <li><a href="#">menu3</a></li>
+                <li><a href="#">menu4</a></li>
+            </ul>
+        </div>
+        <div id="content">
+            <div id="carousel">
+                <a href="#">prev</a>
+                <a href="#">next</a>
+                <ul>
+                    <li><img src="imgs/big01.jpg" /></li>
+                    <li><img src="imgs/big02.jpg" /></li>
+                    <li><img src="imgs/big03.jpg" /></li>
+                    <li><img src="imgs/big04.jpg" /></li>
+                    <li><img src="imgs/big05.jpg" /></li>
+                    <li><img src="imgs/big06.jpg" /></li>
+                </ul>
+            </div>            
+        </div>
+        <div id="footer">
+           <address>
+            서울특별시 서초구 서초대로74길33 비트빌 3층 
+           </address>
+COPYRIGHT BY BITACADEMY CO.LTD. ALL RIGHTS RESERVED. HTTP://www.BITacademy.com
+        </div>
+</body>
+</html>
