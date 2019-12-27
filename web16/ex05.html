@@ -12,6 +12,31 @@
         overflow: hidden;
         height: 50px
     }
+    #menu>ul>li>ol{
+        display: none;
+        position: absolute;
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+        z-index: 10;
+    }
+    #menu>ul>li>ol>li{
+    }
+    #menu>ul>li>ol>li>a{
+        border: 1px solid white;
+        box-sizing: border-box;
+        display: block;
+        width: 100px;
+        height: 50px;
+        background-color: gray;
+        color: white;
+        text-align: center;
+        line-height: 50px;
+        text-decoration: none;
+    }
+    #menu>ul>li>ol>li>a:hover{
+        background-color: red;
+    }
     #menu>ul{
         list-style: none;
         margin: 0px auto;
@@ -23,10 +48,19 @@
         float: left;
     }
     #menu>ul>li>a{
+        border: 1px solid white;
+        box-sizing: border-box;
         display: inline-block;
         width: 100px;
         height: 50px;
         background-color: gray;
+        color: white;
+        text-align: center;
+        line-height: 50px;
+        text-decoration: none;
+    }
+    #menu>ul>li>a:hover{
+        background-color: red;
     }
     #content{}
     #content>#carousel{
@@ -40,20 +74,22 @@
     #content>#carousel>a{
         position: absolute;
         display: inline-block;
-        width: 20px;
-        height: 320px;
-        background-color: rgba(200,200,200,0.2);
+        width: 50px;
+        height: 50px;
+        background-color: rgba(200,200,200,0.5);
         left: 0px;
-        top: 0px;
+        top: 150px;
         z-index: 5;
+        color: white;
+        border-radius: 25px;
+        text-align: center;
         text-decoration: none;
-        line-height: 320px;
+        line-height: 45px;
         font-size: 2em;
         font-weight: bold;
-        /*text-indent: -9999px;*/
     }
     #content>#carousel>a:nth-child(2){
-        left: 300px;
+        left: 270px;
     }
     #content>#carousel>ul{
         list-style: none;
@@ -70,7 +106,7 @@
     }
 </style>
 <script type="text/javascript">
-var carousel,ul,lis,imgs,prv,nxt;
+var carousel,ul,lis,imgs,prv,nxt,loop,menu,menu1,menu2;
 var cnt=0;
 window.onload=function(){
     carousel=document.getElementById('carousel');
@@ -79,16 +115,46 @@ window.onload=function(){
     imgs=carousel.querySelectorAll('img');
     prv=carousel.querySelector("a");
     nxt=carousel.querySelector("a+a");
+    menu1=document.querySelector('#menu>ul>li:nth-child(1)');
+    menu2=document.querySelector('#menu>ul>li:nth-child(2)');
+    menu1.addEventListener('mouseenter',function(){
+        var ol=this.querySelector('ol');
+        ol.style.display='block';
+    });
+    menu1.addEventListener('mouseleave',function(){
+        var ol=this.querySelector('ol');
+        ol.style.display='none';
+    });
+     menu2.addEventListener('mouseenter',function(){
+        var ol=this.querySelector('ol');
+        ol.style.display='block';
+    });
+    menu2.addEventListener('mouseleave',function(){
+        var ol=this.querySelector('ol');
+        ol.style.display='none';
+    });
     prv.innerText='<';
     nxt.innerText='>';
     prv.addEventListener('click',function(e){
         e.preventDefault();
+        window.clearInterval(loop);
+        prevImg();
+        loop=window.setInterval(prevImg,3000);
     });
     nxt.addEventListener('click',function(e){
         e.preventDefault();
+        window.clearInterval(loop);
         nextImg();
+        loop=window.setInterval(nextImg,3000);
     });
+    
+    loop=window.setInterval(nextImg,3000);
 };
+function prevImg(){
+    if(cnt!=0)--cnt;
+    else cnt=5;
+    ul.style.marginLeft=-320*cnt+'px';
+}
 function nextImg(){
     if(++cnt>5)cnt=0;
     ul.style.marginLeft=-320*cnt+'px';    
@@ -102,8 +168,21 @@ function nextImg(){
         </div>
         <div id="menu">
             <ul>
-                <li><a href="#">menu1</a></li>
-                <li><a href="#">menu2</a></li>
+                <li>
+                <a href="#">menu1</a>
+                    <ol>
+                        <li><a href="#">menu1-1</a></li>
+                        <li><a href="#">menu1-2</a></li>
+                        <li><a href="#">menu1-3</a></li>
+                    </ol>
+                
+                </li>
+                <li><a href="#">menu2</a>
+                    <ol>
+                        <li><a href="#">menu2-1</a></li>
+                        <li><a href="#">menu2-2</a></li>
+                        <li><a href="#">menu2-3</a></li>
+                    </ol></li>
                 <li><a href="#">menu3</a></li>
                 <li><a href="#">menu4</a></li>
             </ul>
