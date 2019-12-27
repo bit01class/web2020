@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+<script type="text/javascript">
+var form,input,select,a,call01;
+function myload(){
+    console.log('로딩됨');
+    form=document.querySelector('form');
+    select=document.querySelector('form>select');
+    input=document.querySelector('form>input');
+    a=document.querySelector('a');
+    form.addEventListener('submit',function(e){
+        // 엘리먼트 기본동작 취소
+        // 반드시 이벤트 상단에 선언
+        e.preventDefault();
+        alert('form 동작...');
+    });
+    a.addEventListener('click',function(e){
+        e.preventDefault();
+        console.log('이동안할 꺼임');
+    });
+    var call01=function(){
+        console.log('change event',this.value);
+    };
+    select.addEventListener('change',call01);
+    input.addEventListener('change',call01);
+//    input.onblur;
+//    input.onfocus;
+    input.addEventListener('focusin',function(){
+        console.log('focus in');
+    });
+    input.addEventListener('focusout',function(){
+        console.log('focus out');
+    });
+}
+function myResize(e){
+    console.log('사이즈 변경됨',e);//e.target.innerWidth);
+}
+window.addEventListener('load',myload);
+window.addEventListener('resize',myResize);
+    
+</script>
+</head>
+<body>
+    <h1>etc 이벤트</h1>
+    <a href="http://naver.com">[link]</a>
+    <form action="ex01.html">
+        <input type="text"/>
+        <select>
+            <option>item1</option>
+            <option>item2</option>
+            <option>item3</option>
+            <option>item4</option>
+        </select>
+        <button type="submit">전달</button>
+    </form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

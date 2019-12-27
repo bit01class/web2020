@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+    #target{
+        width: 300px;
+        height: 100px;
+        background-color: aqua;
+    }    
+</style>
+<script type="text/javascript">
+var btn1,btn2,target,back1;
+window.onload=function(){
+
+btn1=document.querySelector("h1+button");
+btn2=document.querySelector("h1+button+button");
+target=document.getElementById("target");
+
+back1=function(){
+    console.log('클릭됨');
+};
+btn1.addEventListener('click',back1);
+btn1.addEventListener('click',function(){
+    alert('클릭됨');
+}); 
+btn2.onclick=function(){
+    btn1.removeEventListener('click',back1);
+};
+//btn2.onclick=back1;
+//btn2.onclick=function(){alert('새로운 클릭이벤트');};    
+    
+target.addEventListener('mouseenter',function(){
+    console.log('mouseenter');
+});
+target.addEventListener('mouseleave',function(){
+    console.log('mouseleave');
+});
+target.addEventListener('mouseover',function(){
+    console.log('mouseover');
+});
+target.addEventListener('mouseout',function(){
+    console.log('mouseout');
+});
+target.addEventListener('mousedown',function(){
+    console.log('mousedown');
+});
+target.addEventListener('mouseup',function(){
+    console.log('mouseup');
+});
+target.addEventListener('dblclick',function(){
+    console.log('dbclick');
+});
+};
+</script>
+</head>
+<body>
+    <h1>DOM Level3 이벤트</h1>
+    <button>btn1</button>
+    <button>btn2</button>
+    <div id="target"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
