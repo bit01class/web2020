@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+    <head>
+<meta charset="utf-8">
+<style type="text/css">
+    #header,#menu,#content,#footer{
+        width: 500px;
+        background-color: aqua;
+        margin: 0px auto;
+    }
+    #menu{
+        overflow: hidden;
+        height: 50px
+    }
+    #menu>ul{
+        list-style: none;
+        margin: 0px auto;
+        padding: 0px;
+        width: 400px;
+        height: 50px;
+    }
+    #menu>ul>li{
+        float: left;
+    }
+    #menu>ul>li>a{
+        display: inline-block;
+        width: 100px;
+        height: 50px;
+        background-color: gray;
+    }
+    #content{}
+    #content>#carousel{
+        position: relative;
+        width: 320px;
+        height: 320px;
+        margin: 0px auto;
+        overflow: hidden;
+    }
+    
+    #content>#carousel>a{
+        position: absolute;
+        display: inline-block;
+        width: 20px;
+        height: 320px;
+        background-color: rgba(200,200,200,0.2);
+        left: 0px;
+        top: 0px;
+        z-index: 5;
+        text-decoration: none;
+        line-height: 320px;
+        font-size: 2em;
+        font-weight: bold;
+        /*text-indent: -9999px;*/
+    }
+    #content>#carousel>a:nth-child(2){
+        left: 300px;
+    }
+    #content>#carousel>ul{
+        list-style: none;
+        width: 1920px;‬
+        margin: 0px;
+        padding: 0px;
+        /*margin-left: -320px*/
+    }
+    #content>#carousel>ul>li{
+        float: left;
+    }
+    #content>#carousel>ul>li>img{
+        z-index: 0;
+    }
+</style>
+<script type="text/javascript">
+var carousel,ul,lis,imgs,prv,nxt;
+var cnt=0;
+window.onload=function(){
+    carousel=document.getElementById('carousel');
+    ul=carousel.querySelector('ul');
+    lis=carousel.querySelectorAll('li');
+    imgs=carousel.querySelectorAll('img');
+    prv=carousel.querySelector("a");
+    nxt=carousel.querySelector("a+a");
+    prv.innerText='<';
+    nxt.innerText='>';
+    prv.addEventListener('click',function(e){
+        e.preventDefault();
+    });
+    nxt.addEventListener('click',function(e){
+        e.preventDefault();
+        nextImg();
+    });
+};
+function nextImg(){
+    if(++cnt>5)cnt=0;
+    ul.style.marginLeft=-320*cnt+'px';    
+}
+        
+</script>
+    </head>
+    <body>
+        <div id="header">
+            <h1>비트교육센터</h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="#">menu1</a></li>
+                <li><a href="#">menu2</a></li>
+                <li><a href="#">menu3</a></li>
+                <li><a href="#">menu4</a></li>
+            </ul>
+        </div>
+        <div id="content">
+            <div id="carousel">
+                <a href="#">prev</a>
+                <a href="#">next</a>
+                <ul>
+                    <li><img src="imgs/big01.jpg" /></li>
+                    <li><img src="imgs/big02.jpg" /></li>
+                    <li><img src="imgs/big03.jpg" /></li>
+                    <li><img src="imgs/big04.jpg" /></li>
+                    <li><img src="imgs/big05.jpg" /></li>
+                    <li><img src="imgs/big06.jpg" /></li>
+                </ul>
+            </div>            
+        </div>
+        <div id="footer">
+           <address>
+            서울특별시 서초구 서초대로74길33 비트빌 3층 
+           </address>
+COPYRIGHT BY BITACADEMY CO.LTD. ALL RIGHTS RESERVED. HTTP://www.BITacademy.com
+        </div>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
