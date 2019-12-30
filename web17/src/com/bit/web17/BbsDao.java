@@ -45,6 +45,21 @@ public class BbsDao {
 		}
 		return list;
 	}
+	
+	public void add(String sub,String id,String content) throws SQLException{
+		String sql="INSERT INTO BBS01 VALUES ";
+			sql+=" (BBS01_SEQ.NEXTVAL,?,?,?,SYSDATE,0)";
+		try{
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, sub);
+			pstmt.setString(2, id);
+			pstmt.setString(3, content);
+			pstmt.executeUpdate();
+		}finally{
+			if(pstmt!=null)pstmt.close();
+			if(conn!=null)conn.close();
+		}
+	}
 }
 
 

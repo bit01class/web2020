@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/bitgrid.css"/>
+<style type="text/css">
+	#menu{
+		height: 50px;
+		background-color: silver;
+	}
+	#menu ul{
+		margin: 0px auto;
+		padding: 0px;
+		width: 400px;
+	}
+	#menu ul>li{
+		float: left;	
+		list-style: none;
+	}
+	#menu ul>li>a{
+		display: inline-block;
+		width: 100px;
+		height: 50px;
+		background-color: gray;
+		border: 1px solid white;
+        box-sizing: border-box;
+        color: white;
+        text-align: center;
+        line-height: 50px;
+        text-decoration: none;
+	}
+	#menu ul>li>a:hover{
+		color: yellow;
+		background-color: red;
+	}
+	#content {}
+	#content h1{
+		text-align: center;
+	}
+	#content form{
+		margin: 0px auto;
+		width: 400px;
+	}
+	#content form>div{
+		text-align: center;
+	}
+	#content form>div>label{
+		display:inline-block;
+		width: 25%;
+	}
+	#content form>div>input{
+		width: 70%;
+	}
+	#content form>div>textarea{
+		width: 100%;
+		height: 100px;
+	}
+	.err{
+		background-color: red;
+		color: white;
+		text-align: center;
+	}
+</style>
+<script type="text/javascript">
+var form,btn1,btn2,btn3,input1,input2,textarea,err;
+var xhr;
+function callback(e){
+	e.preventDefault();
+	err.innerText='';
+	input1=form.getElementsByTagName('input')[0];
+	input2=form.getElementsByTagName('input')[1];
+	textarea=form.getElementsByTagName('textarea')[0];
+	if(input1.value=='' || input2.value==''){
+		err.innerText='빈값을 입력하세요';
+		return;
+	}
+	xhr=new XMLHttpRequest();
+	xhr.onreadystatechange=function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			window.location.replace('list.html');			
+		}else if(xhr.readyState==4){
+			alert('입력실패');
+			window.history.back();
+		}
+	};
+	xhr.open('get','add.jsp?sub='+input1.value
+								+'&id='+input2.value
+								+'&content='+textarea.value);
+	xhr.send();
+}
+
+window.onload=function(){
+	err=document.querySelector('.err');
+	form=document.querySelector('#content form');
+	btn3=document.getElementsByTagName('button')[2];
+	
+	form.addEventListener("submit", callback);
+	
+	btn3.onclick=function(){
+		window.history.back();
+	};
+};
+
+</script>
+</head>
+<body>
+<div class="err"></div>
+	<div class="containerw">
+		<div id="header" class="row">
+			<div class="tgrid12">
+				<h1>비트교육센터</h1>
+			</div>
+		</div>		
+		<div id="menu" class="row">
+			<div class="tgrid12">
+			<ul>
+				<li><a href="index.html">HOME</a></li>
+				<li><a href="list.html">B B S</a></li>
+				<li><a href="#">LOGIN</a></li>
+				<li><a href="#">E T C</a></li>
+			</ul>
+			</div>
+		</div>		
+		<div id="content" class="row">
+			<div class="tgrid12">
+			
+				<h1>글쓰기</h1>
+				<form>
+					<div>
+						<label for="sub">제목</label>
+						<input type="text" id="sub" />
+					</div>
+					<div>
+						<label for="id">글쓴이</label>
+						<input type="text" id="id" />
+					</div>
+					<div>
+						<textarea></textarea>
+					</div>
+					<div>
+						<button type="submit">글쓰기</button>
+						<button type="reset">취 소</button>
+						<button type="button">뒤 로</button>
+					</div>
+				</form>
+			</div>
+		</div>		
+		<div id="footer" class="row">
+			<div class="tgrid12">
+			<address>서울특별시 서초구 서초대로74길33 비트빌 3층 </address>
+			COPYRIGHT BY BITACADEMY CO.LTD. ALL RIGHTS RESERVED. HTTP://www.BITacademy.com
+			</div>
+		</div>		
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+

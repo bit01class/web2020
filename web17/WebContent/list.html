@@ -59,6 +59,22 @@
 	#content table>tbody>tr:nth-child(2n)>td{
 		background-color: silver;
 	}
+	#content h1+a{
+		background-color: blue;
+		display: inline-block;
+		width: 100px;
+		height: 50px;
+		border-radius: 25px;
+        border-bottom: 2px solid gray;
+        border-right: 2px solid gray;
+        color: white;
+        text-align: center;
+        line-height: 50px;
+        font-weight: bold;
+        text-decoration: none;
+        margin-left: 70%;
+        text-shadow:1px 1px 0px gray;
+	}
 </style>
 <script type="text/javascript">
 var xhr,nodes;
@@ -113,6 +129,7 @@ window.onload=function(){
 		<div id="content" class="row">
 			<div class="tgrid12">
 				<h1>게시판</h1>
+				<a href="add.html">입 력</a>
 				<table>
 					<thead>
 						<tr>
