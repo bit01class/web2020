@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/bitgrid.css"/>
+<style type="text/css">
+	#menu{
+		height: 50px;
+		background-color: silver;
+	}
+	#menu ul{
+		margin: 0px auto;
+		padding: 0px;
+		width: 400px;
+	}
+	#menu ul>li{
+		float: left;	
+		list-style: none;
+	}
+	#menu ul>li>a{
+		display: inline-block;
+		width: 100px;
+		height: 50px;
+		background-color: gray;
+		border: 1px solid white;
+        box-sizing: border-box;
+        color: white;
+        text-align: center;
+        line-height: 50px;
+        text-decoration: none;
+	}
+	#menu ul>li>a:hover{
+		color: yellow;
+		background-color: red;
+	}
+	#content{}
+	#content .carousel{
+		position:relative;
+		overflow: hidden;
+		width: 528px;
+		margin: 0px auto;
+	}
+	#content .carousel>ul{
+		width: 1056px;
+		margin: 0px;
+		padding: 0px;
+	}
+	#content .carousel>ul>li{
+		list-style:none;
+		float: left;
+	}
+	#content .carousel>ul>li>img{
+		width: 176px;
+		height: 176px;
+		z-index: 1;
+	}
+	#content .carousel>a{
+		position:absolute;
+		top: 0px;
+		left: 0px;
+		display: inline-block;
+		width: 176px;
+		height: 176px;
+		z-index: 10;
+		text-indent: -999px;
+	}
+	#content .carousel>a:last-child{
+		left:352px;
+	}
+</style>
+<script type="text/javascript">
+var carousel,prv,nxt;
+window.onload=function(){
+	carousel=document.querySelector(".carousel");
+	carousel.innerHTML=carousel.innerHTML
+						+'<a href="#">prev</a>'
+						+'<a href="#">next</a>';
+	carousel=document.querySelector(".carousel");
+	prv=carousel.querySelectorAll('a')[0];
+	nxt=carousel.querySelectorAll('a')[1];
+	prv.onclick=function(){
+		alert('prev');
+		return false;
+		};
+	nxt.onclick=function(){
+		alert('next');
+		return false;
+	};
+};
+
+</script>
+</head>
+<body>
+	<div class="containerw">
+		<div id="header" class="row">
+			<div class="tgrid12">
+				<h1>비트교육센터</h1>
+			</div>
+		</div>		
+		<div id="menu" class="row">
+			<div class="tgrid12">
+			<ul>
+				<li><a href="#">HOME</a></li>
+				<li><a href="#">B B S</a></li>
+				<li><a href="#">LOGIN</a></li>
+				<li><a href="#">E T C</a></li>
+			</ul>
+			</div>
+		</div>		
+		<div id="content" class="row">
+			<div class="tgrid12">
+				<div class="carousel">
+					<ul>
+						<li><img src="imgs/img01.jpg"/></li>
+						<li><img src="imgs/img02.jpg"/></li>
+						<li><img src="imgs/img03.jpg"/></li>
+						<li><img src="imgs/img04.jpg"/></li>
+						<li><img src="imgs/img05.jpg"/></li>
+						<li><img src="imgs/img06.jpg"/></li>
+					</ul>
+				</div>
+			</div>
+		</div>		
+		<div id="footer" class="row">
+			<div class="tgrid12">
+			<address>서울특별시 서초구 서초대로74길33 비트빌 3층 </address>
+			COPYRIGHT BY BITACADEMY CO.LTD. ALL RIGHTS RESERVED. HTTP://www.BITacademy.com
+			</div>
+		</div>		
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
