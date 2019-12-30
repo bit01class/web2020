@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/bitgrid.css"/>
+<style type="text/css">
+	#menu{
+		height: 50px;
+		background-color: silver;
+	}
+	#menu ul{
+		margin: 0px auto;
+		padding: 0px;
+		width: 400px;
+	}
+	#menu ul>li{
+		float: left;	
+		list-style: none;
+	}
+	#menu ul>li>a{
+		display: inline-block;
+		width: 100px;
+		height: 50px;
+		background-color: gray;
+		border: 1px solid white;
+        box-sizing: border-box;
+        color: white;
+        text-align: center;
+        line-height: 50px;
+        text-decoration: none;
+	}
+	#menu ul>li>a:hover{
+		color: yellow;
+		background-color: red;
+	}
+	#content{}
+	#content h1{
+		text-align: center;
+	}
+	#content table{
+		width: 95%;
+	}
+	#content table>thead{}
+	#content table>thead>tr{}
+	#content table>thead>tr>th{
+		background-color: gray;
+	}
+	#content table>thead>tr>th:first-child
+	,#content table>thead>tr>th:nth-child(3)
+	,#content table>thead>tr>th:nth-child(4){
+	width: 10%;
+	}
+	#content table>tbody{}
+	#content table>tbody>tr{}
+	#content table>tbody>tr>td{
+		height: 50px;
+	}
+	#content table>tbody>tr:nth-child(2n)>td{
+		background-color: silver;
+	}
+</style>
+<script type="text/javascript">
+var xhr;
+function callback(){
+	if(xhr.readyState==4&&xhr.status==200){
+		var nodes=xhr.responseXML;
+	}
+}
+
+function list(){
+	xhr=new XMLHttpRequest();
+	xhr.onreadystatechange=callback;
+	xhr.open('get','list.jsp');
+	xhr.send();
+}
+
+window.onload=function(){
+	
+};
+
+</script>
+</head>
+<body>
+	<div class="containerw">
+		<div id="header" class="row">
+			<div class="tgrid12">
+				<h1>비트교육센터</h1>
+			</div>
+		</div>		
+		<div id="menu" class="row">
+			<div class="tgrid12">
+			<ul>
+				<li><a href="index.html">HOME</a></li>
+				<li><a href="list.html">B B S</a></li>
+				<li><a href="#">LOGIN</a></li>
+				<li><a href="#">E T C</a></li>
+			</ul>
+			</div>
+		</div>		
+		<div id="content" class="row">
+			<div class="tgrid12">
+				<h1>게시판</h1>
+				<table>
+					<thead>
+						<tr>
+							<th>글번호</th>
+							<th>제목</th>
+							<th>글쓴이</th>
+							<th>날짜</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+		</div>		
+		<div id="footer" class="row">
+			<div class="tgrid12">
+			<address>서울특별시 서초구 서초대로74길33 비트빌 3층 </address>
+			COPYRIGHT BY BITACADEMY CO.LTD. ALL RIGHTS RESERVED. HTTP://www.BITacademy.com
+			</div>
+		</div>		
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
