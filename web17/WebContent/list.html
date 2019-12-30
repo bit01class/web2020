@@ -61,10 +61,22 @@
 	}
 </style>
 <script type="text/javascript">
-var xhr;
+var xhr,nodes;
 function callback(){
 	if(xhr.readyState==4&&xhr.status==200){
-		var nodes=xhr.responseXML;
+		nodes=xhr.responseXML;
+		var arr=nodes.children[0].children;
+		var result="";
+		for(var i=0; i<arr.length; i++){
+			result+="<tr>";
+			result+="<td>"+arr[i].children[0].childNodes[0].nodeValue+"</td>";
+			result+="<td>"+arr[i].children[1].childNodes[0].nodeValue+"</td>";
+			result+="<td>"+arr[i].children[2].childNodes[0].nodeValue+"</td>";
+			result+="<td>"+arr[i].children[3].childNodes[0].nodeValue+"</td>";
+			result+="</tr>";
+		}
+		var tbody=document.querySelector('#content table>tbody');
+		tbody.innerHTML=result;
 	}
 }
 
@@ -76,7 +88,7 @@ function list(){
 }
 
 window.onload=function(){
-	
+	list();
 };
 
 </script>
