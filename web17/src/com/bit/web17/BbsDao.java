@@ -60,6 +60,29 @@ public class BbsDao {
 			if(conn!=null)conn.close();
 		}
 	}
+	
+	public BbsDto getBean(int num) throws SQLException{
+		String sql="select * from bbs01 where num=?";
+		
+		BbsDto bean=new BbsDto();
+		try{
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				bean.setNum(rs.getInt("num"));
+				bean.setSub(rs.getString("sub"));
+				bean.setId(rs.getString("id"));
+				bean.setContent(rs.getString("content"));
+				bean.setNalja(rs.getDate("nalja"));
+			}
+		}finally{
+			if(rs!=null)rs.close();
+			if(pstmt!=null)pstmt.close();
+			if(conn!=null)conn.close();
+		}
+		return bean;
+	}
 }
 
 
