@@ -42,7 +42,7 @@
 		margin: 0px auto;
 	}
 	#content .carousel>ul{
-		width: 1056px;
+		width: 2112px;
 		margin: 0px;
 		padding: 0px;
 	}
@@ -70,24 +70,43 @@
 	}
 </style>
 <script type="text/javascript">
-var carousel,prv,nxt;
+var carousel,prv,nxt,ul,interval;
+var loopCnt=0;
 window.onload=function(){
 	carousel=document.querySelector(".carousel");
+	ul=carousel.querySelector('ul');
+	ul.innerHTML=ul.innerHTML+ul.innerHTML;
 	carousel.innerHTML=carousel.innerHTML
 						+'<a href="#">prev</a>'
 						+'<a href="#">next</a>';
 	carousel=document.querySelector(".carousel");
+	ul=carousel.querySelector('ul');
 	prv=carousel.querySelectorAll('a')[0];
 	nxt=carousel.querySelectorAll('a')[1];
 	prv.onclick=function(){
-		alert('prev');
+		prevImg();
 		return false;
 		};
 	nxt.onclick=function(){
-		alert('next');
+		nextImg();
 		return false;
 	};
+	interval=window.setTimeout(nextImg, 3000);
 };
+
+function prevImg(){
+	window.clearTimeout(interval);
+	if(--loopCnt<0)loopCnt=5;
+	ul.style.marginLeft=-176*loopCnt+'px';
+	interval=window.setTimeout(nextImg, 3000);
+}
+
+function nextImg(){
+	window.clearTimeout(interval);
+	if(++loopCnt==6)loopCnt=0;
+	ul.style.marginLeft=-176*loopCnt+'px';
+	interval=window.setTimeout(nextImg, 3000);
+}
 
 </script>
 </head>
