@@ -83,6 +83,21 @@ public class BbsDao {
 		}
 		return bean;
 	}
+	
+	public void update(String sub,String content,int num) throws SQLException{
+		String sql="UPDATE BBS01 SET SUB=?,CONTENT=? WHERE NUM=?";
+		
+		try{
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, sub);
+			pstmt.setString(2, content);
+			pstmt.setInt(3, num);
+			pstmt.executeUpdate();
+		}finally{
+			if(pstmt!=null)pstmt.close();
+			if(conn!=null)conn.close();
+		}
+	}
 }
 
 

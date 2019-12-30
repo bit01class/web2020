@@ -113,19 +113,37 @@ window.onload=function(){
 		h2.innerText='수정페이지';
 		return false;
 	};
-	editForm.onsubmit=function(){
-		editAjax();
-		window.location.reload();
-	};
+	editForm.addEventListener('submit',function(e){
+		e.preventDefault();
+		editAjax();		
+	});
 };
 
 function editAjax(){
 	var param1=document.getElementById("num").value;
 	var param2=document.getElementById("sub").value;
 	var param3=document.getElementById("cntnt").value;
-	var param='num='+param1+"&sub="+param2+"&content="+param3;
+	var param='idx='+param1+"&sub="+param2+"&content="+param3;
+	var param4='{"num":"'+param1+'","sub":"'+param2+'","content":"'+param3+'"}';
+	alert(param4);
+	var data=new FormData();
+	data.append('num',param1);
+	data.append('sub',param2);
+	data.append('content',param3);
+	
 	xhr=new XMLHttpRequest();
-	xhr.open('post','update.jsp',false);//open('method','url','비동기')
+	xhr.onreadystatechange=function(){
+		if(xhr.readyState==4&&xhr.status==200){
+
+			window.location.reload();
+		}else if(xhr.readyState==4){
+			console.log("err");
+		}
+	};
+	xhr.open('post','update.jsp');//open('method','url','비동기')
+	xhr.setRequestHeader("Content-Type"
+			, "application/x-www-form-urlencoded");
+	
 	xhr.send(param);
 }
 </script>
@@ -173,7 +191,7 @@ function editAjax(){
 						<a href="#">삭제</a>
 					</div>
 				</div>
-				<form id="editForm">
+				<form id="editForm" action="index.html">
 					<div>
 						<label for="num">글번호</label>
 						<input type="text" id="num" />
