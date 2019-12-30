@@ -86,7 +86,9 @@ function callback(){
 		for(var i=0; i<arr.length; i++){
 			result+="<tr>";
 			result+="<td>"+arr[i].children[0].childNodes[0].nodeValue+"</td>";
-			result+="<td>"+arr[i].children[1].childNodes[0].nodeValue+"</td>";
+			result+="<td><a href='edit.jsp?num="
+					+arr[i].children[0].childNodes[0].nodeValue
+					+"'>"+arr[i].children[1].childNodes[0].nodeValue+"</td>";
 			result+="<td>"+arr[i].children[2].childNodes[0].nodeValue+"</td>";
 			result+="<td>"+arr[i].children[3].childNodes[0].nodeValue+"</td>";
 			result+="</tr>";

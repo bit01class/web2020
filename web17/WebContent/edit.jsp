@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,15 +57,19 @@
 	#content #detail>div:nth-child(3){
 		height: 200px;
 	}
+	#content #editForm{
+		display: none;
+	}
 </style>
 <script type="text/javascript">
-var detail,msg1,msg2,msg3,msg4,msg5;
+var detail,msg1,msg2,msg3,msg4,msg5,edit,editForm,h2;
+var num,sub,cntnt,backbtn;
 var xhr;
 
 function myAjax(){
 	xhr=new XMLHttpRequest();
 	xhr.onreadystatechange=callback;
-	xhr.open('get','detail.json');
+	xhr.open('get','detail.jsp?num=<%=request.getParameter("num")%>');
 	xhr.send();
 }
 
@@ -75,20 +81,53 @@ function callback(){
 	var obj=JSON.parse(msg);
 	var arr=obj.root;
 	msg1.innerText=arr[0].num;
+	num.value=arr[0].num;
 	msg2.innerText=arr[0].id;
 	msg3.innerText=arr[0].nalja;
 	msg4.innerText=arr[0].sub;
+	sub.value=arr[0].sub;
 	msg5.innerText=arr[0].content;
+	cntnt.value=arr[0].content;
 }
 window.onload=function(){
+	h2=document.querySelector("#content h2");
 	detail=document.getElementById("detail");
 	msg1=detail.getElementsByTagName("span")[1];
 	msg2=detail.getElementsByTagName("span")[3];
 	msg3=detail.getElementsByTagName("span")[5];
 	msg4=detail.getElementsByTagName("span")[7];
 	msg5=detail.getElementsByTagName("pre")[0];
+	edit=detail.getElementsByTagName("a")[0];
+	editForm=document.getElementById("editForm");
+	num=document.getElementById("num");
+	sub=document.getElementById("sub");
+	cntnt=document.getElementById("cntnt");
+	backbtn=document.querySelector("#editForm button[type=button]");
 	myAjax();
+	backbtn.onclick=function(){
+		window.location.reload();
+	};
+	edit.onclick=function(){
+		detail.style.display='none';
+		editForm.style.display='block';
+		h2.innerText='수정페이지';
+		return false;
+	};
+	editForm.onsubmit=function(){
+		editAjax();
+		window.location.reload();
+	};
 };
+
+function editAjax(){
+	var param1=document.getElementById("num").value;
+	var param2=document.getElementById("sub").value;
+	var param3=document.getElementById("cntnt").value;
+	var param='num='+param1+"&sub="+param2+"&content="+param3;
+	xhr=new XMLHttpRequest();
+	xhr.open('post','update.jsp',false);//open('method','url','비동기')
+	xhr.send(param);
+}
 </script>
 </head>
 <body>
@@ -112,14 +151,14 @@ window.onload=function(){
 		<div id="content" class="row">
 			<div class="tgrid12">
 			
-				<h1>상세페이지</h1>
+				<h2>상세페이지</h2>
 				<div id="detail">
 					<div>
 						<span>글번호</span>
 						<span>1</span>
 						<span>글쓴이</span>
 						<span>3</span>
-						<span>날짜</span>
+						<span>날 짜</span>
 						<span>5</span>
 					</div>
 					<div>
@@ -130,10 +169,28 @@ window.onload=function(){
 						<pre></pre>
 					</div>
 					<div>
-						<a href="#">수정</a>
+						<a href="#">수정</a>
 						<a href="#">삭제</a>
 					</div>
 				</div>
+				<form id="editForm">
+					<div>
+						<label for="num">글번호</label>
+						<input type="text" id="num" />
+					</div>
+					<div>
+						<label for="sub">제목</label>
+						<input type="text" id="sub" />
+					</div>
+					<div>
+						<textarea id="cntnt"></textarea>
+					</div>
+					<div>
+						<button type="submit">수 정</button>
+						<button type="reset">취 소</button>
+						<button type="button">뒤 로</button>
+					</div>
+				</form>
 			</div>
 		</div>		
 		<div id="footer" class="row">
