@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style type="text/css">
+        img{
+            width: 100px;
+            height: 100px;
+        }
+        div{
+            width: 330px;
+            height: 100px;
+            overflow: hidden;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+window.onload=function(){
+    var prv=document.querySelectorAll('a')[0];
+    var nxt=document.querySelectorAll('a')[1];
+    prv.onclick=function(){
+        prevLoop();
+        return false;
+    };
+    nxt.onclick=function(){
+        nextLoop();
+        return false;
+    };
+};
+function prevLoop(){
+    $('div>img').last().prependTo('h1+div');
+}    
+function nextLoop(){
+    $('div>img').first().appendTo('h1+div');
+}
+</script>
+</head>
+<body>
+    <h1>케러셀</h1>
+    <div>
+        <img src="imgs/big01.jpg" alt=""/>
+        <img src="imgs/big02.jpg" alt=""/>
+        <img src="imgs/big03.jpg" alt=""/>
+        <img src="imgs/big04.jpg" alt=""/>
+        <img src="imgs/big05.jpg" alt=""/>
+        <img src="imgs/big06.jpg" alt=""/>
+    </div>
+    <a href="#">prev</a>
+    <a href="#">next</a>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+
+window.onload=function(){
+    console.log($('a').attr('href'));
+    console.log($('img').attr('src'));
+    console.log($('form').attr('action'));
+    $('a').attr('href','http://naver.com');
+    $('img').attr('src','imgs/big02.jpg');
+    $('form').children().first().children().first().attr('value','1234');
+//    $('input[type=checkbox]').css('margin','10px');
+    var temp=$('option').eq(1).attr('selected');
+    alert(temp);
+    $('h1').attr('href','http://daum.net');
+    alert($('h1').attr('href'));
+};
+    
+</script>
+    </head>
+    <body>
+        <h1>속성제어</h1>
+        <p>링크는 <a href="ex01.html">다음</a></p>
+        <img alt="이미지대신" src="imgs/big01.jpg"/>
+        <form action="ex02.html">
+            <div>
+                <input type="text"/>
+            </div>
+            <div>
+                <input type="password"/>
+            </div>
+            <div>
+                <input type="checkbox" checked/>
+                <label>item1</label>
+                <input type="checkbox"/>
+                <label>item2</label>
+                <input type="checkbox"/>
+                <label>item3</label>
+            </div>
+            <div>
+                <select>
+                    <option>item1</option>
+                    <option>item2</option>
+                    <option>item3</option>
+                    <option>item4</option>
+                </select>
+            </div>
+            <div>
+                <input type="submit" value="전송1" />
+                <button type="submit">전송2</button>
+                <button type="reset">취소</button>
+                <button type="button">버튼</button>
+            </div>
+        </form>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

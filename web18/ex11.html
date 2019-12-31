@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            div{
+                background-color: aqua;
+                height: 100px;
+                margin-top: 10px;
+            }
+        </style>
+        <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+    
+$(function(){
+    $('h1').text('이벤트');
+    $('div').click(function(e){
+        $(e.target).text('클릭함');
+        console.log(this,'클릭됨');
+    });
+});
+</script>
+    </head>
+    <body>
+        <h1>event</h1>  
+        <div></div>      
+        <div></div>      
+        <div></div>      
+        <div></div>      
+        <div></div>      
+        <div></div>      
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+

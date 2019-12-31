@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            #target{
+                width: 100px;
+                height: 100px;
+                background-color: aqua;
+                position: absolute;
+            }
+        </style>
+        <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+function btnClck(){
+    alert('버튼클릭');
+}
+$(document).ready(function(){
+    $('button').click(btnClck);
+//    $('button').click();
+    $('button').mousedown(function(){
+        console.log('mousedown');
+    });
+    $('button').mouseup(function(){
+        console.log('mouseup');
+    });
+//    $('#target').mouseover(function(){
+//        console.log('mouseover');
+//    });
+//    $('#target').mouseout(function(){
+//        console.log('mouseout');
+//    });
+//    $('#target').mouseenter(function(){
+//        console.log('mouseover');
+//    });
+//    $('#target').mouseleave(function(){
+//        console.log('mouseout');
+//    });
+//    $('#target').dblclick(function(e){
+//        console.log('더블클릭',e);
+//    });
+    $(document).mousemove(function(e){
+        $('#target').css('left',e.pageX+'px');
+        $('#target').css('top',e.pageY+'px');
+        console.log(e.pageX,e.pageY,'move');
+    });
+});
+</script>
+    </head>
+    <body>
+        <h1>마우스이벤트</h1>
+        <div id="target"></div>
+        <button>버튼</button>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

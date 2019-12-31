@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            div{
+                border: 1px solid gray;
+            }
+            #source{
+                display: none;
+            }
+        </style>
+        <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+window.onload=function(){
+//   var msg=$('#source').html(); 
+//    console.log(msg);
+//    console.log(msg.indexOf('>'));
+//   msg=msg.substr(0,msg.indexOf('>')+1);
+//    $('#target').html(msg);
+    $('#target').html($('#source img').first());
+//    window.setInterval(imgLoop,1000);
+    
+    
+//    var h1=$('h1');
+//    $('#target').html(h1);
+    $('ul,ol').html(function(idx,old){
+        var ele ='<a href="#">'+old+'</a>';
+    return ele;
+});  
+};
+function imgLoop(){
+$('#source').html($('#source').html()+$('#target').html());
+$('#target').html($('#source img').first());
+  
+}
+</script>
+    </head>
+    <body>
+        <h1>케러셀</h1>
+        <div id="target"></div>
+        <div id="source">
+            <img src="imgs/big01.jpg"/>
+            <img src="imgs/big02.jpg"/>
+            <img src="imgs/big03.jpg"/>
+            <img src="imgs/big04.jpg"/>
+            <img src="imgs/big05.jpg"/>
+            <img src="imgs/big06.jpg"/>
+        </div>
+        
+        <ul>
+            <li>item1</li>
+            <li>item2</li>
+            <li>item3</li>
+            <li>item4</li>
+        </ul>
+        <ol>
+            <li>item1</li>
+            <li>item2</li>
+            <li>item3</li>
+            <li>item4</li>
+        </ol>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

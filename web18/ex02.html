@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+    <head>
+<meta charset="utf-8">
+<style type="text/css">
+
+    h1{
+        background-color: aqua;
+        color: blueviolet;
+    }
+    p{
+        margin-left: 100px;
+        color:aqua;
+        background-color: aqua;
+    }
+    p:nth-child(2n-1){
+        color: green;
+    }
+    p:nth-child(2n){
+        color: blue;
+    }
+    div{
+        border: 1px solid gray;
+        width: 100px;
+        height: 100px;
+        
+    }
+    
+</style>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+var cnt=0;
+var arr=['red','green','blue','gray'];
+window.onload=function(){
+    
+//    $('h1').css('color','red'); // setter
+//    alert($('h1').css('color'));// getter
+    var ele=$('p');
+//    console.log(ele.css('color'));
+//    console.log(ele.css('background-color'));
+//    console.log(ele.css('margin-left'));
+//    console.log(ele.css('margin-top'));
+//    console.log(ele.css('margin'));
+//    ele.css('opacity', 0.2);
+//    ele.css('margin-top', '100px');
+//    ele.css('color', 'red');
+    ele.css('background-color',function(idx,val){
+        console.log(val);
+        var num=36*idx;
+        return 'rgb('+num+','+num+','+num+')';
+    });
+//    var temp=document.querySelector('h1');
+//    temp.style.backgroundColor='red';
+    var obj={
+        'color':'red','background-color':'gray'
+    };
+    $('div').css(obj);
+};
+
+</script>
+    </head>
+    <body>
+        <h1>제목</h1>
+        <p>내용1</p>
+        <p>내용2</p>
+        <p style="color: gray">내용3</p>
+        <p>내용4</p>
+        <p>내용5</p>
+        <p>내용6</p>
+        <p>내용7</p>
+        <p>내용8</p>
+        <div>box</div>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

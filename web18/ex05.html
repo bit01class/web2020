@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+var cnt=0;
+
+function imgLoop(){
+    if(cnt==6)cnt=0;
+    $('img').css('display','none');
+    $('img').eq(cnt++).css('display','block');
+    window.setTimeout(imgLoop,1000);
+}
+    
+window.onload=function(){
+    imgLoop();
+};
+
+</script>
+    </head>
+    <body>
+        <h1>케러셀</h1>
+        <img src="imgs/big01.jpg"/>
+        <img src="imgs/big02.jpg"/>
+        <img src="imgs/big03.jpg"/>
+        <img src="imgs/big04.jpg"/>
+        <img src="imgs/big05.jpg"/>
+        <img src="imgs/big06.jpg"/>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

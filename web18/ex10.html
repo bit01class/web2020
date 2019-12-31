@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+    <meta>
+    <style type="text/css">
+        div{
+            background-color: aqua;
+            margin: 10px 0px;
+        }
+        h1{
+            width: 300px;
+            height: 100px;
+            border: 1px solid gray;
+            padding: 5px;
+            margin: 10px;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+
+window.onload=function(){
+//    $('ul').prepend('<a href="#">link</a>');
+//    $('ul').before('<a href="#">link</a>');
+//    $('p').before("<div>before</div>");
+//    $('p').after("<div>after</div>");
+//    $("<div>before</div>").insertBefore('p');
+//    $("<div>after</div>").insertAfter('p');
+    $('p').wrap('<div></div>');
+    $('p').unwrap('<div></div>');
+//    $('li').first().remove();
+    $('ul').empty();
+    var w=$('h1').width();
+    var h=$('h1').height();
+    var outw=$('h1').outerWidth();
+    var outh=$('h1').outerHeight();
+    var innw=$('h1').innerWidth();
+    var innh=$('h1').innerHeight();
+    console.log(w,h);
+    console.log(outw,outh);
+    console.log(innw,innh);
+    w=$(document).innerWidth();
+    h=$(document).innerHeight();
+    console.log(w,h);
+    w=$(window).outerWidth();
+    h=$(window).outerHeight();
+    console.log(w,h);
+    var h1=$('h1').clone();
+    $('ul').append(h1);
+};
+</script>
+</head>
+<body>
+    <h1>outter</h1>
+    <p>내용1</p>
+    <p>내용2</p>
+    <p>내용3</p>
+    <p>내용4</p>
+    <ul>
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+        <li>item4</li>
+    </ul>
+</body>
+</html>
