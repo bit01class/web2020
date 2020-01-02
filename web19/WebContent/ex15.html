@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+	h1,h2,h3{
+		background-color: aqua;
+	}
+</style>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+function callback(){
+		alert('애니메이션 종료');
+	
+}
+	$(document).ready(function(){
+		//start, step, progress, complete, done, fail, and always
+		var cnt=0;
+		$('h1').animate(
+				{'marginLeft':'250px'},{'duration': 5000,easing:'swing','progress':function (a){
+					console.log('progress',cnt++);
+					
+				},done:function(){
+					alert('end');
+				}});
+		$('h2').animate({'marginLeft':'250px'},{'duration': 5000,easing:'linear'});
+		/* 
+		$('h3').animate({backgroundColor:'rgb(0,0,255)'},3000)
+			.animate({opacity:0.5,width:'100px'},3000);
+		 */
+	});
+	
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>제목1</h1>
+	<h2>제목2</h2>
+	<h3>제목3</h3>
+</body>
+</html>

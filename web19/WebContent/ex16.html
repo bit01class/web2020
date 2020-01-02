@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link type="text/css" href="css/jquery-ui.css" />
+<link type="text/css" href="css/jquery-ui.structure.css" />
+<link type="text/css" href="css/jquery-ui.theme.css" />
+<style type="text/css">
+
+</style>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('div').eq(0).animate({marginLeft:'300px'}
+					,{duration:3000,easing:'swing'});
+	$('div').eq(1).animate({marginLeft:'300px'}
+	,{duration:3000,easing:'linear'});
+	$('div').eq(2).animate({marginLeft:'300px'}
+	,{duration:3000,easing:'easeOutBounce'});
+});
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>애니메이션 효과</h1>
+	<div>box1</div>
+	<div>box2</div>
+	<div>box3</div>
+</body>
+</html>

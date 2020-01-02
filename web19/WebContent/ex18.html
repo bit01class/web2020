@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css" />
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="js/jquery.bxslider.js"></script>
+<script type="text/javascript">
+var prev,next;
+$(document).ready(function(){
+	prev=document.querySelectorAll('button')[0];
+	next=document.querySelectorAll('button')[1];
+	var option={
+			//auto:true,
+		    controls:true,
+		    //prevText:'',
+		    //nextText:'',
+		    //prevSelector:prev,
+		    //nextSelector:next,
+		    //keyboardEnabled:true,
+			mode: 'horizontal',//'vertical',//'fade',
+		    slideWidth: 200,
+		    minSlides:2,
+		    maxSlides:3,
+		    moveSlides:1
+			};
+	
+	
+	$('.bxslider').bxSlider(option);
+	
+});
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+<div class="bxslider">
+  <div><img src="imgs/big01.jpg" title="물"></div>
+  <div><img src="imgs/big02.jpg" title="커피"></div>
+  <div><img src="imgs/big03.jpg" title="물티슈"></div>
+  <div><img src="imgs/big04.jpg" title="물티슈"></div>
+  <div><img src="imgs/big05.jpg" title="물티슈"></div>
+  <div><img src="imgs/big06.jpg" title="물티슈"></div>
+</div>
+<button>prev</button>
+<button>next</button>
+</body>
+</html>
