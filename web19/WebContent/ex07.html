@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	/* 
+	$('h1 a').mouseover(function(){
+		console.log('mouseover...');
+	});
+	
+	$('h1 a').live('mouseover',function(){	// jQuery 1.3+
+		console.log('bind mouseover');
+	});
+	
+	$('h1').delegate('a','mouseover',function(){	// jQuery 1.4.3+
+		console.log('delegate mouseover');
+	});
+	*/
+	$('h1 a').on('mouseover',function(){	//jQuery 1.7+
+		console.log('target on mouseover');
+	});
+	
+
+	$(document).on('mouseover','h1 a',function(){	//jQuery 1.9+
+		console.log('document on mouseover');
+	});
+	/* 
+	 */
+});
+
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<h1><a href="#">link</a>에 마우스 위로</h1>
+</body>
+</html>

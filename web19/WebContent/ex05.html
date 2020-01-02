@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#sel').change(function(){
+		$('#target').text($(this).val());
+	});
+});
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<select id="sel">
+		<option>item1</option>
+		<option>item2</option>
+		<option>item3</option>
+		<option>item4</option>
+	</select>
+	<p id="target"></p>
+</body>
+</html>

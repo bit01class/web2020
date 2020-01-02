@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+
+	$('form input').on('focus mouseover',function(){
+		$(this).val('');
+	});
+	$('form input').on('blur mouseout',function(){
+		if($(this).is('#id') && $(this).val()==''){
+			$(this).val('id를 입력');
+		}else if($(this).is('#name') && $(this).val()==''){
+			$(this).val('이름을 입력');
+		}
+	});
+	
+	
+	/* 
+	$('form input').focus(function(){
+		$(this).val('');
+	});
+	$('form input').blur(function(){
+		if($(this).is('#id') && $(this).val()==''){
+			$(this).val('id를 입력');
+		}else if($(this).is('#name') && $(this).val()==''){
+			$(this).val('이름을 입력');
+		}
+	});
+	$('form input').mouseover(function(){
+		$(this).val('');
+	});
+	$('form input').mouseout(function(){
+		if($(this).is('#id') && $(this).val()==''){
+			$(this).val('id를 입력');
+		}else if($(this).is('#name') && $(this).val()==''){
+			$(this).val('이름을 입력');
+		}
+	});
+	 */
+});
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>회원가입</h1>
+	<form>
+		<div>
+			<label for="id">id</label>
+			<input type="text" id="id" value="id를 입력" />
+		</div>
+		<div>
+			<label for="name">name</label>
+			<input type="text" id="name" value="이름을 입력"/>
+		</div>
+	</form>
+</body>
+</html>

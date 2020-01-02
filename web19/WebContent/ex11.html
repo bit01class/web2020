@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$('button').click(function(){
+		var txt=$(this).text();
+		if(txt=='attach'){
+			$('a').one('click',callback);
+			$('a').on('click',callback2);
+		}else{
+			$('a').off('click');
+		}
+	});
+});
+function callback(e){
+	e.preventDefault();
+	alert('이벤트 작동');
+}
+function callback2(e){
+	e.preventDefault();
+	alert('이벤트 작동2');
+}
+
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>이벤트 on/off</h1>
+	<div>
+		<button>attach</button>
+		<button>remove</button>
+	</div>
+	<a href="http://naver.com">link</a>
+</body>
+</html>

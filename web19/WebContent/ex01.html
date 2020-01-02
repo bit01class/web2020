@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+	iframe{
+		width: 300px;
+		height: 200px;
+	}
+</style>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$('iframe').load(function(){
+		alert('로딩완료');
+	});
+	$('iframe').ready(function(){
+		alert('ready완료');
+	});
+});
+
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+<div>
+	<iframe src="http://www.bitacademy.com/"></iframe>
+</div>
+</body>
+</html>

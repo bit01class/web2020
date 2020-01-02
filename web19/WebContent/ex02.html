@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		$('button').click(function(){
+			var msg=$(this).text();
+			if(msg=='btn01'){
+				alert('버튼1클릭');
+			}else{
+				alert('버튼2클릭');				
+			}
+			$('#target').append('<span>'+msg+'</span>');
+		});
+		$('a').click(function(){
+			alert('링크클릭');
+			return false;
+		});
+		
+	});
+
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<button>btn01</button>
+	<button>btn02</button>
+	<p id="target">내용</p>
+	<a href="http://naver.com">link</a>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

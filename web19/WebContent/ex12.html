@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	/* 
+	$('button').click(function(){
+		alert('클릭됨');
+	});
+	$('button').click();
+	 */
+	$(document).on('click','button',['ab','abc'],function(e,a,b){
+		console.log('클릭됨:',e.data,a,b);
+	});
+	$('button').trigger('click',['a','b']);
+	
+});
+
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>이벤트 트리거</h1>
+	<button>클릭</button>
+</body>
+</html>

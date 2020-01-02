@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+var cnt=1;
+$(document).ready(function(){
+	$(document).on('click','button',function(){
+		cnt++;
+		$('<button>btn'+cnt+'</button>').insertAfter(this);
+
+	});
+});
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>bind</h1>
+	<button>btn1</button>
+</body>
+</html>

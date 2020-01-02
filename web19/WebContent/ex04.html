@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#name').focus();
+	$('#id').focus(function(){
+		$(this).val("");
+	});
+	$('#id').blur(function(){
+		if($(this).val()==''){
+			$(this).val('아이디입력');
+		}
+	});
+});
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>포커스</h1>
+	<div>
+		<input type="text" id="id" value="아이디입력"/>
+	</div>
+	<div>
+		<input type="text" id="name"/>
+	</div>
+</body>
+</html>

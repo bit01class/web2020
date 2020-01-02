@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		$('input').keydown(function(e){
+			console.log(e);
+			$(this).css('background-color','red');
+			$('#print01').text(e.keyCode);
+		});
+		$('input').keypress(function(e){
+			$('#print02').text(e.keyCode);
+		});
+		$('input').keyup(function(e){
+			$(this).css('background-color','yellow');
+		});
+	});
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>key event</h1>
+	<p>
+		<input type="text" name="tf" id="tf" />
+	</p>
+	<p id="print01"></p>
+	<p id="print02"></p>
+</body>
+</html>
+
+
+
+
+
+
+
+

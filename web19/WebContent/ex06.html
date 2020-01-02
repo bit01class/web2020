@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+	body{
+		height: 3000px;
+	}
+	#target{
+		position:fixed;
+	}
+</style>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(window).scroll(function(){
+		$('#target').text($(this).scrollTop());
+	});
+});
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<p id="target"></p>
+</body>
+</html>
