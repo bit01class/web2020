@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+	#header,#menu,#content,#footer{
+		background-color: aqua;
+	}
+	#content{
+		clear:both;
+		height: 300px;
+	}
+	#menu{
+		height: 50px;
+	}
+	#menu>ul{
+		width:400px;
+		height:50px;
+		margin: 0px auto;
+		padding: 0px;
+		list-style: none;
+	}
+	#menu>ul>li{
+		float: left;
+		width: 100px;
+		height: 50px;
+		background-color: silver;
+	}
+	#menu>ul>li>ol{
+		margin:0px;
+		padding:0px;
+		list-style: none;
+	}
+	#menu>ul>li>ol>li{
+		width: 100px;
+		height: 50px;
+		background-color: silver;
+	}
+</style>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#menu ul>li>ol').slideUp();
+	$('#menu ul>li').mouseenter(function(){
+		$(this).find('ol').stop().slideDown();
+	}).mouseleave(function(){
+		$(this).find('ol').stop().slideUp();
+	});
+});
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="header">
+		<h1>비트교육센터</h1>
+	</div>
+	<div id="menu">
+		<ul>
+			<li>item1
+				<ol>
+					<li>item1-1</li>
+					<li>item1-2</li>
+					<li>item1-3</li>
+					<li>item1-4</li>
+				</ol>
+			</li>
+			<li>item2
+				<ol>
+					<li>item2-1</li>
+					<li>item2-2</li>
+					<li>item2-3</li>
+					<li>item2-4</li>
+				</ol>
+			</li>
+			<li>item3
+				<ol>
+					<li>item3-1</li>
+					<li>item3-2</li>
+					<li>item3-3</li>
+					<li>item3-4</li>
+				</ol>
+			</li>
+			<li>item4
+				<ol>
+					<li>item4-1</li>
+					<li>item4-2</li>
+					<li>item4-3</li>
+					<li>item4-4</li>
+				</ol>
+			</li>
+		</ul>
+	</div>
+	<div id="content">
+		<h2>환영합니다</h2>
+	</div>
+	<div id="footer">
+		<address>서울특별시 서초구 서초대로74길33 비트빌 3층 </address>
+		COPYRIGHT BY BITACADEMY CO.LTD. ALL RIGHTS RESERVED. HTTP://www.BITacademy.com
+	</div>
+</body>
+</html>

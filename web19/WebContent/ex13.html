@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+	p{
+		background-color: aqua;
+		height: 300px;
+	}
+</style>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('button').eq(0).click(function(){
+//		$('#target').hide(3000,callback);
+//		$('#target').hide('slow',callback);
+//		$('#target').fadeOut('slow',callback);
+//		$('#target').slideUp('slow',callback);
+		$('#target').fadeTo('slow',0.2);
+	});
+	$('button').eq(1).click(function(){
+//		$('#target').show(3000,callback);
+//		$('#target').show('fast',callback);
+//		$('#target').fadeIn('fast',callback);
+//		$('#target').slideDown('fast',callback);
+		$('#target').fadeTo('fast',0.7);
+	});
+	$('button').eq(2).click(function(){
+//		$('#target').toggle(3000);
+//		$('#target').fadeToggle(3000);
+		$('#target').slideToggle(3000);
+	});
+});
+function callback(){
+	alert('애니메이션 끝');
+}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>animation</h1>
+	<button>hide</button>
+	<button>show</button>
+	<button>toggle</button>
+	<p id="target">다음의 내용을 출력합니다</p>
+	<p>end</p>
+</body>
+</html>
