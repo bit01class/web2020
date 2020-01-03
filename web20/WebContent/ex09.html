@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+var temp;
+$(document).ready(function(){
+	$.get('https://api.jquery.com/queue/',function(data){
+		temp=data;
+		/* 
+		data.rows.forEach(function(ele,idx){
+//			$('#target').append('<div>'
+//					+'<span>'+ele.col1+'</span>'+'</div>');
+			var span=$('<span></span>').text(ele.col1);
+			$('<div/>').append(span).appendTo('#target');
+		});
+		 */
+	});
+});
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>ajax (json)</h1>
+	<div id="target"></div>
+</body>
+</html>

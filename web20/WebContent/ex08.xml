@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rows>
+	<row>
+		<col1>a</col1>
+		<col2>100</col2>
+	</row>
+	<row>
+		<col1>ab</col1>
+		<col2>200</col2>
+	</row>
+	<row>
+		<col1>abc</col1>
+		<col2>3000</col2>
+	</row>
+</rows>
