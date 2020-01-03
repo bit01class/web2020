@@ -15,11 +15,19 @@
 	.bx2,.bx2 img{
 		width: 100px;
 	}
+	.nxt{
+		width: 100px;
+		height: 100px;
+		position: absolute;
+		left: 350px;
+		top:250px;
+		z-index: 100;
+	}
 </style>
 <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="js/jquery.bxslider.js"></script>
 <script type="text/javascript">
-var bx1,bx2;
+var bx1,bx2,imgs;
 $(document).ready(function(){
 	bx1=$('.bx1').bxSlider({
 		pager:false
@@ -40,10 +48,20 @@ $(document).ready(function(){
 			var idx=bx2.getCurrentSlide();
 			bx1.goToSlide(idx);
 		}
+		,onSliderLoad:function(){
+			$('<div class="nxt"></div>').appendTo('body');
+		}
 	});
 	
 	////////////
-	$('.cl2').click(function(){
+	$(document).on('click','.nxt',function(){
+		var num=bx2.getCurrentSlide()+2;
+		bx2.goToSlide(num);
+		bx1.goToSlide(num);
+	});
+		/* 
+	imgs.click(function(){
+		alert('test');
 		var me=this;
 		var num=-1;
 		$('.cl2').each(function(idx,ele){
@@ -53,6 +71,7 @@ $(document).ready(function(){
 		bx1.goToSlide(num);
 		return false;
 	});
+		 */
 });
 </script>
 <title>Insert title here</title>
@@ -70,12 +89,12 @@ $(document).ready(function(){
 				<div><img src="imgs/big06.jpg"/></div>
 			</div>
 			<div class="bx2">
-				<div><a class="cl2" href="#"><img src="imgs/img01.jpg"/></a></div>
-				<div><a class="cl2" href="#"><img src="imgs/img02.jpg"/></a></div>
-				<div><a class="cl2" href="#"><img src="imgs/img03.jpg"/></a></div>
-				<div><a class="cl2" href="#"><img src="imgs/img04.jpg"/></a></div>
-				<div><a class="cl2" href="#"><img src="imgs/img05.jpg"/></a></div>
-				<div><a class="cl2" href="#"><img src="imgs/img06.jpg"/></a></div>
+				<div><img src="imgs/img01.jpg"/></div>
+				<div><img src="imgs/img02.jpg"/></div>
+				<div><img src="imgs/img03.jpg"/></div>
+				<div><img src="imgs/img04.jpg"/></div>
+				<div><img src="imgs/img05.jpg"/></div>
+				<div><img src="imgs/img06.jpg"/></div>
 			</div>
 		</div>
 	
