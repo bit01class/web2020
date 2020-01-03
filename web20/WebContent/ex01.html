@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+	img{
+		border:1px solid red;
+		box-sizing:border-box;
+	}
+</style>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="js/jquery.bxslider.js"></script>
+<script type="text/javascript">
+var bx;
+$(document).ready(function(){
+	bx=$('.bxslider').bxSlider({
+		//auto:true,
+		//autoHover:true,
+		slideWidth:176,
+		mode:'vertical',
+		minSlides:2,
+		maxSlides:3,
+		slideMargin:5,
+		moveSlides:1
+		//speed:1000,
+		//pager:true,
+		//pagerType:'short',
+		//pause:1000,
+		//autoControls:true,
+		//startText:'시작',
+		//stopText:'멈춤'
+		/* 
+		,onSliderLoad:function(){
+			console.log('loading...');
+		}
+		,onSliderResize:function(){
+			console.log('resize...');
+		}
+		 */
+		,onSlideBefore:function(old,ele){
+			console.log('before',old[0],ele);
+		}
+		,onSlideAfter:function(old,ele){
+			console.log('after',old[0],ele);
+		}
+		,onSlideNext:function(old,ele){
+			console.log('next',old[0],ele);
+		}
+		,onSlidePrev:function(old,ele){
+			console.log('prev',old[0],ele);
+		}
+	});
+	
+	
+});
+
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="bxslider">
+		<div>
+			<img alt="img" src="imgs/img01.jpg"/>
+		</div>
+		<div>
+			<img alt="img" src="imgs/img02.jpg"/>
+		</div>
+		<div>
+			<img alt="img" src="imgs/img03.jpg"/>
+		</div>
+		<div>
+			<img alt="img" src="imgs/img04.jpg"/>
+		</div>
+		<div>
+			<img alt="img" src="imgs/img05.jpg"/>
+		</div>
+		<div>
+			<img alt="img" src="imgs/img06.jpg"/>
+		</div>
+	</div>
+</body>
+</html>

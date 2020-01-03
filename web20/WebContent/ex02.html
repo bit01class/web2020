@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+	.slider{
+		width: 500px;
+	}
+	.bx-wrapper,.bx1,.bx2{
+		display: inline-block;
+	}
+	.bx1,.bx1 img{
+		width: 350px;
+	}
+	.bx2,.bx2 img{
+		width: 100px;
+	}
+</style>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="js/jquery.bxslider.js"></script>
+<script type="text/javascript">
+var bx1,bx2;
+$(document).ready(function(){
+	bx1=$('.bx1').bxSlider({
+		pager:false
+		,controls:false
+		,slideWidth:350
+		//,mode:'fade'
+	});
+	bx2=$('.bx2').bxSlider({
+		pager:false
+		,controls:false
+		,slideWidth:100
+		,mode:'vertical'
+		,minSlides:3
+		,maxSlides:3
+		,moveSlides:1
+		,auto:true
+		,onSlideNext:function(){
+			var idx=bx2.getCurrentSlide();
+			bx1.goToSlide(idx);
+		}
+	});
+	
+	////////////
+	$('.cl2').click(function(){
+		var me=this;
+		var num=-1;
+		$('.cl2').each(function(idx,ele){
+			if(me==ele)num=idx-3;
+		});
+		bx2.goToSlide(num);
+		bx1.goToSlide(num);
+		return false;
+	});
+});
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="content">
+	
+		<div class="slider">
+			<div class="bx1">
+				<div><img src="imgs/big01.jpg"/></div>
+				<div><img src="imgs/big02.jpg"/></div>
+				<div><img src="imgs/big03.jpg"/></div>
+				<div><img src="imgs/big04.jpg"/></div>
+				<div><img src="imgs/big05.jpg"/></div>
+				<div><img src="imgs/big06.jpg"/></div>
+			</div>
+			<div class="bx2">
+				<div><a class="cl2" href="#"><img src="imgs/img01.jpg"/></a></div>
+				<div><a class="cl2" href="#"><img src="imgs/img02.jpg"/></a></div>
+				<div><a class="cl2" href="#"><img src="imgs/img03.jpg"/></a></div>
+				<div><a class="cl2" href="#"><img src="imgs/img04.jpg"/></a></div>
+				<div><a class="cl2" href="#"><img src="imgs/img05.jpg"/></a></div>
+				<div><a class="cl2" href="#"><img src="imgs/img06.jpg"/></a></div>
+			</div>
+		</div>
+	
+	</div>
+</body>
+</html>
