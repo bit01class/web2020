@@ -26,6 +26,15 @@
   	<servlet-name>list</servlet-name>
   	<servlet-class>com.bit.web21.ListJson</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>detail</servlet-name>
+  	<servlet-class>com.bit.web21.DetailJson</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>detail</servlet-name>
+  	<url-pattern>/add.json</url-pattern>
+  </servlet-mapping>
   
   <servlet-mapping>
   	<servlet-name>list</servlet-name>

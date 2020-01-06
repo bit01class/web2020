@@ -49,6 +49,8 @@ public class ListJson extends HttpServlet {
 				out.print(rs.getString("id"));
 				out.print("\",\"nalja\":\"");
 				out.print(rs.getDate("nalja"));
+				out.print("\",\"content\":\"");
+				out.print(rs.getString("content"));
 				out.print("\"}");
 			}
 		} catch (SQLException e) {

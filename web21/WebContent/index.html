@@ -66,6 +66,26 @@
 	{
 		width: 100px;
 	}
+	#content tr>td:nth-child(5){
+		display: none;
+	}
+	#content td>a{
+		display: block;
+		height: 50px;
+	}
+	#content img{
+		z-index: 1;
+	}
+	#popup{
+		position: absolute;
+		width: 400px;
+		height: 400px;
+		left: 100px;
+		top:100px;
+		margin:0px auto;
+		background-color: white;
+		z-index: 100;
+	}
 </style>
 <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="js/jquery.bxslider.js"></script>
@@ -82,7 +102,61 @@ $(document).ready(function(){
 		getList();
 		return false;
 	});
+	$('#menu ul>li:eq(1) li>a').eq(1).click(function(){
+		addRecord();
+		return false;
+	});
+	$('#popup').hide();
+	/* $('body').click(function(){
+		$('#popup').hide();
+	}); */
+	$(document).on('click','#content table td>a',function(){
+		var idx=$(this).parent().parent()
+					.children().first().text();
+		var sub=$(this).parent().parent()
+					.children().eq(1).text();
+		var id=$(this).parent().parent()
+					.children().eq(2).text();
+		var nalja=$(this).parent().parent()
+					.children().eq(3).text();
+		var content=$(this).parent().parent()
+					.children().eq(4).text();
+		getRecord(idx,sub,id,nalja,content);
+		return false;
+	});
 });
+function addRecord(){
+	$('#popup').html("");
+	$('#popup').append('<h2>입력페이지</h2>');
+	$('<form/>').append('<div><label>제목</label><input type="text" name="sub" /></div>')
+		.append('<div><label>글쓴이</label><input type="text" name="id" /></div>')
+		.append('<div><textarea name="content" /></div>')
+		.append('<div><button>입 력</button></div>')
+		.appendTo('#popup').submit(function(){
+			//console.log($(this).serialize());
+			$.post('add.json',$(this).serialize(),function(){
+				$('#popup').hide();
+				getList();
+			});
+			return false;
+		});
+	$('#popup').show();
+}
+function getRecord(idx,sub,id,nalja,content){
+	$('#popup').html("");
+	$('#popup').append('<h2>상세페이지</h2>');
+	$('#popup').append('<div><span>글번호</span><span>'
+								+idx+'</span></div>');
+	$('#popup').append('<div><span>글쓴이</span><span>'
+								+id+'</span></div>');
+	$('#popup').append('<div><span>날짜</span><span>'
+								+nalja+'</span></div>');
+	$('#popup').append('<div><span>제목</span><span>'
+								+sub+'</span></div>');
+	$('#popup').append('<div><pre>'+content+'</pre></div>');
+	$('#popup').show();
+}
+
 function getList(){
 	$('#content').html('<h2>리스트 페이지</h2>');
 	$('<table></table>').appendTo('#content')
@@ -90,10 +164,11 @@ function getList(){
 	$.getJSON('list.json',function(data){
 		data.list.forEach(function(ele){
 			var tr=$('<tr/>')
-			.append('<td>'+ele.num+'</td>')
-			.append('<td>'+ele.sub+'</td>')
-			.append('<td>'+ele.id+'</td>')
-			.append('<td>'+ele.nalja+'</td>');
+			.append('<td><a href="#">'+ele.num+'</a></td>')
+			.append('<td><a href="#">'+ele.sub+'</a></td>')
+			.append('<td><a href="#">'+ele.id+'</a></td>')
+			.append('<td><a href="#">'+ele.nalja+'</a></td>')
+			.append('<td><a href="#">'+ele.content+'</a></td>');
 			$('#content table').append(tr);
 		});
 	});
@@ -123,6 +198,7 @@ function intro(){
 <title>Insert title here</title>
 </head>
 <body>
+<div id="popup"></div>
 	<div class="container">
 		<div id="header" class="row">
 			<div class="tgrid12">
