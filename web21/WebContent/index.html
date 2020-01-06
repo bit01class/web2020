@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/bitgrid.css"/>
+<style type="text/css">
+	#menu{}
+	#menu ul{
+		list-style: none;
+		width: 400px;
+		margin: 0px auto;
+		padding: 0px;
+	}
+	#menu ul>li{
+		width: 100px;
+		float: left;
+	}
+	#menu ul>li>a{
+		display: inline-block;
+		width: 100px;
+		height: 50px;
+		background-color: gray;
+		border: 1px solid white;
+		box-sizing:border-box;
+		color: white;
+		text-align: center;
+		line-height: 50px;
+		text-decoration: none;
+	}
+	#menu ul>li>a:hover{
+	
+	}
+	#menu ul>li>ol{
+		list-style: none;
+		margin: 0px;
+		padding: 0px;
+		position: absolute;
+	}
+	#menu ul>li>ol>li{
+	
+	}
+	#menu ul>li>ol>li>a{
+		display: inline-block;
+		width: 100px;
+		height: 50px;
+		background-color: gray;
+		border: 1px solid white;
+		box-sizing:border-box;
+		color: white;
+		text-align: center;
+		line-height: 50px;
+		text-decoration: none;
+	}
+	#menu ul>li>ol>li>a:hover{}
+
+</style>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#menu ol').hide();
+	$('#menu ul>li').mouseenter(function(){
+		$(this).find('ol').show();
+	}).mouseleave(function(){
+		$(this).find('ol').hide();
+	});
+	
+});
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container">
+		<div id="header" class="row">
+			<div class="tgrid12">
+				<h1>비트교육센터</h1>
+			</div>
+		</div>
+		<div id="menu" class="row">
+			<div class="tgrid12">
+				<ul>
+					<li><a href="#">HOME</a></li>
+					<li><a href="#">BBS</a>
+						<ol>
+							<li><a href="#">list</a></li>
+							<li><a href="#">insert</a></li>
+						</ol>
+					</li>
+					<li><a href="#">MENU3</a>
+						<ol>
+							<li><a href="#">MENU3-1</a></li>
+							<li><a href="#">MENU3-2</a></li>
+							<li><a href="#">MENU3-4</a></li>
+						</ol>
+					</li>	
+					<li><a href="#">MENU4</a></li>	
+				</ul>
+			</div>
+		</div>
+		<div id="content" class="row">
+			<div class="tgrid12">
+				<div class="bx"></div>
+			</div>
+		</div>
+		<div id="footer" class="row">
+			<div class="tgrid12">
+				<address>서울특별시 서초구 서초대로74길33 비트빌 3층</address>
+				COPYRIGHT BY BITACADEMY CO.LTD. ALL RIGHTS RESERVED.
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
