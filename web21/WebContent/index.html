@@ -34,7 +34,7 @@
 		list-style: none;
 		margin: 0px;
 		padding: 0px;
-		position: absolute;
+		/* position: absolute; */
 	}
 	#menu ul>li>ol>li{
 	
@@ -52,9 +52,23 @@
 		text-decoration: none;
 	}
 	#menu ul>li>ol>li>a:hover{}
-
+	#content table{
+		border-collapse: collapse;
+		width: 95%;
+		margin: 0px auto;
+	}
+	#content table, #content th, #content td{
+		border: 1px solid gray;
+	}
+	#content tr>th:nth-child(1)
+	,#content tr>th:nth-child(3)
+	,#content tr>th:nth-child(4)
+	{
+		width: 100px;
+	}
 </style>
 <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="js/jquery.bxslider.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	$('#menu ol').hide();
@@ -63,8 +77,48 @@ $(document).ready(function(){
 	}).mouseleave(function(){
 		$(this).find('ol').hide();
 	});
-	
+	intro();
+	$('#menu ul>li:eq(1) li>a').eq(0).click(function(){
+		getList();
+		return false;
+	});
 });
+function getList(){
+	$('#content').html('<h2>리스트 페이지</h2>');
+	$('<table></table>').appendTo('#content')
+		.append('<tr><th>글번호</th><th>제목</th><th>글쓴이</th><th>날짜</th></tr>');
+	$.getJSON('list.json',function(data){
+		data.list.forEach(function(ele){
+			var tr=$('<tr/>')
+			.append('<td>'+ele.num+'</td>')
+			.append('<td>'+ele.sub+'</td>')
+			.append('<td>'+ele.id+'</td>')
+			.append('<td>'+ele.nalja+'</td>');
+			$('#content table').append(tr);
+		});
+	});
+}
+
+function intro(){
+	$.get({
+		url:'ex04.bit'
+		,type:'get'
+		,data:'startwith=big'
+		,dataType:'json'
+		,success:function(data){
+			$('.bx').html('');
+			data.imgs.forEach(function(ele){
+				$('<img/>').appendTo('.bx')
+					.attr('src','imgs/'+ele.name);
+			});
+			$('.bx').bxSlider({
+				auto:true
+				,pager:false
+				,controls:false
+			});
+		}
+	});
+}
 </script>
 <title>Insert title here</title>
 </head>

@@ -22,7 +22,15 @@
   	<servlet-name>ex06</servlet-name>
   	<servlet-class>com.bit.web21.Ex06</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>list</servlet-name>
+  	<servlet-class>com.bit.web21.ListJson</servlet-class>
+  </servlet>
   
+  <servlet-mapping>
+  	<servlet-name>list</servlet-name>
+  	<url-pattern>/list.json</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>ex06</servlet-name>
   	<url-pattern>/ex06.bit</url-pattern>
