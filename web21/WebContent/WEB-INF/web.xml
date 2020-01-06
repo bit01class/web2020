@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>web21</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+  	<servlet-name>xmlImg</servlet-name>
+  	<servlet-class>com.bit.web21.XmlImgs</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>jsonImg</servlet-name>
+  	<servlet-class>com.bit.web21.JsonImgs</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>weather</servlet-name>
+  	<servlet-class>com.bit.web21.WeatherXml</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ex06</servlet-name>
+  	<servlet-class>com.bit.web21.Ex06</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>ex06</servlet-name>
+  	<url-pattern>/ex06.bit</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>weather</servlet-name>
+  	<url-pattern>/weather.xml</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>xmlImg</servlet-name>
+  	<url-pattern>/ex01.bit</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>jsonImg</servlet-name>
+  	<url-pattern>/ex04.bit</url-pattern>
+  </servlet-mapping>
+</web-app>
+
+
+
+
+
+
+
+
+
+
+
+
+

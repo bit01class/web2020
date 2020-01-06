@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="js/jquery.bxslider.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	/* 
+	$.ajax({
+		url:'ex02.bit'
+		,type:'get'
+		//,dataType:'xml'
+		,error:function(xhr,textStatus,err){
+			console.log(xhr.status);
+			console.log(textStatus);//"error","timeout","parsererror","bort"
+			console.log(err);
+		}
+		,success:function(data,text,xhr){
+			$(data).find('name').each(function(){
+				$('<img/>').appendTo('#bx')
+					.attr('src','imgs/'+$(this).text());
+			});
+		}
+	});
+	 */
+	$.ajax({
+		url:'ex04.bit'
+		,type:'get'
+		,data:'startwith=big'
+		//,dataType:'json'
+		,error:function(){
+			$('#bx').html('<h1>error</h1>');
+		}
+		,success:function(data){
+			data.imgs.forEach(function(ele){
+				$('<img/>').attr('src','.'+ele.src+ele.name)
+							.appendTo('#bx');
+			});
+		}
+	});
+});
+
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="bx"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+

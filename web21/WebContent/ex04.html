@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="js/jquery.bxslider.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$.getJSON('ex04.bit?startwith=big',function(data){
+//	$.getJSON('ex04.bit',"startwith=big",function(data){
+//	$.getJSON('ex04.bit',{startwith:'big'},function(data){
+		//console.log(typeof data);
+		//console.log(data);
+		/* 
+		data.imgs.forEach(function(ele,idx){
+			$('<img/>').appendTo('#bx')
+						.attr('src','.'+ele.src+ele.name);
+		});
+		 */
+		$(data.imgs).each(function(idx,ele){
+			$('<img/>').appendTo('#bx')
+			.attr('src','.'+ele.src+ele.name);
+		});
+		//$('#bx').bxSlider();
+	});
+});
+	
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="header">
+		<h1>json 파싱</h1>
+	</div>
+	<div id="content">
+		<div id="bx"></div>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

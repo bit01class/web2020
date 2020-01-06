@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+	table{
+		border-collapse: collapse;
+	}
+	table,th,td{
+		border: 1px solid gray;
+	}
+	
+
+</style>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$.ajax({
+		//url:'http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=1168051000'
+		url:'weather.xml'
+		,type:'get'
+		,success:function(data){
+			var hour=$(data).find('hour');
+			var wf=$(data).find('wfKor');
+			console.log(hour,wf);
+			
+			var head=$('<tr/>');
+			var tbody=$('<tr/>');
+			hour.each(function(idx){
+				if(idx<9){
+				$('<th/>').text($(this).text()+"시")
+							.appendTo(head);
+				}
+			});
+			
+			wf.each(function(idx){
+				if(idx<9){
+				$('<td>'+$(this).text()+'</td>')
+						.appendTo(tbody);
+				}
+			});
+			
+			$('<table/>').append(head).append(tbody)
+			.appendTo('#target');
+		}
+	});
+});
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<div id='target'></div>
+</body>
+</html>

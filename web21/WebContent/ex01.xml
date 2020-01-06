@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<imgs>
+	<img>
+		<src>/imgs/</src>
+		<name>img01.jpg</name>
+		<title>물</title>
+	</img>
+	<img>
+		<src>/imgs/</src>
+		<name>img02.jpg</name>
+		<title>커피</title>
+	</img>
+	<img>
+		<src>/imgs/</src>
+		<name>img03.jpg</name>
+		<title>물티슈</title>
+	</img>
+	<img>
+		<src>/imgs/</src>
+		<name>img04.jpg</name>
+		<title>기저귀</title>
+	</img>
+	<img>
+		<src>/imgs/</src>
+		<name>img05.jpg</name>
+		<title>소고기</title>
+	</img>
+	<img>
+		<src>/imgs/</src>
+		<name>img06.jpg</name>
+		<title>사과</title>
+	</img>
+</imgs>

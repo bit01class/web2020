@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="js/jquery.bxslider.js"></script>
+<script type="text/javascript">
+var options={
+		mode:'horizontal'
+		,minSlides:2
+		,maxSlides:3
+		,slideWidth:176
+		,moveSlides:1
+		,auto:true
+		,controls:false
+};
+$(document).ready(function(){
+	// $.get(url,param,successCallback,dataType);
+	$.get('ex01.xml',function(data,textStatus,xhr){
+		//console.log($(data).find('img'));
+		$(data).find('img').each(function(idx,ele){
+			//console.log(idx,$(ele).find('src').text());
+			//console.log(idx,$(ele).find('name').text());
+			
+			var src='.'+$(ele).find('src').text()
+						+$(ele).find('name').text();
+			//console.log(src);
+			
+			$('<img/>').appendTo('#bx').attr('src',src);
+		});
+		$('#bx').bxSlider(options);
+	},'xml');
+
+});
+
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="header">
+		<h1>비트교육센터</h1>
+	</div>
+	<div id="content">
+		<div id="bx"></div>
+	</div>
+</body>
+</html>

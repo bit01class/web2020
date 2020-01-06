@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$.ajax({
+		url:'http://localhost:8080/web21/ex06.bit'
+		,type:'get'
+		,dataType:'jsonp'
+        ,jsonpCallback:'myCall'
+		,success:function(data){
+			console.log(typeof data);
+			$('div').eq(0).children().last().text(data.root[0].id);
+			$('div').eq(1).children().last().text(data.root[0].name);
+		}
+	});
+});
+
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>jsonp 파싱</h1>
+	<div>
+		<span>id:</span>
+		<span></span>
+	</div>
+	<div>
+		<span>name:</span>
+		<span></span>
+	</div>
+</body>
+</html>
