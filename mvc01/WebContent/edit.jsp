@@ -1,6 +1,5 @@
-<%@page import="com.bit.mvc01.model.Emp01Dto,java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.bit.mvc01.model.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,34 +24,35 @@
 	#menu a:hover{
 		color: red;
 	}
-	#content{}
-	#content table{
-		border-collapse: collapse;
+	#content h1{}
+	#content form{
 		width: 90%;
-		margin: 0px auto;
+		text-align: center;
 	}
-	#content table, 
-	#content table th, 
-	#content table td
+	#content form>div>span
+	,#content form>div>input
 	{
-		border:1px solid gray;
+		display:inline-block;
+		width:40%;
+		border-bottom: 1px solid gray;
 	}
-	#content table td>a{
-		display: block;
-		height: 40px;
+	#content form>div>span:first-child{
+		background-color: gray;
+	}
+	#content form>div>button{
+		width: 30%;
+		height:40px;
 	}
 </style>
 <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="js/jquery.bxslider.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('.bx').bxSlider();
+		$('#content form>div>button').last().click(function(){
+			window.history.back();
+		});
 	});
-	var arr=[1,3,5,7,9];
-	var obj={'a':9, 'b':3, 'c':7, 'd':4};
-	for(var i in obj){
-		console.log(i,obj[i]);
-	}
+	
 </script>
 <title>Insert title here</title>
 </head>
@@ -73,38 +73,38 @@
 		</div>
 		<div id="content" class="row">
 			<div class="tgrid12">
-				<H1>리스트페이지</H1>
-				<a href="add.html">입력</a>
-				<table>
-					<thead>
-						<tr>
-							<th>사번</th>
-							<th>이름</th>
-							<th>입사일</th>
-							<th>금액</th>
-						</tr>
-					</thead>
-					<tbody>
-<%
-java.util.ArrayList<Emp01Dto> list=null;
-list=(ArrayList<Emp01Dto>)request.getAttribute("alist");
-// 개선된 루프문
-//for(Emp01Dto bean : list){
-for(int i=0; i<list.size(); i++){
-	Emp01Dto bean=list.get(i);	
-
-%>					
-						<tr>
-							<td><a href="detail.html?idx=<%=bean.getSabun() %>"><%=bean.getSabun() %></a></td>
-							<td><a href="detail.html?idx=<%=bean.getSabun() %>"><%=bean.getName() %></a></td>
-							<td><a href="detail.html?idx=<%=bean.getSabun() %>"><%=bean.getNalja() %></a></td>
-							<td><a href="detail.html?idx=<%=bean.getSabun() %>"><%=bean.getPay() %></a></td>
-						</tr>
-<%
-}
-%>						
-					</tbody>
-				</table>
+				<h1>수정페이지</h1>
+				<%
+				Emp01Dto bean=(Emp01Dto)request.getAttribute("bean");
+				%>
+				<form method="post">
+				<div>
+					<span>사번</span>
+					<span><%=bean.getSabun() %></span>
+					<input type="hidden" name="sabun" value="<%=bean.getSabun() %>"/>
+				</div>
+				<div>
+					<span>이름</span>
+					<input type="text" name="name" value="<%=bean.getName() %>"/>
+				</div>
+				<div>
+					<span>입사일</span>
+					<span><%=bean.getNalja() %></span>
+				</div>
+				<div>
+					<span>금액</span>
+					<input type="text" name="pay" value="<%=bean.getPay() %>"/>
+				</div>
+				<div>
+					<span>비고</span>
+					<input type="text" name="etc" value="<%=bean.getEtc() %>"/>
+				</div>
+				<div>
+					<button type="submit">수정</button>
+					<button type="reset">취소</button>
+					<button type="button">뒤로</button>
+				</div>
+				</form>
 			</div>
 		</div>
 		<div id="footer" class="row">

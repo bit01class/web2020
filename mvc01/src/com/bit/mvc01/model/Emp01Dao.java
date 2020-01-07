@@ -65,6 +65,38 @@ public class Emp01Dao {
 			}
 		}
 	}
+	
+	public Emp01Dto selectOne(int sabun){
+		String sql="select * from emp01 where sabun=?";
+		Emp01Dto bean=new Emp01Dto();
+		Connection conn=MyOracle.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, sabun);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				bean.setSabun(rs.getInt("sabun"));
+				bean.setName(rs.getString("name"));
+				bean.setNalja(rs.getDate("nalja"));
+				bean.setPay(rs.getInt("pay"));
+				bean.setEtc(rs.getString("etc"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return bean;
+	}
 }
 
 

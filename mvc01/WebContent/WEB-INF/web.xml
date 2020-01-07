@@ -22,7 +22,23 @@
   	<servlet-name>add</servlet-name>
   	<servlet-class>com.bit.mvc01.controller.AddController</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>detail</servlet-name>
+  	<servlet-class>com.bit.mvc01.controller.DetailController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>edit</servlet-name>
+  	<servlet-class>com.bit.mvc01.controller.EditController</servlet-class>
+  </servlet>
   
+  <servlet-mapping>
+  	<servlet-name>edit</servlet-name>
+  	<url-pattern>/edit.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>detail</servlet-name>
+  	<url-pattern>/detail.html</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>add</servlet-name>
   	<url-pattern>/add.html</url-pattern>
