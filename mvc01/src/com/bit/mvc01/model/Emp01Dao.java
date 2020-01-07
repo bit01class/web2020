@@ -97,6 +97,56 @@ public class Emp01Dao {
 		
 		return bean;
 	}
+	
+	public int updateOne(int sabun,String name,int pay,String etc){
+		String sql="update emp01 set name=?,pay=?,etc=? where sabun=?";
+		int result=0;
+		Connection conn=MyOracle.getConnection();
+		PreparedStatement pstmt=null;
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setInt(2, pay);
+			pstmt.setString(3, etc);
+			pstmt.setInt(4, sabun);
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return result;
+	}
+	
+	public int deleteOne(int sabun){
+		String sql="delete from emp01 where sabun=?";
+		int result=0;
+		
+		Connection conn=MyOracle.getConnection();
+		PreparedStatement pstmt=null;
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, sabun);
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return result;
+	}
 }
 
 

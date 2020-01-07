@@ -30,7 +30,15 @@
   	<servlet-name>edit</servlet-name>
   	<servlet-class>com.bit.mvc01.controller.EditController</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>delete</servlet-name>
+  	<servlet-class>com.bit.mvc01.controller.DeleteController</servlet-class>
+  </servlet>
   
+  <servlet-mapping>
+  	<servlet-name>delete</servlet-name>
+  	<url-pattern>/delete.html</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>edit</servlet-name>
   	<url-pattern>/edit.html</url-pattern>

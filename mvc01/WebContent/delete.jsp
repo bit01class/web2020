@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.bit.mvc01.model.*"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,44 +24,19 @@
 	#menu a:hover{
 		color: red;
 	}
-	#content h1{}
+	#content h1{
+		text-align: center;
+	}
 	#content form{
-		width: 90%;
 		text-align: center;
-	}
-	#content form>div>span
-	{
-		display:inline-block;
-		width:40%;
-		border-bottom: 1px solid gray;
-	}
-	#content form>div>input
-	{
-		display:inline-block;
-		width:39%;
-		border-bottom: 1px solid gray;
-	}
-	#content form>div>span:first-child{
-		background-color: gray;
-	}
-	#content form>div>button{
-		width: 30%;
-		height:40px;
-		border: 1px solid gray;
-		border-radius:10px;
-		text-decoration: none;
-		text-align: center;
-		line-height: 40px;
-		color:gray;
-		margin-top:10px;
 	}
 </style>
 <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="js/jquery.bxslider.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('#content form>div>button').last().click(function(){
-			window.history.back();
+		$('#content form button').last().click(function(){
+			history.back();
 		});
 	});
 	
@@ -85,37 +60,13 @@
 		</div>
 		<div id="content" class="row">
 			<div class="tgrid12">
-				<h1>수정페이지</h1>
-				<%
-				Emp01Dto bean=(Emp01Dto)request.getAttribute("bean");
-				%>
+				<h1><%=request.getAttribute("sabun")%>번 
+						데이터를 삭제하시겠습니까?</h1>
 				<form method="post">
-				<div>
-					<span>사번</span>
-					<span><%=bean.getSabun() %></span>
-					<input type="hidden" name="sabun" value="<%=bean.getSabun() %>"/>
-				</div>
-				<div>
-					<span>이름</span>
-					<input type="text" name="name" value="<%=bean.getName() %>"/>
-				</div>
-				<div>
-					<span>입사일</span>
-					<span><%=bean.getNalja() %></span>
-				</div>
-				<div>
-					<span>금액</span>
-					<input type="text" name="pay" value="<%=bean.getPay() %>"/>
-				</div>
-				<div>
-					<span>비고</span>
-					<input type="text" name="etc" value="<%=bean.getEtc() %>"/>
-				</div>
-				<div>
-					<button type="submit">수정</button>
-					<button type="reset">취소</button>
-					<button type="button">뒤로</button>
-				</div>
+					<input type="hidden" name="sabun" 
+					value="<%=request.getAttribute("sabun")%>"/>
+					<button type="submit">삭제</button>
+					<button type="button">취소</button>
 				</form>
 			</div>
 		</div>
