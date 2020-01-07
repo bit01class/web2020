@@ -20,6 +20,13 @@ public class LoginController extends HttpServlet{
 		RequestDispatcher rd=null;
 		rd=req.getRequestDispatcher("login.jsp");
 		rd.forward(req, resp);
+
+		HttpSession session=req.getSession();
+		session.setMaxInactiveInterval(60);
+		System.out.println(session.getId());
+		System.out.println("技记积己矫埃:"+session.getCreationTime());
+		System.out.println("技记立加矫埃:"+session.getLastAccessedTime());
+		System.out.println("技记蜡瘤矫埃:"+session.getMaxInactiveInterval());
 	}
 	
 	@Override
