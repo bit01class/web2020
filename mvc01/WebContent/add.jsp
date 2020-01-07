@@ -1,4 +1,3 @@
-<%@page import="com.bit.mvc01.model.Emp01Dto,java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,18 +24,36 @@
 	#menu a:hover{
 		color: red;
 	}
+	
+	#content form{
+		width: 90%;
+		margin: 0px auto;
+	}
+	#content form>div{
+		text-align: center;
+	}
+	#content form>div>label{
+		display: inline-block;
+		width: 40%;
+		background-color: gray;
+	}
+	#content form>div>input{
+		width: 50%;
+	}
+	#content form>div>button{
+		width: 30%;
+	}
+	
 </style>
 <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="js/jquery.bxslider.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('.bx').bxSlider();
+		$('button[type=button]').click(function(){
+			window.history.back();
+		});
 	});
-	var arr=[1,3,5,7,9];
-	var obj={'a':9, 'b':3, 'c':7, 'd':4};
-	for(var i in obj){
-		console.log(i,obj[i]);
-	}
+	
 </script>
 <title>Insert title here</title>
 </head>
@@ -57,38 +74,26 @@
 		</div>
 		<div id="content" class="row">
 			<div class="tgrid12">
-				<H1>리스트페이지</H1>
-				<a href="add.html">입력</a>
-				<table>
-					<thead>
-						<tr>
-							<th>사번</th>
-							<th>이름</th>
-							<th>입사일</th>
-							<th>금액</th>
-						</tr>
-					</thead>
-					<tbody>
-<%
-java.util.ArrayList<Emp01Dto> list=null;
-list=(ArrayList<Emp01Dto>)request.getAttribute("alist");
-// 개선된 루프문
-//for(Emp01Dto bean : list){
-for(int i=0; i<list.size(); i++){
-	Emp01Dto bean=list.get(i);	
-
-%>					
-						<tr>
-							<td><%=bean.getSabun() %></td>
-							<td><%=bean.getName() %></td>
-							<td><%=bean.getNalja() %></td>
-							<td><%=bean.getPay() %></td>
-						</tr>
-<%
-}
-%>						
-					</tbody>
-				</table>
+				<h1>입력 페이지</h1>
+				<form method="post">
+					<div>
+						<label for="name">이름</label>
+						<input type="text" name="name" id="name" />
+					</div>
+					<div>
+						<label for="pay">금액</label>
+						<input type="number" name="pay" id="pay" />
+					</div>
+					<div>
+						<label for="etc">기타</label>
+						<input type="text" name="etc" id="etc" />
+					</div>
+					<div>
+						<button type="submit">입 력</button>
+						<button type="reset">취 소</button>
+						<button type="button">뒤 로</button>
+					</div>
+				</form>
 			</div>
 		</div>
 		<div id="footer" class="row">

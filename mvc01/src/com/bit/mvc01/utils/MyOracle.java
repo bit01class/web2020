@@ -14,7 +14,7 @@ public class MyOracle {
 	private MyOracle() {
 	}
 	
-	public Connection getConnection(){
+	public static Connection getConnection(){
 		try {
 			if(conn==null || conn.isClosed()){
 				Class.forName(driver);

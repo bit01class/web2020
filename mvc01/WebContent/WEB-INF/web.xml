@@ -14,7 +14,23 @@
   	<servlet-name>intro</servlet-name>
   	<servlet-class>com.bit.mvc01.controller.IntroController</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>list</servlet-name>
+  	<servlet-class>com.bit.mvc01.controller.ListController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>add</servlet-name>
+  	<servlet-class>com.bit.mvc01.controller.AddController</servlet-class>
+  </servlet>
   
+  <servlet-mapping>
+  	<servlet-name>add</servlet-name>
+  	<url-pattern>/add.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>list</servlet-name>
+  	<url-pattern>/list.html</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>intro</servlet-name>
   	<url-pattern>/intro.html</url-pattern>
