@@ -8,8 +8,17 @@ public class Emp01Dto {
 	private Date nalja;
 	private int pay;
 	private String etc;
+	private int cnt;
 	
 	public Emp01Dto() {
+	}
+
+	public int getCnt() {
+		return cnt;
+	}
+
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
 	}
 
 	public int getSabun() {

@@ -147,6 +147,41 @@ public class Emp01Dao {
 		
 		return result;
 	}
+	
+	public Emp01Dto login(int sabun,String name){
+		Emp01Dto bean=new Emp01Dto();
+		String sql="select count(sabun) as \"cnt\"";
+		sql+=",max(sabun) as \"id\"";
+		sql+=",max(name) as \"pw\" ";
+		sql+=" from emp01 where sabun=? and name=?";
+		
+		Connection conn=MyOracle.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, sabun);
+			pstmt.setString(2, name);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				bean.setSabun(rs.getInt("id"));
+				bean.setName(rs.getString("pw"));
+				bean.setCnt(rs.getInt("cnt"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return bean;
+	}
 }
 
 

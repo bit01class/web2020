@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.bit.mvc01.model.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,6 +40,15 @@
 		<div id="header" class="row">
 			<div class="tgrid12">
 				<p>비트교육센터</p>
+				<%
+				Emp01Dto login=(Emp01Dto)session.getAttribute("login");
+				
+				if(login!=null){
+				%>
+				<span><%=login.getName() %>님 환영합니다</span>
+				<%
+				}
+				%>
 			</div>
 		</div>
 		<div id="menu" class="row">
@@ -47,7 +56,11 @@
 				<a href="/mvc01/">HOME</a>
 				<a href="/mvc01/intro.html">INTRO</a>
 				<a href="/mvc01/list.html">B B S</a>
+				<%if(login==null){ %>
 				<a href="/mvc01/login.html">LOGIN</a>
+				<%}else{ %>
+				<a href="/mvc01/logout.html">LOGOUT</a>
+				<%} %>
 			</div>
 		</div>
 		<div id="content" class="row">

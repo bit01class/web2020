@@ -24,6 +24,22 @@
 	#menu a:hover{
 		color: red;
 	}
+	#content form{
+		width: 60%;
+	}
+	#content form>div{
+		text-align: center;
+	}
+	#content form>div>label{
+		display: inline-block;
+		width: 40%;
+		background-color: gray;
+	}
+	#content form>div>input{}
+	#content form>div>button{
+		width: 40%;
+		margin: 10px 5px;
+	}
 </style>
 <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="js/jquery.bxslider.js"></script>
@@ -53,6 +69,20 @@
 		<div id="content" class="row">
 			<div class="tgrid12">
 				<h1>로그인 페이지</h1>
+				<form method="post">
+					<div>
+						<label for="sabun">사번</label>
+						<input type="text" name="sabun" />
+					</div>
+					<div>
+						<label for="name">이름</label>
+						<input type="text" name="name" />
+					</div>
+					<div>
+						<button type="submit">로그인</button>
+						<button type="reset">취 소</button>
+					</div>
+				</form>
 			</div>
 		</div>
 		<div id="footer" class="row">
