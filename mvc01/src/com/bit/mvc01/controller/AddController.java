@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bit.mvc01.model.Emp01Dao;
+
 public class AddController extends HttpServlet {
 
 	@Override
@@ -22,10 +24,34 @@ public class AddController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		// post방식 한글 처리
+		req.setCharacterEncoding("utf-8");
+		
 		String param1=req.getParameter("name");
 		String param2=req.getParameter("pay");
 		String param3=req.getParameter("etc");
-		System.out.println(param1+","+param2+","+param3);
+		String name=param1.trim();
+		if(name.isEmpty()){
+			resp.sendRedirect("add.html?err=nameErr");
+			return;
+		}
+		int pay=0;
+		try{
+			pay=Integer.parseInt(param2.trim());
+		}catch(NumberFormatException e){
+			resp.sendRedirect("add.html?err=payErr");
+			return;
+		}
+		String etc=param3.trim();
+		// valid
+		
+		// model
+		Emp01Dao dao=new Emp01Dao();
+		dao.insertone(name, pay, etc);
+		
+		// redirect
+		resp.sendRedirect("list.html");
+		
 	}
 }
 

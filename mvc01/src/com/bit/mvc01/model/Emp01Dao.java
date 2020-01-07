@@ -1,5 +1,6 @@
 package com.bit.mvc01.model;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -41,7 +42,39 @@ public class Emp01Dao {
 		
 		return list;
 	}
+	
+	public void insertone(String name,int pay,String etc){
+		String sql="insert into emp01 values ";
+		sql+=" (emp01_seq.nextval,?,sysdate,?,?)";
+		Connection conn=MyOracle.getConnection();
+		PreparedStatement pstmt=null;
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setInt(2, pay);
+			pstmt.setString(3, etc);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
 
 
 

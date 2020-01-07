@@ -43,7 +43,11 @@
 	#content form>div>button{
 		width: 30%;
 	}
-	
+	#err{
+		background-color: red;
+		color:white;
+		text-align: center;
+	}
 </style>
 <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="js/jquery.bxslider.js"></script>
@@ -52,12 +56,18 @@
 		$('button[type=button]').click(function(){
 			window.history.back();
 		});
+		if("<%=request.getParameter("err")%>"=='nameErr'){
+			$('#err').text('이름을 입력하세요');
+		}else if("<%=request.getParameter("err")%>"=='payErr'){
+			$('#err').text('금액을 확인하시고 다시 입력하세요');
+		}
 	});
 	
 </script>
 <title>Insert title here</title>
 </head>
 <body>
+<div id="err"></div>
 	<div class="container">
 		<div id="header" class="row">
 			<div class="tgrid12">
@@ -82,7 +92,7 @@
 					</div>
 					<div>
 						<label for="pay">금액</label>
-						<input type="number" name="pay" id="pay" />
+						<input type="text" name="pay" id="pay" />
 					</div>
 					<div>
 						<label for="etc">기타</label>
