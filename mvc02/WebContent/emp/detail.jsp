@@ -15,17 +15,14 @@
 </style>
 <script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
 <script type="text/javascript">
-	$(document).ready(function(){
-		$('#content table>tbody').children().each(function(){
-			var sabun;	
-			$(this).children().each(function(idx){
-			    // sabun=idx==0?$(this).text():sabun;
-			    if(idx==0)sabun=$(this).text();
-			    $(this).html('<a href="detail.html?sabun='+sabun+'">'
-			    		+$(this).text()+'</a>');
-			});
-		});
+$(document).ready(function(){
+	$('button[type=button]').one('click',function(){
+		$(this).attr('type','submit');
+		$('#name').attr('type','text').prev().hide();
+		$('#deptno').attr('type','text').prev().hide();
+		return false;
 	});
+});
 </script>
 <title>Insert title here</title>
 </head>
@@ -47,31 +44,37 @@
 		</div>
 		<div id="content" class="row">
 			<div class="grid12">
-				<h1>EMP LIST PAGE</h1>
-				<table>
-					<thead>
-						<tr>
-							<th>사번</th>
-							<th>이름</th>
-							<th>날짜</th>
-						</tr>
-					</thead>
-					<tbody>
-<%@ page import="java.util.*,com.bit.mvc02.emp.model.Emp02Dto" %>
-					<%
-List<Emp02Dto> list= (List<Emp02Dto>)request.getAttribute("list");
-for(Emp02Dto bean : list){
-					%>
-						<tr>
-							<td><%=bean.getSabun() %></td>
-							<td><%=bean.getName() %></td>
-							<td><%=bean.getNalja() %></td>
-						</tr>
-					<%
-}
-					%>
-					</tbody>
-				</table>
+				<h1>EMP DETAIL PAGE</h1>
+				<%@ page import="com.bit.mvc02.emp.model.*" %>
+				<%
+					Emp02Dto bean=(Emp02Dto)request.getAttribute("bean");
+				%>
+				<form method="post">
+					<div>
+						<label for="sabun">사번</label>
+						<span><%=bean.getSabun() %></span>
+						<input type="hidden" id="sabun" name="sabun" value="<%=bean.getSabun() %>"/>
+					</div>
+					<div>
+						<label for="name">이름</label>
+						<span><%=bean.getName() %></span>
+						<input type="hidden" id="name" name="name" value="<%=bean.getName() %>"/>
+					</div>
+					<div>
+						<label for="nalja">날짜</label>
+						<span><%=bean.getNalja() %></span>
+						<input type="hidden" id="nalja"/>
+					</div>
+					<div>
+						<label for="deptno">deptno</label>
+						<span><%=bean.getDeptno() %></span>
+						<input type="hidden" id="deptno" name="deptno" value="<%=bean.getDeptno() %>"/>
+					</div>
+					<div>
+						<button type="button">수정</button>
+						<button type="reset">취소</button>
+					</div>
+				</form>
 			</div>
 		</div>
 		<div id="footer" class="row">

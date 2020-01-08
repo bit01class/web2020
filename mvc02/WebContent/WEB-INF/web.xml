@@ -100,6 +100,10 @@
   	<servlet-name>deptDelete</servlet-name>
   	<servlet-class>com.bit.mvc02.dept.controller.DeleteController</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>empList</servlet-name>
+  	<servlet-class>com.bit.mvc02.emp.controller.ListController</servlet-class>
+  </servlet>
   
   <servlet-mapping>
   	<servlet-name>index</servlet-name>
@@ -124,6 +128,10 @@
   <servlet-mapping>
   	<servlet-name>deptDelete</servlet-name>
   	<url-pattern>/dept/delete.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>empList</servlet-name>
+  	<url-pattern>/emp/list.html</url-pattern>
   </servlet-mapping>
 </web-app>
 

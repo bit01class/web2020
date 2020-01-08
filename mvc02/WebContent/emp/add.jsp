@@ -13,19 +13,9 @@
 		text-indent: -999px;
 	}
 </style>
-<script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 <script type="text/javascript">
-	$(document).ready(function(){
-		$('#content table>tbody').children().each(function(){
-			var sabun;	
-			$(this).children().each(function(idx){
-			    // sabun=idx==0?$(this).text():sabun;
-			    if(idx==0)sabun=$(this).text();
-			    $(this).html('<a href="detail.html?sabun='+sabun+'">'
-			    		+$(this).text()+'</a>');
-			});
-		});
-	});
+
 </script>
 <title>Insert title here</title>
 </head>
@@ -47,31 +37,7 @@
 		</div>
 		<div id="content" class="row">
 			<div class="grid12">
-				<h1>EMP LIST PAGE</h1>
-				<table>
-					<thead>
-						<tr>
-							<th>사번</th>
-							<th>이름</th>
-							<th>날짜</th>
-						</tr>
-					</thead>
-					<tbody>
-<%@ page import="java.util.*,com.bit.mvc02.emp.model.Emp02Dto" %>
-					<%
-List<Emp02Dto> list= (List<Emp02Dto>)request.getAttribute("list");
-for(Emp02Dto bean : list){
-					%>
-						<tr>
-							<td><%=bean.getSabun() %></td>
-							<td><%=bean.getName() %></td>
-							<td><%=bean.getNalja() %></td>
-						</tr>
-					<%
-}
-					%>
-					</tbody>
-				</table>
+			
 			</div>
 		</div>
 		<div id="footer" class="row">
