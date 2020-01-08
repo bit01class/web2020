@@ -39,6 +39,28 @@
 		<div id="content" class="row">
 			<div class="grid12">
 				<h1>DEPT INSERT PAGE</h1>
+				<form action="insert.html" method="post">
+					<div>
+						<label for="dname">부서명</label>
+						<input type="text" name="dname" id="dname"/>
+					</div>
+					<div>
+						<label for="loc">지역</label>
+						<select name="loc" id="loc">
+							<option>서울</option>
+							<option>부산</option>
+							<option>대전</option>
+							<option>대구</option>
+							<option>광주</option>
+							<option>기타</option>
+						</select>
+					</div>
+					<div>
+						<button type="submit">입력</button>
+						<button type="reset">취소</button>
+						<button type="button">뒤로</button>
+					</div>
+				</form>
 			</div>
 		</div>
 		<div id="footer" class="row">

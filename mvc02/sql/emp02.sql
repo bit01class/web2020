@@ -1,5 +1,7 @@
 drop table emp02;
 drop table dept02;
+drop sequence emp02_seq;
+drop sequence dept02_seq;
 --
 create table dept02(
 	deptno number primary key,

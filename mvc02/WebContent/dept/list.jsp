@@ -12,7 +12,22 @@
 		background-image: url("../imgs/logo.jpg");
 		text-indent: -999px;
 	}
-
+	#content{}
+	#content table,#content table th,#content table td{
+		border:1px solid gray;
+	}
+	#content table{
+		border-collapse: collapse;
+		width: 1024px;
+		margin: 0px auto;
+	}
+	#content table tr:hover{
+		background-color: yellow;
+	}
+	#content table td>a{
+		display: block;
+		height: 35px;
+	}
 </style>
 <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 <script type="text/javascript">
@@ -40,6 +55,35 @@
 			<div class="grid12">
 				<h1>DEPT LIST</h1>
 				<a href="add.html">입력</a>
+				<table>
+					<thead>
+						<tr>
+							<th>번호</th>
+							<th>부서명</th>
+							<th>지역</th>
+							<th>삭제</th>
+						</tr>
+					</thead>
+					<tbody>
+						<%
+java.util.ArrayList<com.bit.mvc02.dept.model.Dept02Dto> list=null;
+list=(java.util.ArrayList<com.bit.mvc02.dept.model.Dept02Dto>)request.getAttribute("list");
+for(com.bit.mvc02.dept.model.Dept02Dto bean:list){
+						%>
+						<tr>
+							<td><a href="#"><%=bean.getDeptno() %></a></td>
+							<td><a href="#"><%=bean.getDname() %></a></td>
+							<td><a href="#"><%=bean.getLoc() %></a></td>
+							<td><form action="./delete.html" method="post">
+								<input type="hidden" name="deptno" value="<%=bean.getDeptno() %>"/>
+								<button>삭제</button>
+							</form></td>
+						</tr>
+						<%
+}						
+						%>
+					</tbody>
+				</table>
 			</div>
 		</div>
 		<div id="footer" class="row">
