@@ -9,7 +9,7 @@
 	#header h1{
 		width: 263px;
 		height: 86px;
-		background-image: url("imgs/logo.jpg");
+		background-image: url("../imgs/logo.jpg");
 		text-indent: -999px;
 	}
 
@@ -29,16 +29,16 @@
 		</div>
 		<div id="menu" class="row">
 			<div class="grid12">
-				<a href="index.html">HOME</a>
-				<a href="intro.html">INTRO</a>
-				<a href="emp/list.html">EMP</a>
-				<a href="dept/list.html">DEPT</a>
-				<a href="login/login.html">LOGIN</a>
+				<a href="../index.html">HOME</a>
+				<a href="../intro.html">INTRO</a>
+				<a href="../emp/list.html">EMP</a>
+				<a href="list.html">DEPT</a>
+				<a href="../login/login.html">LOGIN</a>
 			</div>
 		</div>
 		<div id="content" class="row">
 			<div class="grid12">
-				<img alt="" src="imgs/1.PNG"/>
+				<h1>DEPT INSERT PAGE</h1>
 			</div>
 		</div>
 		<div id="footer" class="row">

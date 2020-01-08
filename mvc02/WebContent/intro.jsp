@@ -12,7 +12,9 @@
 		background-image: url("imgs/logo.jpg");
 		text-indent: -999px;
 	}
-
+	#content img{
+		width: 100%;
+	}
 </style>
 <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 <script type="text/javascript">
@@ -36,9 +38,33 @@
 				<a href="login/login.html">LOGIN</a>
 			</div>
 		</div>
-		<div id="content" class="row">
-			<div class="grid12">
-				<img alt="" src="imgs/1.PNG"/>
+		<div id="content">
+			<div class="row">
+				<div class="grid12">
+					<h1>Intro page</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="grid4">
+					<img alt="" src="imgs/big01.jpg"/>			
+				</div>
+				<div class="grid4">
+					<img alt="" src="imgs/big02.jpg"/>		
+				</div>
+				<div class="grid4">
+					<img alt="" src="imgs/big03.jpg"/>		
+				</div>
+			</div>
+			<div class="row">
+				<div class="grid4">
+					<img alt="" src="imgs/big04.jpg"/>			
+				</div>
+				<div class="grid4">
+					<img alt="" src="imgs/big05.jpg"/>		
+				</div>
+				<div class="grid4">
+					<img alt="" src="imgs/big06.jpg"/>		
+				</div>
 			</div>
 		</div>
 		<div id="footer" class="row">

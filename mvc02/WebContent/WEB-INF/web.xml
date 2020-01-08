@@ -8,11 +8,55 @@
   </welcome-file-list>
   <servlet>
   	<servlet-name>index</servlet-name>
-  	<servlet-class>com.bit.mvc02.controller.IndexController</servlet-class>
+  	<servlet-class>com.bit.mvc02.controller.DirectController</servlet-class>
+  	<init-param>
+  		<param-name>viewName</param-name>
+  		<param-value>index</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>prefix</param-name>
+  		<param-value>/</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>suffix</param-name>
+  		<param-value>.jsp</param-value>
+  	</init-param>
+  </servlet>
+  <servlet>
+  	<servlet-name>intro</servlet-name>
+  	<servlet-class>com.bit.mvc02.controller.DirectController</servlet-class>
+  	<init-param>
+  		<param-name>viewName</param-name>
+  		<param-value>intro</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>prefix</param-name>
+  		<param-value>/</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>suffix</param-name>
+  		<param-value>.jsp</param-value>
+  	</init-param>
   </servlet>
   <servlet>
   	<servlet-name>deptList</servlet-name>
   	<servlet-class>com.bit.mvc02.dept.controller.ListController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>deptAdd</servlet-name>
+  	<servlet-class>com.bit.mvc02.controller.DirectController</servlet-class>
+  	<init-param>
+  		<param-name>prefix</param-name>
+  		<param-value>/dept/</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>viewName</param-name>
+  		<param-value>add</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>suffix</param-name>
+  		<param-value>.jsp</param-value>
+  	</init-param>
   </servlet>
   
   <servlet-mapping>
@@ -20,8 +64,16 @@
   	<url-pattern>/index.html</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
+  	<servlet-name>intro</servlet-name>
+  	<url-pattern>/intro.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
   	<servlet-name>deptList</servlet-name>
   	<url-pattern>/dept/list.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>deptAdd</servlet-name>
+  	<url-pattern>/dept/add.html</url-pattern>
   </servlet-mapping>
 </web-app>
 

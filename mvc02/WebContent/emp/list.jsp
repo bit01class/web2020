@@ -29,6 +29,7 @@
 		<div id="menu" class="row">
 			<div class="grid12">
 				<a href="../index.html">HOME</a>
+				<a href="../intro.html">INTRO</a>
 				<a href="list.html">EMP</a>
 				<a href="../dept/list.html">DEPT</a>
 				<a href="../login/login.html">LOGIN</a>

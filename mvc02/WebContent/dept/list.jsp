@@ -30,6 +30,7 @@
 		<div id="menu" class="row">
 			<div class="grid12">
 				<a href="../index.html">HOME</a>
+				<a href="../intro.html">INTRO</a>
 				<a href="../emp/list.html">EMP</a>
 				<a href="list.html">DEPT</a>
 				<a href="../login/login.html">LOGIN</a>
@@ -38,6 +39,7 @@
 		<div id="content" class="row">
 			<div class="grid12">
 				<h1>DEPT LIST</h1>
+				<a href="add.html">입력</a>
 			</div>
 		</div>
 		<div id="footer" class="row">
