@@ -52,12 +52,14 @@
 			<span>금액</span>
 		</div>
 		<c:forEach items="${alist }" var="bean">
-		<div class="record tbody">
-			<span>${bean.sabun }</span>
-			<span>${bean.name }</span>
-			<span>${bean.nalja }</span>
-			<span>${bean.pay }</span>
-		</div>
+		<a href="detail.html?idx=${bean.sabun }">
+			<div class="record tbody">
+				<span>${bean.sabun }</span>
+				<span>${bean.name }</span>
+				<span>${bean.nalja }</span>
+				<span>${bean.pay }</span>
+			</div>
+		</a>
 		</c:forEach>
 	</div>
 </div>

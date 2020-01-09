@@ -12,7 +12,26 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+/*
+link>>> http://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html
+ 
+<Resource
+		auth="Container"
+		type="javax.sql.DataSource"
+		name="jdbc/oracle"
+		driverClassName="oracle.jdbc.OracleDriver"
+		url="jdbc:oracle:thin:@localhost:1521:xe"
+		username="scott"
+		password="tiger"
+		maxWait="6000"
+		minIdle="10"
+		maxIdle="50"
+		maxActive="20"
+	/>
+*/
+
 public class Emp04Dao {
+	javax.sql.DataSource dataSource;
 	Connection conn;
 	PreparedStatement pstmt;
 	ResultSet rs;
@@ -20,17 +39,14 @@ public class Emp04Dao {
 	public Emp04Dao() {
 		try {
 			InitialContext init = new InitialContext();
-			
-			javax.naming.Context context=null;
-			context=(Context) init.lookup("java:/comp/env");
-			
-			javax.sql.DataSource dataSource=null;
-			dataSource=(DataSource) context.lookup("jdbc/oracle");
-			
-			conn=dataSource.getConnection();
+//			
+//			javax.naming.Context context=null;
+//			context=(Context) init.lookup("java:/comp/env");
+//			
+//			dataSource=(DataSource) context.lookup("jdbc/oracle");
+			///////////////////////////////////////////
+			dataSource=(DataSource)init.lookup("java:/comp/env/jdbc/oracle");
 		} catch (NamingException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
@@ -40,6 +56,7 @@ public class Emp04Dao {
 		List<Emp04Dto> list=new ArrayList();
 		String sql="select * from emp04 order by sabun";
 		try{
+			conn=dataSource.getConnection();
 			pstmt=conn.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			while(rs.next()){
@@ -56,6 +73,29 @@ public class Emp04Dao {
 			if(conn!=null)conn.close();
 		}
 		return list;
+	}
+	
+	public Emp04Dto selectOne(int sabun) throws SQLException{
+		Emp04Dto bean =new Emp04Dto();
+		String sql="select * from emp04 where sabun=?";
+		try{
+			conn=dataSource.getConnection();
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, sabun);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				bean.setSabun(rs.getInt("sabun"));
+				bean.setName(rs.getString("name"));
+				bean.setNalja(rs.getString("nalja"));
+				bean.setPay(rs.getInt("pay"));
+				bean.setEtc(rs.getString("etc"));
+			}
+		}finally{
+			if(rs!=null)rs.close();
+			if(pstmt!=null)pstmt.close();
+			if(conn!=null)conn.close();
+		}
+		return bean;
 	}
 }
 
