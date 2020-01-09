@@ -2,7 +2,9 @@ package com.bit.mvc03.utils;
 
 import java.util.Date;
 
+@MyAnnotation("")
 public class JavaBean {
+	
 	private int su1;
 	private double su2;
 	private boolean boo;
@@ -12,7 +14,7 @@ public class JavaBean {
 	
 	public JavaBean() {
 	}
-
+	
 	public Date getNalja() {
 		return nalja;
 	}
