@@ -9,18 +9,37 @@
 	.table{
 		
 	}
+	.table a{
+		text-decoration: none;
+	}
 	.table>.record{}
-	.table>.record>span{
+	.table .record>span{
 		display: inline-block;
 		width: 24%;
+		height: 30px;
+		line-height: 30px;
 	}
 	.table>.thead>span{
 		background-color: gray;
 		text-align: center;
 		font-weight: bold;
 	}
-	.table>.tbody>span{}
-
+	.table .tbody{
+		border-bottom-color: gray;
+		border-bottom-style: dotted;
+		border-bottom-width: 1px;
+	}
+	.table .tbody>span{
+		text-align: center;
+	}
+	.table .tbody>span:nth-child(1)
+	,.table .tbody>span:nth-child(4)
+	{
+		text-align: right;
+	}
+	#content h2+div{
+		text-align: right;
+	}
 </style>
 <script
   src="https://code.jquery.com/jquery-1.12.4.min.js"
@@ -44,6 +63,9 @@
 </div>
 <div id="content">
 	<h2>리스트 페이지</h2>
+	<div>
+		<a href="add.html">입력</a>
+	</div>
 	<div class="table">
 		<div class="record thead">
 			<span>사번</span>

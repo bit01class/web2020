@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.naming.Context;
@@ -96,6 +98,47 @@ public class Emp04Dao {
 			if(conn!=null)conn.close();
 		}
 		return bean;
+	}
+//	sabun number primary key,
+//	name varchar2(15),
+//	nalja varchar2(50),
+//	pay number,
+//	etc varchar2(15)
+	public void insertOne(String name,int pay,String etc) throws SQLException{
+		java.util.Date date=new Date();
+		SimpleDateFormat sdf=new SimpleDateFormat("YY/MM/DD");
+		String sysdate=sdf.format(date);
+		String sql="insert into emp04 values (emp04_seq.nextval,?,?,?,?)";
+		try{
+			conn=dataSource.getConnection();
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, sysdate);
+			pstmt.setInt(3, pay);
+			pstmt.setString(4, etc);
+			pstmt.executeUpdate();
+		}finally{
+			if(pstmt!=null)pstmt.close();
+			if(conn!=null)conn.close();
+		}
+	}
+	
+	public int updateOne(int sabun,String name,int pay,String etc) throws SQLException{
+		int result=0;
+		String sql="update emp04 set name=?,pay=?,etc=? where sabun=?";
+		try{
+			conn=dataSource.getConnection();
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setInt(2, pay);
+			pstmt.setString(3, etc);
+			pstmt.setInt(4, sabun);
+			result=pstmt.executeUpdate();
+		}finally{
+			if(pstmt!=null)pstmt.close();
+			if(conn!=null)conn.close();
+		}
+		return result;
 	}
 }
 
