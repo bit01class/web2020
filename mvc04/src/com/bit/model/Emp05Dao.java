@@ -15,15 +15,18 @@ public class Emp05Dao {
 		Class.forName(driver);
 	}
 	
-	public void insertOne(int sabun, String name, String file) 
+	public void insertOne(int sabun, String name
+						, String file, String origin) 
 					throws SQLException{
-		String sql="insert into emp05 values (?,?,?)";
+		String sql="insert into emp05 values (?,?,?,?)";
 		try(Connection conn=
-				DriverManager.getConnection(url, user, password)){
+				DriverManager
+				.getConnection(url, user, password)){
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, sabun);
 			pstmt.setString(2, name);
 			pstmt.setString(3, file);
+			pstmt.setString(4, origin);
 			pstmt.executeUpdate();
 		}
 	}
@@ -35,7 +38,8 @@ public class Emp05Dao {
 		
 		String sql="select * from emp05";
 		try(Connection conn=
-				DriverManager.getConnection(url, user, password)){
+				DriverManager
+				.getConnection(url, user, password)){
 			pstmt=conn.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			while(rs.next()){
@@ -43,6 +47,7 @@ public class Emp05Dao {
 				bean.setSabun(rs.getInt(1));
 				bean.setName(rs.getString(2));
 				bean.setFile1(rs.getString(3));
+				bean.setOrigin(rs.getString(4));
 				list.add(bean);
 			}
 		}

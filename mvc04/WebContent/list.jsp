@@ -21,8 +21,9 @@
 	<div>
 		<span><%=bean.getSabun() %></span>
 		<span><%=bean.getName() %></span>
-		<a href="upload/<%=bean.getFile1()%>">
-						[<%=bean.getFile1()%>]</a>
+		<a target="_blank" href="upload/<%=bean.getFile1()%>">
+						[<%=bean.getOrigin()%>]</a>
+		<a href="down?file=<%=bean.getFile1()%>&origin=<%=bean.getOrigin()%>">down</a>
 	</div>
 	<%} %>
 </body>
