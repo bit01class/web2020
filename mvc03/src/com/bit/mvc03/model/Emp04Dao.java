@@ -140,6 +140,21 @@ public class Emp04Dao {
 		}
 		return result;
 	}
+	
+	public int deleteOne(int sabun) throws SQLException{
+		int result=0;
+		String sql="delete from emp04 where sabun=?";
+		try{
+			conn=dataSource.getConnection();
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, sabun);
+			result=pstmt.executeUpdate();
+		}finally{
+			if(pstmt!=null)pstmt.close();
+			if(conn!=null)conn.close();
+		}
+		return result;
+	}
 }
 
 

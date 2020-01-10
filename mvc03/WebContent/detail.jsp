@@ -19,7 +19,15 @@
 			return false;
 		});
 		$('button[type=button]').eq(0).click(function(){
-			alert('삭제');
+			var del=confirm('사번 ${bean.sabun}번 사원을 삭제하시겠습니까?');
+			if(del){
+				$.post('delete.html','idx=${bean.sabun}',function(data){
+					if(data=='ok') {
+						alert("삭제성공");
+						window.location.href='list.html';
+					}else alert('삭제실패');
+				},'text');
+			}
 		}).next().click(function(){
 			history.back();
 		});
